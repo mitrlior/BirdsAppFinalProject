@@ -1,2 +1,2 @@
 runVirtualEnv.txt
-/Resources/__pycache__
+.Resources/__pycache__
