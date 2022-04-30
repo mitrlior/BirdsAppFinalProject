@@ -8,6 +8,10 @@ app = Flask(__name__)
 # app.secret_key = 'jose'
 api = Api(app)
 
+@app.route('/')
+def home_page():
+    return "Home Page"
+
 api.add_resource(BirdResource, '/bird')
 
 if __name__ == '__main__':
