@@ -1,4 +1,4 @@
 runVirtualEnv.txt
 
-code/Resources/__pycache__
+*/__pycache__
 env
