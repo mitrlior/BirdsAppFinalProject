@@ -1,4 +1,4 @@
 runVirtualEnv.txt
 
 */__pycache__
-env
+.env
