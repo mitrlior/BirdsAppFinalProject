@@ -2,3 +2,6 @@ runVirtualEnv.txt
 
 __pycache__/
 env
+
+*.db
+*.bat
