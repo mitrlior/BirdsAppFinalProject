@@ -4,6 +4,7 @@ from flask_restful import Api
 from flask_jwt import JWT
 import psycopg2
 
+from Resources.UserResource import UserResource
 from Resources.BirdResource import BirdResource
 
 app = Flask(__name__)
@@ -18,6 +19,7 @@ def home_page():
     return "Home Page"
 
 api.add_resource(BirdResource, '/bird')
+api.add_resource(UserResource, '/user/<string:username>')
 
 if __name__ == '__main__':
     from db import db
