@@ -2,6 +2,8 @@ import os
 from flask import Flask
 from flask_restful import Api
 from flask_jwt import JWT
+from os.path import exists
+from create_tables import create_tables
 import psycopg2
 
 from Resources.UserResource import UserResource
@@ -23,6 +25,7 @@ api.add_resource(UserResource, '/user/<string:username>')
 
 if __name__ == '__main__':
     from db import db
-
+    if not exists('data.db'):
+        create_tables()
     db.init_app(app)
     app.run(port=5000, debug=True)
