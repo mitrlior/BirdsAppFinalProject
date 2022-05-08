@@ -1,6 +1,8 @@
 from app import app
+from db import db
 
+db.init_app(app)
 
-
-if __name__ == '__main__':
-    app.run()
+@app.before_first_request
+def create_table():
+    db.create_all()

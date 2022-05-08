@@ -28,7 +28,5 @@ api.add_resource(UserResource, '/user/<string:username>')
 
 if __name__ == '__main__':
     from db import db
-    # if not exists('data.db'):
-    #     create_tables()
     db.init_app(app)
     app.run(port=5000, debug=True)
