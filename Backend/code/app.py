@@ -2,8 +2,6 @@ import os
 from flask import Flask
 from flask_restful import Api
 from flask_jwt import JWT
-from os.path import exists
-from create_tables import create_tables
 import psycopg2
 
 from Resources.UserResource import UserResource
