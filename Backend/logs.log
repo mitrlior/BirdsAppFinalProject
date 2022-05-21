@@ -1,0 +1,22 @@
+INFO:werkzeug: * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 115-232-742
+INFO:Utils.logger:Get bird
+INFO:werkzeug:127.0.0.1 - - [21/May/2022 17:19:58] "GET /bird HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'D:\\BirdsAppFinalProject\\Backend\\code\\Resources\\BirdResource.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 115-232-742
+INFO:werkzeug: * Detected change in 'D:\\BirdsAppFinalProject\\Backend\\code\\Resources\\BirdResource.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 115-232-742
+DEBUG:Utils.logger:Get bird
+INFO:werkzeug:127.0.0.1 - - [21/May/2022 17:20:37] "GET /bird HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'D:\\BirdsAppFinalProject\\Backend\\code\\Resources\\UserResource.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 115-232-742
+INFO:werkzeug: * Detected change in 'D:\\BirdsAppFinalProject\\Backend\\code\\Resources\\UserResource.py', reloading
+INFO:werkzeug: * Restarting with stat

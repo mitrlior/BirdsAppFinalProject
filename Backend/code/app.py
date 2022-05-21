@@ -3,6 +3,8 @@ from flask import Flask
 from flask_restful import Api
 from flask_jwt import JWT
 import psycopg2
+from flask_restful_swagger import swagger
+
 
 from Resources.UserResource import UserResource
 from Resources.BirdResource import BirdResource
@@ -26,6 +28,6 @@ api.add_resource(UserResource, '/user/<string:username>')
 
 if __name__ == '__main__':
     from db import db
-    
+
     db.init_app(app)
     app.run(port=5000, debug=True)

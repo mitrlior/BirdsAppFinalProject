@@ -1,6 +1,7 @@
 from db import db
-from sqlalchemy import desc
+from flask_restful_swagger import swagger
 
+@swagger.model
 class UserModel(db.Model):
     index = None
     __tablename__ = 'users'

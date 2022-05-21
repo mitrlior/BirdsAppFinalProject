@@ -1,0 +1,2 @@
+api_spec_url='/api/spec.'
+basePath - 'http://localhost:5000'
