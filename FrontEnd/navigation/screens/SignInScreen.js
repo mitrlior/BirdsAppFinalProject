@@ -1,32 +1,41 @@
 import React, { useState } from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, SafeAreaView, TextInput, Picker, Image} from 'react-native';
+import {Text, View, TouchableOpacity, SafeAreaView, TextInput, Picker} from 'react-native';
+import {customStyles, buttons, touchableOpacityStyle, imgStyle, textStyle, textInputStyle, pickerStyle} from '../../assets/AppStyles';
 
 export default function SignInScreen({ navigation }) {
   const [selectedValue, setSelectedValue] = useState("hobby");
     return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.main_image}>
-        <Text style={styles.header_txt}>Sign In</Text>
+    <SafeAreaView style={customStyles.container}>
+      <View style={imgStyle.main_image}>
+        <Text style={textStyle.h1}>Sign In</Text>
       </View>
       <View>
-        <View style={styles.view_input}>
-          <Text style={styles.text}> Username: </Text>
-          <TextInput style={styles.textInput} />
+        <View style={textInputStyle.view}>
+          <Text style={textStyle.default}> Username: </Text>
+          <TextInput style={textInputStyle.default} />
         </View>
-        <View style={styles.view_input}>
-          <Text style={styles.text}> Email: </Text>
-          <TextInput style={styles.textInput}/>
+        <View style={textInputStyle.view}>
+          <Text style={textStyle.default}> First Name: </Text>
+          <TextInput style={textInputStyle.default} />
+        </View>
+        <View style={textInputStyle.view}>
+          <Text style={textStyle.default}> Last Name: </Text>
+          <TextInput style={textInputStyle.default} />
+        </View>
+        <View style={textInputStyle.view}>
+          <Text style={textStyle.default}> Email: </Text>
+          <TextInput style={textInputStyle.default}/>
           </View>        
-        <View style={styles.view_input}>
-          <Text style={styles.text}> Password: </Text>
-          <TextInput style={styles.textInput}/>
+        <View style={textInputStyle.view}>
+          <Text style={textStyle.default}> Password: </Text>
+          <TextInput style={textInputStyle.default}/>
         </View>      
-        <View style={styles.view_input}>
-          <Text style={styles.text}> Role: </Text>
+        <View style={textInputStyle.view}>
+          <Text style={textStyle.default}> Role: </Text>
           <Picker
             selectedValue={selectedValue}
-            style={{color:'#D3DEFF', fontSize:'24', height: 50, width: 150 }}
-            itemStyle={styles.picker}
+            style={pickerStyle.item}
+            itemStyle={pickerStyle.default}
             onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
           >
             <Picker.Item label="Hobby" value="hobby" />
@@ -36,89 +45,11 @@ export default function SignInScreen({ navigation }) {
         </View>
       </View>
 
-      <View style={[styles.main_buttons, {marginTop: 30}]}>
-        <TouchableOpacity style={styles.core}>
-        <Text style={styles.text}>Sign Me In!</Text>
+      <View style={buttons.main_buttons}>
+        <TouchableOpacity style={touchableOpacityStyle.default}>
+        <Text style={buttons.text}>Sign Me In!</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
     );
 }
-
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#00236a', // Dark background
-      // backgroundColor: '#D3DEFF',  // Light backgrond
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    main_image: {
-      // flex: 0.4,
-      
-    },
-    textInput: {
-      backgroundColor: 'white',
-      paddingVertical: 5,
-      borderRadius:10,
-      borderColor:'black',
-      borderWidth: 1,
-      fontSize: 16,
-      textAlign: 'center',
-      width: '200%',
-    },
-    view_input:{
-      alignItems: 'center',
-      marginHorizontal: 10,
-      marginBottom:20,
-    },
-    header_txt:{
-      fontSize: 38,
-      fontWeight: 'bold',
-      color: '#D3DEFF',
-      alignItems: 'center',
-      textAlign: 'center',
-      marginBottom: 20,
-    },
-    main_buttons:{
-      // flex: 0.6,
-      marginTop: 40,
-      alignItems: 'center',
-      width: '65%',
-    },
-    img:{
-      width: '100%',
-      height: undefined,
-      aspectRatio: 1,
-      alignSelf: 'center',
-    },
-    core: {
-      width:'80%', 
-      height:'25%', 
-      borderWidth: 1,
-      borderRadius: 10,
-      borderColor:'#386AFF',
-      backgroundColor: '#0833B5',
-      justifyContent: 'center',
-      alignItems: 'center', 
-      // marginBottom: 15,
-    },
-    text: {
-      color: '#D3DEFF',
-      fontSize: 22,
-    },
-    picker: {
-      marginVertical: 30,
-      width: 300,
-      padding: 10,
-      borderWidth: 1,
-      borderColor: "#666",
-      backgroundColor: '#D3DEFF',
-      paddingVertical: 5,
-      borderRadius:10,
-      borderColor:'black',
-      borderWidth: 1,
-      fontSize: 16,
-    },
-  });  

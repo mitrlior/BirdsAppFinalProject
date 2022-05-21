@@ -6,7 +6,7 @@ export default function ProfileScreen({ navigation }) {
     <SafeAreaView style={styles.container}>
       <View style={styles.main_image}>
         <Image style={styles.img}
-          source={require('../../../Client/assets/sqlogo_white.png')}/>
+          source={require('../../assets/sqlogo_white.png')}/>
       </View>
       <View style={[styles.main_buttons, {marginTop: 30}]}>
         <TouchableOpacity style={styles.core}>

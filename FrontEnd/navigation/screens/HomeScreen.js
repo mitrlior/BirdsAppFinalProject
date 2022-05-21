@@ -4,10 +4,10 @@ import {customStyles, buttons, touchableOpacityStyle, imgStyle} from '../../asse
 
 export default function HomeScreen({ navigation }) {
     return (
-    <SafeAreaView style={customStyles.container}>
+    <SafeAreaView style={customStyles.middle_container}>
       <View style={imgStyle.view}>
         <Image style={imgStyle.default}
-          source={require('../../../Client/assets/sqlogo_white.png')}/>
+          source={require('../../assets/sqlogo_white.png')}/>
       </View>
       <View style={[buttons.view, {marginTop: 30}]}>
         <TouchableOpacity style={touchableOpacityStyle.default}>

@@ -40,7 +40,7 @@ export default function AreaScreen({ navigation }) {
       </View>
       <View>
       <Image style={{width: '80%', height: undefined, aspectRatio: 1, alignSelf: 'center',}}
-          source={require('../../../Client/assets/mapimg.png')}/>
+          source={require('../../assets/mapimg.png')}/>
         {/* <MapView
         style={{ flex: 1 }}
         provider={PROVIDER_GOOGLE}
