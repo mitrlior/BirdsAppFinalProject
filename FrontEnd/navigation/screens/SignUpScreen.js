@@ -18,7 +18,9 @@ import {
   pickerStyle,
 } from "../../assets/AppStyles";
 
-export default function SignInScreen({ navigation }) {
+import { addNewUser } from "../../assets/requests/UserRequests";
+
+const SignUpScreen = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -26,26 +28,24 @@ export default function SignInScreen({ navigation }) {
   const [email, setEmail] = useState("");
   const [selectedValue, setSelectedValue] = useState("hobby");
 
-  const userLogin = () => {
-    console.log("Login");
-    console.log("username = " + username);
-    console.log("First name = " + firstName);
-    console.log("Last name = " + lastName);
-    console.log("Email = " + email);
-    console.log("Password = " + password);
-    console.log("Role =" + selectedValue);
-    fetch("https://birds-app-final-project.herokuapp.com/bird")
-      .then((response) => {
-        return response.json();
-      }).then(data => {console.log(data)})
-      .catch(console.log("Error signing in"));
+  const signUp = () => {
+    const user = {
+      username: username,
+      first_name: firstName,
+      last_name: lastName,
+      password: password,
+      email: email,
+      // selectedValue: selectedValue,
+    };
+    console.log(JSON.stringify(user));
+    const res = addNewUser(user);
   };
 
   return (
     <SafeAreaView style={customStyles.container}>
       <ScrollView>
         <View style={imgStyle.main_image}>
-          <Text style={textStyle.h1}>Sign In</Text>
+          <Text style={textStyle.h1}>SignUp</Text>
         </View>
         <View>
           <View style={textInputStyle.view}>
@@ -103,12 +103,13 @@ export default function SignInScreen({ navigation }) {
         <View style={buttons.main_buttons}>
           <TouchableOpacity
             style={touchableOpacityStyle.default}
-            onPress={userLogin}
+            onPress={() => signUp()}
           >
-            <Text style={buttons.text}>Sign Me In!</Text>
+            <Text style={buttons.text}>Sign Up</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
   );
-}
+};
+export default SignUpScreen;
