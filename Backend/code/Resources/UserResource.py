@@ -65,12 +65,12 @@ class UserResource(Resource):
         userModel = UserModel(user_id, username, **data)
         try:
             userModel.save_to_db()
-            logger.log(f'Added user : {userModel.json}')
+            logger.debug(f'Added user : {userModel.json}')
         except:
             return {
                 'message': 'An error occurred adding the new user.'
             }, 500
-        return userModel.json()
+        return userModel.json(), 201
 
     def delete(self, username):
         if username:

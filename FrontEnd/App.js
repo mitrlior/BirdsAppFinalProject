@@ -14,9 +14,9 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{ title: "Home" }}
+          name="Home" // Name to navigate 
+          component={HomeScreen} // Component name
+          options={{ title: "Home" }} // Title
         />
         <Stack.Screen
           name="SignUp"

@@ -37,7 +37,6 @@ const SignUpScreen = ({ navigation }) => {
       email: email,
       // selectedValue: selectedValue,
     };
-    console.log(JSON.stringify(user));
     const res = addNewUser(user);
   };
 

@@ -11,6 +11,7 @@ class UserModel(db.Model):
     lastName = db.Column('last_name', db.String(20))
     email = db.Column('email', db.String(30), unique=True)
     password = db.Column('password', db.String(16))
+    user_type = db.Column('user_type', db.Integer)
 
     def __init__(self, user_id, username, first_name, last_name, email, password):
         self.user_id = user_id
