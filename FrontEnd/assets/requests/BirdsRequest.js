@@ -1,4 +1,4 @@
-import { BASE_URL } from "@env";
+const BASE_URL = "https://birds-app-final-project.herokuapp.com/";
 
 const base_url = BASE_URL + "user/";
 
@@ -17,7 +17,7 @@ async function AddNewBird(bird) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
   });
-  console.log(res.status);
+  console.log(res.status);Z
   console.log(res.json());
   return res;
 }

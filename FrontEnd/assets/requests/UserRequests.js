@@ -1,4 +1,6 @@
-import { BASE_URL } from "@env";
+// import { BASE_URL } from "@env";
+
+BASE_URL = "https://birds-app-final-project.herokuapp.com/";
 
 const base_url = BASE_URL + "user/";
 
