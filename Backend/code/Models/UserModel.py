@@ -1,7 +1,7 @@
 from db import db
-from flask_restful_swagger import swagger
+from  Utils.Enums import USER_TYPE
+from Utils.logger import logger
 
-@swagger.model
 class UserModel(db.Model):
     index = None
     __tablename__ = 'users'
@@ -13,16 +13,19 @@ class UserModel(db.Model):
     password = db.Column('password', db.String(16))
     user_type = db.Column('user_type', db.Integer)
 
-    def __init__(self, user_id, username, first_name, last_name, email, password):
+    def __init__(self, user_id, username, first_name, last_name, email, password, user_type):
         self.user_id = user_id
         self.username = username
         self.firstName = first_name
         self.lastName = last_name
         self.email = email
         self.password = password
+        self.user_type = user_type
+
 
     def json(self):
-        return {'username' : self.username, 'user_id' : self.user_id, 'first_name' : self.firstName, 'lastName' : self.lastName, 'email' : self.email}
+        return {'username' : self.username, 'user_id' : self.user_id, 'first_name' : self.firstName,\
+             'lastName' : self.lastName, 'email' : self.email, 'user_type' : USER_TYPE(self.user_type).name}
 
     @classmethod
     def find_by_username(cls, username):

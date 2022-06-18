@@ -2,9 +2,9 @@ from enum import Enum, auto
 
 
 class USER_TYPE(Enum):
-    USER = auto()
-    BIRD_WATCHER = auto()
-    ADMIN = auto()
+    USER = 0
+    BIRD_WATCHER = 1
+    ADMIN = 2
     
     @classmethod
     def contains(cls, type):

@@ -2,6 +2,7 @@ from flask_restful import Resource, reqparse
 
 from Models.UserModel import UserModel
 from Utils.logger import logger
+from Utils.Enums import USER_TYPE
 
 
 class UserResource(Resource):
@@ -10,29 +11,29 @@ class UserResource(Resource):
     parser.add_argument(
         'first_name',
         type=str,
-        required=True,
         help='firstname field cannot be blank',
     )
 
     parser.add_argument(
         'last_name',
         type=str,
-        required=True,
         help='lastName field cannot be blank',
     )
 
     parser.add_argument(
         'email',
         type=str,
-        required=True,
         help='email field cannot be blank',
     )
 
     parser.add_argument(
         'password',
         type=str,
-        required=True,
         help='password field cannot be blank',
+    )
+    parser.add_argument(
+        'user_type',
+        type=str,
     )
 
     def get(self, username):
@@ -59,6 +60,10 @@ class UserResource(Resource):
             return {'message': 'last_name is a required filed'}, 400
 
         if not 'password' in data:
+            return {'message': 'password is a required filed'}, 400
+
+        logger.error(data['user_type'])
+        if not 'user_type' in data:
             return {'message': 'password is a required filed'}, 400
 
         user_id = UserModel.generate_id()
