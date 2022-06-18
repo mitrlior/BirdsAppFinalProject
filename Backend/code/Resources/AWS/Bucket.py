@@ -1,6 +1,5 @@
 import boto3, botocore
 import os
-import traceback
 import pathlib
 import requests
 import io
