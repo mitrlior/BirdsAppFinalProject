@@ -7,8 +7,8 @@ class UserModel(db.Model):
     __tablename__ = 'users'
     user_id = db.Column('user_id', db.Integer, primary_key=True)
     username = db.Column('username', db.String(20), unique=True)
-    firstName = db.Column('first_name', db.String(20))
-    lastName = db.Column('last_name', db.String(20))
+    first_name = db.Column('first_name', db.String(20))
+    last_name = db.Column('last_name', db.String(20))
     email = db.Column('email', db.String(30), unique=True)
     password = db.Column('password', db.String(16))
     user_type = db.Column('user_type', db.Integer)
@@ -16,16 +16,16 @@ class UserModel(db.Model):
     def __init__(self, user_id, username, first_name, last_name, email, password, user_type):
         self.user_id = user_id
         self.username = username
-        self.firstName = first_name
-        self.lastName = last_name
+        self.first_name = first_name
+        self.last_name = last_name
         self.email = email
         self.password = password
         self.user_type = user_type
 
 
     def json(self):
-        return {'username' : self.username, 'user_id' : self.user_id, 'first_name' : self.firstName,\
-             'lastName' : self.lastName, 'email' : self.email, 'user_type' : USER_TYPE(self.user_type).name}
+        return {'username' : self.username, 'user_id' : self.user_id, 'first_name' : self.first_name,\
+             'last_name' : self.last_name, 'email' : self.email, 'user_type' : USER_TYPE(self.user_type).name}
 
     @classmethod
     def find_by_username(cls, username):

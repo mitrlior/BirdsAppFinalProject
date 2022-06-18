@@ -14,7 +14,7 @@ class BirdResource(Resource):
         'bird_name',
         type=str,
         required=True,
-        help='firstname field cannot be blank',
+        help='bird_name field cannot be blank',
     )
 
     parser.add_argument('file',

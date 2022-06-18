@@ -9,29 +9,30 @@ class UserResource(Resource):
     parser.add_argument(
         'first_name',
         type=str,
-        help='firstname field cannot be blank',
+        help='first_name field cannot be blank'
     )
 
     parser.add_argument(
         'last_name',
         type=str,
-        help='lastName field cannot be blank',
+        help='last_name field cannot be blank'
     )
 
     parser.add_argument(
         'email',
         type=str,
-        help='email field cannot be blank',
+        help='email field cannot be blank'
     )
 
     parser.add_argument(
         'password',
         type=str,
-        help='password field cannot be blank',
+        help='password field cannot be blank'
     )
     parser.add_argument(
         'user_type',
         type=str,
+        help='user_type field cannot be blank'
     )
 
     def get(self, username):
@@ -45,24 +46,25 @@ class UserResource(Resource):
         if UserModel.find_by_username(username):
             return {'message': 'User already exists'}, 400
         data = UserResource.parser.parse_args()
+        print(data)
         # Check if email is given and not taken
-        if 'email' in data:
+        if data['email'] is not None:
             if UserModel.find_by_email(email=data['email']):
                 return {'message': 'Email is already taken'}, 400
         else:
             return {'message': 'email is a required filed'}, 400
-        if not 'first_name' in data:
+
+        if data['first_name'] == None:
             return {'message': 'first_name is a required filed'}, 400
 
-        if not 'last_name' in data:
+        if data['last_name'] is None:
             return {'message': 'last_name is a required filed'}, 400
 
-        if not 'password' in data:
+        if data['password'] is None:
             return {'message': 'password is a required filed'}, 400
 
-        logger.error(data['user_type'])
-        if not 'user_type' in data:
-            return {'message': 'password is a required filed'}, 400
+        if data['user_type'] is None:
+            return {'message': 'user_type is a required filed'}, 400
 
         user_id = UserModel.generate_id()
         userModel = UserModel(user_id, username, **data)
@@ -90,10 +92,10 @@ class UserResource(Resource):
         if userModel:
             data = UserResource.parser.parse_args()
             if 'first_name' in data:
-                UserModel.first_name = data['firstName']
+                UserModel.first_name = data['first_name']
 
-            if 'lastName' in data:
-                UserModel.lastName = data['lastName']
+            if 'last_name' in data:
+                UserModel.last_name = data['last_name']
 
             if 'email' in data:
                 if UserModel.find_by_email(data['email']):
