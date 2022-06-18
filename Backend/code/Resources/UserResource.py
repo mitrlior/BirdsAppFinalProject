@@ -2,8 +2,6 @@ from flask_restful import Resource, reqparse
 
 from Models.UserModel import UserModel
 from Utils.logger import logger
-from Utils.Enums import USER_TYPE
-
 
 class UserResource(Resource):
 

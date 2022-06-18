@@ -7,3 +7,5 @@ env
 *.bat
 
 *.txt
+
+*.log

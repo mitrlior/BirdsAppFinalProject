@@ -1,17 +1,11 @@
-import base64
-import imp
 from flask import request
-from flask_restful import Resource, Api, reqparse
+from flask_restful import Resource, reqparse
 from Utils.logger import logger
-import os
 import werkzeug
 from dotenv import load_dotenv
 from Resources.AWS.Bucket import Bucket
 from flask import send_file
 import io
-import numpy as np
-import cv2
-from PIL import Image
 
 
 class BirdResource(Resource):
