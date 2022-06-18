@@ -10,6 +10,7 @@ from Utils.logger import logger
 
 from Resources.UserResource import UserResource
 from Resources.BirdResource import BirdResource
+from Resources.UserLoginResource import UserLoginResource
 load_dotenv()
 
 logger.info(os.environ.get('name'))
@@ -34,6 +35,7 @@ def home_page():
 
 api.add_resource(BirdResource, '/bird/<string:file_name>')
 api.add_resource(UserResource, '/user/<string:username>')
+api.add_resource(UserLoginResource, '/login/<string:username>')
 
 if __name__ == '__main__':
     from db import db

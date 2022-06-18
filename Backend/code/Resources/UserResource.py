@@ -36,7 +36,7 @@ class UserResource(Resource):
     )
 
     def get(self, username):
-        userModel = UserModel.find_by_username(username)
+        userModel = UserModel.find_by_username(username).get()
         if userModel:
             return userModel.json()
         else:
