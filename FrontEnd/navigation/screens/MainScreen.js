@@ -6,8 +6,8 @@ export default function MainScreen({ navigation }) {
     return (
     <SafeAreaView style={customStyles.middle_container}>
       <View style={imgStyle.view}>
-        <Image style={[imgStyle.medium, {paddingVertical: 30, marginTop: 30,}]}
-          source={require('../../assets/sqlogo_white.png')}/>
+        <Image style={imgStyle.long_logo}
+          source={require('../../assets/logo_white.png')}/>
       </View>
       <View style={buttons.view}>
         <TouchableOpacity style={touchableOpacityStyle.default}>

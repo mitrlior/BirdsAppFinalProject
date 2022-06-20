@@ -7,7 +7,7 @@ const customStyles = StyleSheet.create({
     // backgroundColor: '#D3DEFF',  // Light background
     // alignItems: 'center',
     // justifyContent: 'center',
-    padding: 24,
+    padding: 20,
   },
   middle_container: {
     flex: 1,
@@ -43,6 +43,11 @@ const buttons = StyleSheet.create({
   view:{
     marginTop: 10,
     width: '85%',
+    alignItems: 'center',
+    
+  },
+  in_view:{
+    marginTop: 10,
   },
   wide: {
   }, 
@@ -94,7 +99,13 @@ const imgStyle = StyleSheet.create({
     height: undefined,
     aspectRatio: 1,
     alignSelf: 'center',
-  }
+  },
+  long_logo:{
+    width: '90%',
+    height: undefined,
+    aspectRatio: 3,
+    alignSelf: 'center',
+  },
 })
 
 const textInputStyle = StyleSheet.create({

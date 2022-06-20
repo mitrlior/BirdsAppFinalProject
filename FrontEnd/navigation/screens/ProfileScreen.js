@@ -1,71 +1,57 @@
-import * as React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Image} from 'react-native';
+import React, { useState } from "react";
+
+import {StyleSheet, Text, View, TouchableOpacity, SafeAreaView, TextInput, Image, Picker, ScrollView} from 'react-native';
+import {customStyles, buttons, touchableOpacityStyle, textStyle, textInputStyle,  pickerStyle, imgStyle} from "../../assets/AppStyles";
+
 
 export default function ProfileScreen({ navigation }) {
-    return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.main_image}>
-        <Image style={styles.img}
-          source={require('../../assets/sqlogo_white.png')}/>
-      </View>
-      <View style={[styles.main_buttons, {marginTop: 30}]}>
-        <TouchableOpacity style={styles.core}>
-        <Text style={styles.text}>Recognize Bird</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.core}>
-        <Text style={styles.text}>Birds in my Area</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.core}>
-        <Text style={styles.text}>Search Bird</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.core}>
-          <Text style={styles.text}>My Profile</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.core}>
-          <Text style={styles.text}>Log Out</Text>
-        </TouchableOpacity>
-      </View>
-    </SafeAreaView>
+  const [selectedValue, setSelectedValue] = useState("hobby");
+
+  return (
+
+      <ScrollView style={customStyles.container}>
+        {/* <Image style={imgStyle.long_logo} */}
+          {/* // source={require('../../assets/logo_white.png')}/> */}
+        <Text style={textStyle.h1}>Profile</Text>
+        <View>
+          <View style={textInputStyle.view}>
+            <Text style={textStyle.default}> Name: </Text>
+            <TextInput style={textInputStyle.default}/>
+          </View>
+        <View style={textInputStyle.view}>
+          <Text style={textStyle.default}> Email: </Text>
+          <TextInput style={textInputStyle.default}/>
+          </View>
+        <View style={textInputStyle.view}>
+          <Text style={textStyle.default}> Password: </Text>
+          <TextInput 
+            style={textInputStyle.default}
+            secureTextEntry={true}/>
+          </View>
+          <View style={textInputStyle.view}>
+            <Text style={textStyle.default}> Role: </Text>
+            <Picker
+              selectedValue={selectedValue}
+              style={pickerStyle.item}
+              itemStyle={pickerStyle.default}
+              onChangeText={(itemValue, itemIndex) =>
+                setSelectedValue(itemValue)
+              }
+            >
+              <Picker.Item label="Hobby" value="hobby" />
+              <Picker.Item label="Birdwatcher" value="birdwatcher" />
+              <Picker.Item label="Admin" value="admin" />
+            </Picker>
+          </View>
+        </View>
+        <View style={[buttons.in_view, {marginTop: 30, flexDirection: 'column', justifyContent: 'space-between'}]}>
+          <TouchableOpacity style={touchableOpacityStyle.default}>
+            <Text style={buttons.text}>Edit Profile</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={touchableOpacityStyle.default}>
+            <Text style={buttons.text}>My Birds</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
     );
-}
-
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#00236a', // Dark background
-      // backgroundColor: '#D3DEFF',  // Light backgrond
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    main_image: {
-      // flex: 0.4,
-      
-    },
-    main_buttons:{
-      // flex: 0.6,
-      marginTop: 44,
-      width: '85%',
-    },
-    img:{
-      width: '50%',
-      height: undefined,
-      aspectRatio: 1,
-      alignSelf: 'center',
-    },
-    core: {
-      width:'100%', 
-      height:'12%', 
-      borderWidth: 1,
-      borderRadius: 10,
-      borderColor:'#386AFF',
-      backgroundColor: '#0833B5',
-      justifyContent: 'center',
-      alignItems: 'center', 
-      marginBottom: 15,
-    },
-    text: {
-      color: '#D3DEFF',
-      fontSize: 22,
-    },
-  });  
+} 

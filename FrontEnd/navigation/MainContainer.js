@@ -10,9 +10,12 @@ import HomeScreen from "./screens/HomeScreen";
 import DetailsScreen from "./screens/DetailsScreen";
 import SettingsScreen from "./screens/SettingsScreen";
 import SignInScreen from "./screens/SignInScreen";
-import LogInScreen from "./screens/SignUp";
+import LogInScreen from "./screens/Login";
 import MainScreen from "./screens/MainScreen";
 import AreaScreen from "./screens/AreaScreen";
+import ProfileScreen from "./screens/ProfileScreen";
+import SearchBirdScreen from "./screens/SearchBirdScreen";
+import RecognizeScreen from "./screens/RecognizeScreen";
 
 //Screen names
 const homeName = "Home";
@@ -22,6 +25,10 @@ const signinName = "SignIn";
 const mainName = "Main";
 const loginName = "Login";
 const areaName = "Area";
+const profileName = "Profile";
+const searchName = "Search";
+const recognizeName = "Recognize";
+
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();

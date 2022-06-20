@@ -1,6 +1,11 @@
+<<<<<<< Updated upstream
 const BASE_URL = "https://birds-app-final-project.herokuapp.com/";
 
 const base_url = BASE_URL + "user/";
+=======
+// import { BASE_URL } from "@env";
+BASE_URL = " https://birds-app-final-project.herokuapp.com/"
+>>>>>>> Stashed changes
 
 // Not ready yet
 async function AddNewBird(bird) {
