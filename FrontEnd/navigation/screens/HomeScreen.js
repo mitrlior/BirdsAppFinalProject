@@ -66,6 +66,7 @@ export default function HomeScreen({ navigation }) {
         >
           <Text style={buttons.text}>Search</Text>
         </TouchableOpacity> */}
+        
         <TouchableOpacity
           style={touchableOpacityStyle.default}
           onPress={() => navigation.navigate("Recognize")}
