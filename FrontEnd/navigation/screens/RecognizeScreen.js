@@ -3,6 +3,8 @@ import { Text, View, StyleSheet, TouchableOpacity, SafeAreaView, Image } from 'r
 import Constants from 'expo-constants';
 import { Camera, CameraType } from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
+import * as ImagePicker from 'expo-image-picker';
+
 import { MaterialIcons } from '@expo/vector-icons';
 import Button from '../utils/CameraButtons';
 import {customStyles, buttons, touchableOpacityStyle, imgStyle, cameraStyle, } from "../../assets/AppStyles";
@@ -15,6 +17,9 @@ export default function RecognizeScreen({ navigation }) {
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [flash, setFlash] = useState(Camera.Constants.FlashMode.off);
   const cameraRef = useRef(null);
+  const [galleryImage, setGalleryImage] = useState(null);
+
+
 
   useEffect(() => {
     (async () => {
@@ -46,6 +51,22 @@ export default function RecognizeScreen({ navigation }) {
       } catch (error) {
         console.log(error);
       }
+    }
+  };
+
+  const pickGalleryImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setGalleryImage(result.uri);
     }
   };
 
@@ -112,11 +133,13 @@ export default function RecognizeScreen({ navigation }) {
             <Button title="Save" onPress={savePicture} icon="check" />
           </View>
         ) : (
-          <Button title="Take a picture" onPress={takePicture} icon="camera" />
+          <View>
+            <Button title="Take a picture" onPress={takePicture} icon="camera" />
+            <Button title="Pick gallery picture" onPress={pickGalleryImage} icon="image" />
+            {galleryImage && <Image source={{ uri: galleryImage }} style={{ width: 10, height: 10 }} />}
+          </View>
         )}
       </View>
-
-
     </SafeAreaView>
     );
 }
