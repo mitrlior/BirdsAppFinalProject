@@ -1,11 +1,4 @@
-// import { BASE_URL } from "@env";
-<<<<<<< Updated upstream
-
-BASE_URL = "https://birds-app-final-project.herokuapp.com/";
-
-=======
 BASE_URL = " https://birds-app-final-project.herokuapp.com/"
->>>>>>> Stashed changes
 const base_url = BASE_URL + "user/";
 
 async function addNewUser(user) {

@@ -5,7 +5,6 @@ import {
   TouchableOpacity,
   SafeAreaView,
   TextInput,
-  Picker,
   ScrollView,
 } from "react-native";
 import {
@@ -17,6 +16,7 @@ import {
   textInputStyle,
   pickerStyle,
 } from "../../assets/AppStyles";
+import { Picker } from '@react-native-picker/picker'
 
 import { addNewUser } from "../../assets/requests/UserRequests";
 
