@@ -10,7 +10,6 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "@expo/vector-icons": "^13.0.0",
     "@react-native-picker/picker": "^2.4.2",
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.2",
@@ -27,6 +26,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@expo/vector-icons": "^13.0.0",
+    "expo-constants": "^13.1.1",
     "metro-react-native-babel-preset": "^0.71.1"
   },
   "private": true

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import Constants from "expo-constants";
 
 const customStyles = StyleSheet.create({
   container: {
@@ -185,7 +186,7 @@ const cameraStyle = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    // paddingTop: Constants.statusBarHeight,
+    paddingTop: Constants.statusBarHeight,
     backgroundColor: '#000',
     padding: 8,
   },

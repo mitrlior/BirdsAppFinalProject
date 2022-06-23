@@ -78,7 +78,7 @@ export default function RecognizeScreen({ navigation }) {
     <SafeAreaView style={cameraStyle.container}>
       {!image ? (
         <Camera
-          style={camera.default}
+          style={Camera.default}
           type={type}
           ref={cameraRef}
           flashMode={flash}
