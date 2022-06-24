@@ -18,9 +18,7 @@ import {
 } from "../../assets/AppStyles";
 import { Picker } from '@react-native-picker/picker'
 
-import { addNewUser } from "../../assets/requests/UserRequests";
-
-const SignUpScreen = ({ navigation }) => {
+const EditProfileScreen = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -28,7 +26,7 @@ const SignUpScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [selectedValue, setSelectedValue] = useState("hobby");
 
-  const signUp = () => {
+  const profileUpdate = () => {
     const user = {
       username: username,
       first_name: firstName,
@@ -40,7 +38,7 @@ const SignUpScreen = ({ navigation }) => {
     const res = addNewUser(user);
   };
 
-  const msgUserName = "";
+  const msgUserName = "hi";
   const msgFirstName = "";
   const msgLastName = "";
   const msgPassword = "";
@@ -51,7 +49,7 @@ const SignUpScreen = ({ navigation }) => {
     <SafeAreaView style={customStyles.container}>
       <ScrollView>
         <View style={imgStyle.main_image}>
-          <Text style={textStyle.h1}>SignUp</Text>
+          <Text style={textStyle.h1}>Edit Profile</Text>
         </View>
         <View>
           <View style={textInputStyle.view}>
@@ -130,11 +128,11 @@ const SignUpScreen = ({ navigation }) => {
             style={touchableOpacityStyle.default}
             onPress={() => signUp()}
           >
-            <Text style={buttons.text}>Sign Up</Text>
+            <Text style={buttons.text}>Update My Profile</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
   );
 };
-export default SignUpScreen;
+export default EditProfileScreen;

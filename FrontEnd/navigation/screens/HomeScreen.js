@@ -73,7 +73,12 @@ export default function HomeScreen({ navigation }) {
         >
           <Text style={buttons.text}>Recognize</Text>
         </TouchableOpacity>
-
+        <TouchableOpacity
+          style={touchableOpacityStyle.default}
+          onPress={() => navigation.navigate("EditProfile")}
+        >
+          <Text style={buttons.text}>Edit Profile</Text>
+        </TouchableOpacity>
 
       </View>
     </SafeAreaView>

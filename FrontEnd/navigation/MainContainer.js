@@ -16,6 +16,7 @@ import AreaScreen from "./screens/AreaScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import SearchBirdScreen from "./screens/SearchBirdScreen";
 import RecognizeScreen from "./screens/RecognizeScreen";
+import EditProfileScreen from "./screens/EditProfileScreen";
 
 //Screen names
 const homeName = "Home";
@@ -28,7 +29,7 @@ const areaName = "Area";
 const profileName = "Profile";
 const searchName = "Search";
 const recognizeName = "Recognize";
-
+const editProfileName = "EditProfile";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();

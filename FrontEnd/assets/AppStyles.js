@@ -96,6 +96,11 @@ const textStyle = StyleSheet.create({
     color: '#E9730F',
     marginLeft: 10,
   },
+  error: {
+    color: '#FF0000',
+    fontSize: 18,
+    marginHorizontal: 20,
+  },
 
 })
 

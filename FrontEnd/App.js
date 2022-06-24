@@ -9,6 +9,7 @@ import ProfileScreen from "./navigation/screens/ProfileScreen";
 import MainScreen from "./navigation/screens/MainScreen";
 import SearchBirdScreen from "./navigation/screens/SearchBirdScreen";
 import RecognizeScreen from "./navigation/screens/RecognizeScreen";
+import EditProfileScreen from "./navigation/screens/EditProfileScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -55,6 +56,11 @@ const App = () => {
           name="Recognize"
           component={RecognizeScreen}
           options={{ title: "Recognize" }}
+        />        
+        <Stack.Screen
+        name="EditProfile"
+        component={EditProfileScreen}
+        options={{ title: "Edit Profile" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
