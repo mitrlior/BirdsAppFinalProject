@@ -57,7 +57,6 @@ create_table = "Create TABLE IF NOT EXISTS\
         user_id_bw INTEGER NOT NULL,\
         lat FLOAT(5,5) NOT NULL,\
         lng FLOAT(5,5) NOT NULL,\
-        user_id_image INTEGER NOT NULL\
         )"
 cursor.execute(create_table)
 

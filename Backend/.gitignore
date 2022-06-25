@@ -9,3 +9,6 @@ env
 *.txt
 
 *.log
+
+__pay_cache__/
+*.pyc
