@@ -9,3 +9,44 @@ class BirdsLocationModel(db.Model):
     image_path = db.Column('image_path', db.String(300))
     lat = db.Column('lat', db.Float(precision=10, decimal_return_scale=None))
     lng = db.Column('lng', db.Float(precision=10, decimal_return_scale=None))
+
+    def __init__(self, bird_id, bird_name, bird_family, image_path, lat, lng):
+        self.bird_id = bird_id
+        self.bird_name = bird_name
+        self.bird_family = bird_family
+        self.image_path = image_path
+        self.lat = lat
+        self.lng = lng
+
+    def json(self):
+        return {'bird_id': self.bird_id, 'bird_name' : self.bird_name, 'bird_family' : self.bird_family,
+            'image_path' : self.image_path, 'lat': self.lat, 'lng' : self.lng}
+
+    @classmethod
+    def find_by_bird_name(cls, bird_name):
+        return cls.query.filter_by(bird_name=bird_name).first()
+
+    @classmethod
+    def find_by_bird_id(cls, bird_id):
+        return cls.query.filter_by(bird_id=bird_id).first()
+
+    @classmethod
+    def get_all_birds_locations(cls):
+        return cls.query.all()
+
+    def save_to_db(self):
+      db.session.add(self)
+      db.session.commit()
+
+    def delete_from_db(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    @classmethod
+    def generate_id(cls):
+        if cls.index:
+            cls.index += 1
+        else:
+            user = cls.query.order_by(BirdsLocationModel.user_id.desc()).first()
+            cls.index = user.user_id + 1 if user else 1
+        return cls.index
