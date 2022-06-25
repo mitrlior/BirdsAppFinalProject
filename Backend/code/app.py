@@ -11,8 +11,10 @@ from dotenv import load_dotenv
 from Utils.logger import logger
 
 from Resources.UserResource import UserResource
-from Resources.BirdResource import BirdResource
+from Resources.BirdResourceToAWS import BirdResourceToAWS
+from Resources.BirdInfoResource import BirdInfoResource
 from Resources.UserLoginResource import UserLoginResource
+
 load_dotenv()
 
 logger.info(os.environ.get('name'))
@@ -39,9 +41,10 @@ def home_page():
 app.logger.addHandler(logging.StreamHandler(sys.stdout))
 app.logger.setLevel(logging.ERROR)
 
-api.add_resource(BirdResource, '/bird/<string:file_name>')
+api.add_resource(BirdResourceToAWS, '/bird/<string:file_name>')
 api.add_resource(UserResource, '/user/<string:username>')
 api.add_resource(UserLoginResource, '/login/<string:username>')
+api.add_resource(BirdInfoResource, '/birdinfo/<string:bird_name>')
 
 if __name__ == '__main__':
     from db import db

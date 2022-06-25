@@ -50,3 +50,8 @@ class BirdsLocationModel(db.Model):
             user = cls.query.order_by(BirdsLocationModel.user_id.desc()).first()
             cls.index = user.user_id + 1 if user else 1
         return cls.index
+
+    # Will return the most closest birds to the location
+    @classmethod
+    def find_closest_birds(amount=3):
+        pass

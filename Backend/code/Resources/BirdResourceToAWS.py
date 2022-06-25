@@ -8,7 +8,7 @@ from flask import send_file
 import io
 
 
-class BirdResource(Resource):
+class BirdResourceToAWS(Resource):
     parser = reqparse.RequestParser()
     parser.add_argument(
         'bird_name',
@@ -22,6 +22,7 @@ class BirdResource(Resource):
                     location='files',
                     required=True,
                     help='provide a file')
+    
 
     def get(self, file_name):
         img = Bucket.get_bird_from_s3(file_name)

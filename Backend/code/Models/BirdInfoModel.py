@@ -32,6 +32,10 @@ class BirdInfoModel(db.Model):
         db.session.delete(self) 
         db.session.commit()
 
+    @classmethod
+    def find_by_name(cls, bird_name):
+        return cls.query.filter(bird_name=bird_name).first()
+
     def json(self):
         return {'bird_id': self.bird_id, 'bird_name' : self.bird_name, 'bird_family' : self.bird_family,
             'image_path' : self.image_path, self.bird_info: 'self.bird_info'} 
