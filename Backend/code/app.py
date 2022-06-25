@@ -16,13 +16,13 @@ load_dotenv()
 logger.info(os.environ.get('name'))
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
-    'DATABASE_URL_', 'sqlite:///data.db'
+    'DATABASE_URL', 'sqlite:///data.db'
 )
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['S3_KEY'] =  os.environ.get('S3_KEY')
-app.config['S3_SECRET'] = os.environ.get('S3_SECRET')
-app.config['S3_LOCATION'] = os.environ.get('S3_LOCATION')
+# app.config['S3_KEY'] =  os.environ.get('S3_KEY')
+# app.config['S3_SECRET'] = os.environ.get('S3_SECRET')
+# app.config['S3_LOCATION'] = os.environ.get('S3_LOCATION')
 
 api = Api(app)
 
