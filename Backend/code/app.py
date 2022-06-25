@@ -1,4 +1,6 @@
+import logging
 import os
+import sys
 from flask import Flask
 from flask import request
 from flask_restful import Api
@@ -33,6 +35,8 @@ def home_page():
     logger.debug(f'{request.remote_addr}')
     return {'message': 'Home page'}, 200
 
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
 
 api.add_resource(BirdResource, '/bird/<string:file_name>')
 api.add_resource(UserResource, '/user/<string:username>')
