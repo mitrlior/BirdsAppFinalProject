@@ -4,7 +4,8 @@ connection = sqlite3.connect('data.db')
 cursor = connection.cursor()
 
 create_table = "Create TABLE IF NOT EXISTS\
-    users (user_id INTEGER PRIMARY KEY,\
+    users (\
+        user_id INTEGER PRIMARY KEY,\
         username text(20) NOT NULL UNIQUE, \
         password text(16) NOT NULL,\
         first_name text(20) NOT NULL, \
@@ -14,6 +15,53 @@ create_table = "Create TABLE IF NOT EXISTS\
         )"
         
 cursor.execute(create_table)
+
+create_table = "Create TABLE IF NOT EXISTS\
+    bird_model_info (\
+        bird_id INTEGER PRIMARY KEY,\
+        bird_name text(30) NOT NULL UNIQUE, \
+        bird_family text(30) NOT NULL,\
+        image_path text(300) NOT NULL, \
+        bird_info text(300) NOT NULL \
+        )"
+cursor.execute(create_table)
+
+create_table = "Create TABLE IF NOT EXISTS\
+    birds_location (\
+        bird_id INTEGER PRIMARY KEY,\
+        bird_name text(20) NOT NULL UNIQUE, \
+        bird_family text(30) NOT NULL,\
+        image_path text(300) NOT NULL, \
+        bird_info text(300) NOT NULL, \
+        lat FLOAT(5,5) NOT NULL,\
+        lng FLOAT(5,5) NOT NULL\
+        )"
+cursor.execute(create_table)
+
+create_table = "Create TABLE IF NOT EXISTS\
+    bird_to_train (\
+        bird_id INTEGER PRIMARY KEY,\
+        bird_name text(20) NOT NULL UNIQUE, \
+        bird_family text(30) NOT NULL,\
+        image_path text(300) NOT NULL, \
+        user_id_image INTEGER NOT NULL, \
+        user_id_bw INTEGER NOT NULL\
+        )"
+cursor.execute(create_table)
+
+create_table = "Create TABLE IF NOT EXISTS\
+    birds_waiting_to_recognize (\
+        id INTEGER PRIMARY KEY,\
+        image_path text(300) NOT NULL, \
+        user_id_image INTEGER NOT NULL, \
+        user_id_bw INTEGER NOT NULL,\
+        lat FLOAT(5,5) NOT NULL,\
+        lng FLOAT(5,5) NOT NULL,\
+        user_id_image INTEGER NOT NULL\
+        )"
+cursor.execute(create_table)
+
+
 connection.commit()
 connection.close()
 
