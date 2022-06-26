@@ -20,8 +20,10 @@ class UserLoginResource(Resource):
             if user.password == data['password']:
                 logger.info(f'User {username} logged in')
                 return  200
+            else:
+                return {'message: wrong password'}
         else:
-            logger.info(f'Failed to login to user {username}')
+            logger.info(f'Failed to find {username}')
             return {'message': 'User cannot be found'}, 403
 
 

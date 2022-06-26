@@ -34,3 +34,4 @@ class Bucket():
         url = f'https://mbmvxghuo0.execute-api.eu-central-1.amazonaws.com/dev/final-project-birds/{filename}'
         requests.put(url, data=img_encoded.tostring(), headers=headers)
         os.remove(filename)
+        return url
