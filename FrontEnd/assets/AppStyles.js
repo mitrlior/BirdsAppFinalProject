@@ -321,17 +321,22 @@ const cameraStyle = StyleSheet.create({
 })
 
 const mapStyle = StyleSheet.create({
-  full_page:{
+  full_page: {
     // width: Dimensions.get('window').width - 20,
     // height: Dimensions.get('window').height - 20,
   },
-  default:{
-    justifyContent: 'center',
-    width: '100%',
-    height: '60%',
+  default: {
+    flex: 1, //the container will fill the whole screen.
+    alignItems: "center",
+    justifyContent: "center",
   },
-
-})
+  map: {
+    width: "100%",
+    height: "90%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
 
 export { customStyles, buttons , touchableOpacityStyle, imgStyle, textStyle, 
   textInputStyle, dropDownStyle, pickerStyle, cameraStyle, mapStyle}
