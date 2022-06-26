@@ -1,74 +1,39 @@
-import * as React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Image} from 'react-native';
-import {customStyles, buttons, touchableOpacityStyle, imgStyle, textStyle, textInputStyle} from '../../assets/AppStyles';
+// import * as React from 'react';
+import React, { useState } from "react";
+import {StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Image, FlatList} from 'react-native';
+import {customStyles, buttons, pickerStyle, textStyle, touchableOpacityStyle, imgStyle} from '../../assets/AppStyles';
+import { BirdInfo } from "../utils/MyObjs";
+import { BirdCard } from "../utils/BirdCard";
 
-// NOT WORKING YET
 
 export default function BirdIDScreen({ navigation }) {
-    return (
+
+  const name = 'The Bird Name';
+  const family = 'Family';
+  const img_path ='../../assets/sqlogo_white';
+  const info = 'info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info info ';
+  const birdInfo = new BirdInfo(name, family, img_path, info);
+  
+  return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.main_image}>
-        <Image style={styles.img}
-          source={require('../../../Client/assets/sqlogo_white.png')}/>
-      </View>
-      <View style={[styles.main_buttons, {marginTop: 30}]}>
-        <TouchableOpacity style={styles.core}>
-        <Text style={styles.text}>Recognize Bird</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.core}>
-        <Text style={styles.text}>Birds in my Area</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.core}>
-        <Text style={styles.text}>Search Bird</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.core}>
-          <Text style={styles.text}>My Profile</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.core}>
-          <Text style={styles.text}>Log Out</Text>
+
+      <View style={customStyles.container}>
+        <View style={customStyles.bird_container}>
+          <View>
+            <Text style={textStyle.id_header1}>{name}</Text>
+            <Text style={textStyle.id_header2}>{family}</Text>
+          </View>
+          <View>
+            <Image style={[imgStyle.small, {}]} source={require('../../assets/sqlogo_white.png')}/>
+          </View>
+        </View>        
+        <Text style={textStyle.id_text}>{info}</Text>
+        <TouchableOpacity
+        style={touchableOpacityStyle.default}
+        >
+          <Text style={buttons.text}>Find bird on map</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
     );
 }
-
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#00236a', // Dark background
-      // backgroundColor: '#D3DEFF',  // Light backgrond
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    main_image: {
-      // flex: 0.4,
-      
-    },
-    main_buttons:{
-      // flex: 0.6,
-      marginTop: 44,
-      width: '85%',
-    },
-    img:{
-      width: '50%',
-      height: undefined,
-      aspectRatio: 1,
-      alignSelf: 'center',
-    },
-    core: {
-      width:'100%', 
-      height:'12%', 
-      borderWidth: 1,
-      borderRadius: 10,
-      borderColor:'#386AFF',
-      backgroundColor: '#0833B5',
-      justifyContent: 'center',
-      alignItems: 'center', 
-      marginBottom: 15,
-    },
-    text: {
-      color: '#D3DEFF',
-      fontSize: 22,
-    },
-  });  

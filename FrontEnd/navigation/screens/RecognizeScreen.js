@@ -19,8 +19,6 @@ export default function RecognizeScreen({ navigation }) {
   const cameraRef = useRef(null);
   const [galleryImage, setGalleryImage] = useState(null);
 
-
-
   useEffect(() => {
     (async () => {
       MediaLibrary.requestPermissionsAsync();
@@ -75,7 +73,7 @@ export default function RecognizeScreen({ navigation }) {
   }
 
   return (
-    <SafeAreaView style={cameraStyle.container}>
+    <SafeAreaView>
       {!image ? (
         <Camera
           style={Camera.default}

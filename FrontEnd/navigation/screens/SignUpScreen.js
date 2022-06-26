@@ -17,8 +17,9 @@ import {
   pickerStyle,
 } from "../../assets/AppStyles";
 import { Picker } from '@react-native-picker/picker'
-
 import { addNewUser } from "../../assets/requests/UserRequests";
+import {User} from '../utils/MyObjs';
+
 
 const SignUpScreen = ({ navigation }) => {
   const [username, setUsername] = useState("");
@@ -29,14 +30,16 @@ const SignUpScreen = ({ navigation }) => {
   const [selectedValue, setSelectedValue] = useState("hobby");
 
   const signUp = () => {
-    const user = {
-      username: username,
-      first_name: firstName,
-      last_name: lastName,
-      password: password,
-      email: email,
-      // selectedValue: selectedValue,
-    };
+    const user = new User(username, firstName, lastName, email);
+    // const user = {
+    //   username: username,
+    //   first_name: firstName,
+    //   last_name: lastName,
+    //   password: password,
+    //   email: email,
+    //   // selectedValue: selectedValue,
+    // };
+    // const res = addNewUser(user);
     const res = addNewUser(user);
   };
 
@@ -128,9 +131,9 @@ const SignUpScreen = ({ navigation }) => {
         <View style={buttons.main_buttons}>
           <TouchableOpacity
             style={touchableOpacityStyle.default}
-            onPress={() => signUp()}
+            onPress={() => navigation.navigate("Main")}
           >
-            <Text style={buttons.text}>Sign Up</Text>
+            <Text style={buttons.text}>Sign Me Up</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

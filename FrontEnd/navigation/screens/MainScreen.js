@@ -10,21 +10,40 @@ export default function MainScreen({ navigation }) {
           source={require('../../assets/logo_white.png')}/>
       </View>
       <View style={buttons.view}>
-        <TouchableOpacity style={touchableOpacityStyle.default}>
-        <Text style={buttons.text}>Recognize Bird</Text>
+      <TouchableOpacity
+          style={touchableOpacityStyle.default}
+          onPress={() => navigation.navigate("Recognize")}>
+          <Text style={buttons.text}>Recognize</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={touchableOpacityStyle.default}>
+
+        <TouchableOpacity
+          style={touchableOpacityStyle.default}
+          onPress={() => navigation.navigate("Area")}>
         <Text style={buttons.text}>Birds in my Area</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={touchableOpacityStyle.default}>
+
+        <TouchableOpacity style={touchableOpacityStyle.default}
+        onPress={() => navigation.navigate("Search")}>
         <Text style={buttons.text}>Search Bird</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={touchableOpacityStyle.default}>
+
+        <TouchableOpacity style={touchableOpacityStyle.default}
+        onPress={() => navigation.navigate("Profile")}>
           <Text style={buttons.text}>My Profile</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={touchableOpacityStyle.default}>
+
+        <TouchableOpacity
+          style={touchableOpacityStyle.default}
+          onPress={() => navigation.navigate("Approve")}
+        >
+          <Text style={buttons.text}>Approve</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={touchableOpacityStyle.default}
+        onPress={() => navigation.navigate("Home")}>
           <Text style={buttons.text}>Log Out</Text>
         </TouchableOpacity>
+
       </View>
     </SafeAreaView>
     );

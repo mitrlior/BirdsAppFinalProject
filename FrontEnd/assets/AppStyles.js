@@ -21,6 +21,12 @@ const customStyles = StyleSheet.create({
     color: '#D3DEFF',
     fontSize: 22,
   },
+  bird_container: {
+    backgroundColor: '#00236a', // Dark background
+    flexDirection: 'row',
+    width: '90%',
+    alignItems: 'flex-start',
+  },  
 
 })
 
@@ -34,8 +40,20 @@ const touchableOpacityStyle = StyleSheet.create({
     backgroundColor: '#0833B5',
     justifyContent: 'center',
     alignItems: 'center', 
-    marginBottom: 15,
+    marginVertical: 5,
     padding: 10
+  },
+  mini:{
+    width: '100%',
+    height:'auto', 
+    borderWidth: 1,
+    borderRadius: 20,
+    borderColor:'#386AFF',
+    backgroundColor: '#0833B5',
+    justifyContent: 'center',
+    alignItems: 'center', 
+    marginVertical: 2,
+    padding: 5
   }
 
 })
@@ -69,6 +87,10 @@ const buttons = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  mini: {
+    color: '#D3DEFF',
+    fontSize: 14,
+  },
 })
 
 const textStyle = StyleSheet.create({
@@ -81,14 +103,24 @@ const textStyle = StyleSheet.create({
     marginBottom: 20,
   },
   h2:{
-
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#7D9CFF',
+    alignItems: 'center',
+    textAlign: 'center',
+    marginVertical: 10, 
   },
   h3:{
-
+    fontSize: 26,
+    fontWeight: 'bold',
+    color: '#2E5FFF',
+    alignItems: 'center',
+    textAlign: 'center',
+    marginBottom: 20,
   },
   default: {
     color: '#D3DEFF',
-    fontSize: 22,
+    fontSize: 18,
   },
   camera: {
     fontWeight: 'bold',
@@ -101,7 +133,27 @@ const textStyle = StyleSheet.create({
     fontSize: 18,
     marginHorizontal: 20,
   },
-
+  id_header1: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#7D9CFF',
+    marginVertical: 10,
+  },
+  id_header2: {    
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#2E5FFF',
+    marginBottom: 20,
+  },
+  id_text:{
+    color: '#D3DEFF',
+    fontSize: 16,
+    marginBottom: 20,
+  },
+  mini: {
+    color: '#D3DEFF',
+    fontSize: 14,
+  },
 })
 
 const imgStyle = StyleSheet.create({
@@ -120,11 +172,23 @@ const imgStyle = StyleSheet.create({
     aspectRatio: 1,
     alignSelf: 'center',
   },
+  small: {
+    marginHorizontal: 20,
+    width: '60%',
+    height: undefined,
+    aspectRatio: 1,
+  },
   long_logo:{
     width: '90%',
     height: undefined,
     aspectRatio: 3,
     alignSelf: 'center',
+  },
+  mini:{
+    marginHorizontal: 10,
+    width: '30%',
+    height: undefined,
+    aspectRatio: 1,
   },
 })
 
@@ -145,16 +209,57 @@ const textInputStyle = StyleSheet.create({
     textAlign: 'left',
     width: 'auto',
   },
+  mini: {
+    backgroundColor: 'white',
+    paddingHorizontal: 2,
+    borderRadius:10,
+    borderWidth: 1,
+    fontSize: 12,
+    textAlign: 'left',
+    width: '100%',
+  }
 
+})
+
+const dropDownStyle = StyleSheet.create({
+  view:  {
+    marginVertical: 10,
+    maxWidth: '80%',
+    flexDirection: 'row', 
+    justifyContent: 'flex-start',
+    alignItems: 'center', //Centered vertically
+  },
+  item:{
+    width: '80%',
+    padding: 10,
+    borderWidth: 1,
+    borderColor: "#666",
+    backgroundColor: '#D3DEFF',
+    paddingVertical: 5,
+    borderRadius:10,
+    borderColor:'black',
+    borderWidth: 1,
+    fontSize: 16,
+  },
+  default: {
+    width: '80%',
+    padding: 10,
+    borderWidth: 1,
+    borderColor: "#666",
+    backgroundColor: '#D3DEFF',
+    paddingVertical: 5,
+    borderRadius:10,
+    borderColor:'black',
+    borderWidth: 1,
+    fontSize: 16,
+  },
 })
 
 const pickerStyle = StyleSheet.create({
   view: {
-    marginTop: 20,
-    flexDirection: 'row', 
-    justifyContent: 'space-between',
-    //justifyContent: 'center', //Centered horizontally
-    alignItems: 'center', //Centered vertically
+    marginVertical: 20,
+    maxWidth: '80%',
+
   },
   item:{
     color:'#D3DEFF',
@@ -215,4 +320,18 @@ const cameraStyle = StyleSheet.create({
   },
 })
 
-export { customStyles, buttons , touchableOpacityStyle, imgStyle, textStyle, textInputStyle, pickerStyle, cameraStyle}
+const mapStyle = StyleSheet.create({
+  full_page:{
+    // width: Dimensions.get('window').width - 20,
+    // height: Dimensions.get('window').height - 20,
+  },
+  default:{
+    justifyContent: 'center',
+    width: '100%',
+    height: '60%',
+  },
+
+})
+
+export { customStyles, buttons , touchableOpacityStyle, imgStyle, textStyle, 
+  textInputStyle, dropDownStyle, pickerStyle, cameraStyle, mapStyle}

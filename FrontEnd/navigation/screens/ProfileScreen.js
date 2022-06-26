@@ -2,47 +2,35 @@ import React, { useState } from "react";
 
 import {StyleSheet, Text, View, TouchableOpacity, SafeAreaView, TextInput, Image, Picker, ScrollView} from 'react-native';
 import {customStyles, buttons, touchableOpacityStyle, textStyle, textInputStyle,  pickerStyle, imgStyle} from "../../assets/AppStyles";
+import DropDownPicker from 'react-native-dropdown-picker';
 
 
 export default function ProfileScreen({ navigation }) {
   const [selectedValue, setSelectedValue] = useState("hobby");
+  const [open, setOpen] = useState(false);
+  const [role, setRole] = useState(null);
+  const [roles, setRoles] = useState([
+    { label: "Hobby", value: "Hobby" },
+    { label: "BirdWatcher", value: "Bird Watcher" },
+    { label: "Admin", value: "Admin" },
+  ]);
+  const user = {
+    username: username,
+    first_name: firstName,
+    last_name: lastName,
+    password: password,
+    email: email,
+    role : role,
+  };
 
   return (
-
       <ScrollView style={customStyles.container}>
-        {/* <Image style={imgStyle.long_logo} */}
-          {/* // source={require('../../assets/logo_white.png')}/> */}
         <Text style={textStyle.h1}>Profile</Text>
         <View>
-          <View style={textInputStyle.view}>
-            <Text style={textStyle.default}> Name: </Text>
-            <TextInput style={textInputStyle.default}/>
-          </View>
-        <View style={textInputStyle.view}>
-          <Text style={textStyle.default}> Email: </Text>
-          <TextInput style={textInputStyle.default}/>
-          </View>
-        <View style={textInputStyle.view}>
-          <Text style={textStyle.default}> Password: </Text>
-          <TextInput 
-            style={textInputStyle.default}
-            secureTextEntry={true}/>
-          </View>
-          <View style={textInputStyle.view}>
-            <Text style={textStyle.default}> Role: </Text>
-            <Picker
-              selectedValue={selectedValue}
-              style={pickerStyle.item}
-              itemStyle={pickerStyle.default}
-              onChangeText={(itemValue, itemIndex) =>
-                setSelectedValue(itemValue)
-              }
-            >
-              <Picker.Item label="Hobby" value="hobby" />
-              <Picker.Item label="Birdwatcher" value="birdwatcher" />
-              <Picker.Item label="Admin" value="admin" />
-            </Picker>
-          </View>
+          <Text style={textStyle.h2}>Name: {user.first_name} {user.last_name}</Text>
+          <Text style={textStyle.h3}>Username: {user.username}</Text>
+          <Text style={textStyle.default}>Email: {user.email}</Text>
+          <Text style={textStyle.default}>Role: {user.role}</Text>
         </View>
         <View style={[buttons.in_view, {marginTop: 30, flexDirection: 'column', justifyContent: 'space-between'}]}>
           <TouchableOpacity style={touchableOpacityStyle.default}>

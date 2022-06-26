@@ -1,62 +1,98 @@
-import React, { useState } from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Picker, Image} from 'react-native';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
-import { customStyles, touchableOpacityStyle, buttons, textStyle, imgStyle, textInputStyle, pickerStyle } from '../../assets/AppStyles';
+import React, { useState, useCallback } from 'react';
+import {StyleSheet, Text, View, TouchableOpacity, SafeAreaView, ScrollView, Image} from 'react-native';
+import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import { customStyles,mapStyle, dropDownStyle, touchableOpacityStyle, buttons, textStyle, pickerStyle, imgStyle, textInputStyle, Style } from '../../assets/AppStyles';
+
+import DropDownPicker from 'react-native-dropdown-picker';
+
+
 
 export default function AreaScreen({ navigation }) {
-  const [selectedRadius, setSelectedRadius] = useState("5km");
-  const [selectedTime, setSelectedTime] = useState("1Day");
-    return (
-    <SafeAreaView style={customStyles.container}>
-      <View style={{marginBottom: 30,}}>
-      <View style={pickerStyle.view}>
-          <Text style={textStyle.default}>Radius: (KM) </Text>
-          <Picker
-            selectedValue={selectedRadius}
-            style={pickerStyle.default}
-            itemStyle={pickerStyle.item}
-            onValueChange={(itemValue, itemIndex) => setSelectedRadius(itemValue)}
-          >
-            <Picker.Item label="1 km" value="1km" />
-            <Picker.Item label="5 km" value="5km" />
-            <Picker.Item label="10 km" value="10km" />
-            <Picker.Item label="15 km" value="15km" />
-          </Picker>
-      </View>
-      <View style={pickerStyle.view}>
-        <Text style={textStyle.default}>Last time: </Text>
-        <Picker
-          selectedValue={selectedTime}
-          style={pickerStyle.default}
-          itemStyle={pickerStyle.item}
-          onValueChange={(itemValue, itemIndex) => setSelectedTime(itemValue)}
-        >
-          <Picker.Item label="1 Day" value="1Day" />
-          <Picker.Item label="1 Week" value="1Week" />
-          <Picker.Item label="1 Month" value="1Month" />
-          <Picker.Item label="1 Year" value="1Year" />
-        </Picker>
-      </View>
-      </View>
-      <View>
-      <Image style={{width: '80%', height: undefined, aspectRatio: 1, alignSelf: 'center',}}
-          source={require('../../assets/mapimg.png')}/>
-        {/* <MapView
-        style={{ flex: 1 }}
-        provider={PROVIDER_GOOGLE}
-        showsUserLocation
-        initialRegion={{
-        latitude: 37.78825,
-        longitude: -122.4324,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421}}></div> */}
-      </View>
-      <View style={[{marginTop: 30, alignItems: 'center'}]}>
-        <Text style={[textStyle.default, {alignSelf: 'center', marginTop: 10,}]}>Chosen bird from map:</Text>
-        <TouchableOpacity style={touchableOpacityStyle.default}>
-          <Text style={buttons.text}>See more</Text>    
-        </TouchableOpacity>
-      </View>
-    </SafeAreaView>
+  const [selectedRadius, setSelectedRadius] = useState(null);
+  const [selectedTime, setSelectedTime] = useState(null);
+  const [openDistance, setOpenDistance] = useState(false);
+  const [openPeriod, setOpenPeriod] = useState(false);
+
+  const [distances, setDistances] = useState([
+    { label: "1 km", value: "1km"},
+    { label: "5 km", value: "5km"},
+    { label: "10 km", value: "10km"},
+    { label: "15 km", value: "15km"},
+  ]);
+  const [periods, setPeriods] = useState([
+    { label: "1 Day", value: "1Day"},
+    { label: "1 Week", value: "1Week"},
+    { label: "1 Month", value: "1Month"},
+    { label: "1 Year", value: "1Year"},
+  ]);
+
+  const onDistanceOpen = useCallback(() => {
+    setOpenPeriod(false);
+  }, []);
+  const onPeriodOpen = useCallback(() => {
+    setOpenDistance(false);
+  }, []);
+
+  return (
+    <ScrollView style={customStyles.container}>
+        <View style={{marginBottom: 10,}}>
+          <View style={dropDownStyle.view}>
+            <Text style={textStyle.default}>Radius: (Km) </Text>
+            <DropDownPicker  open={openDistance}
+              onOpen={onDistanceOpen}
+              value={selectedRadius}
+              items={distances}
+              setOpen={setOpenDistance}
+              setValue={setSelectedRadius}
+              setItems={setDistances}
+              placeholder={"Select Radius"}
+              style={dropDownStyle.default}
+              dropDownContainerStyle={dropDownStyle.item}
+              zIndex={1000} 
+              elevation={1000}
+              transparency={1000}
+            />
+          </View>
+          <View style={dropDownStyle.view}>
+            <Text style={textStyle.default}>Period: </Text>
+            <DropDownPicker  open={openPeriod}
+              onOpen={onPeriodOpen}
+              value={selectedTime}
+              items={periods}
+              setOpen={setOpenPeriod}
+              setValue={setSelectedTime}
+              setItems={setPeriods}
+              placeholder={"Select Period"}
+              style={dropDownStyle.default}
+              dropDownContainerStyle={dropDownStyle.item}
+              // zIndex={3000}
+              zIndexInverse={1000}
+            />
+          </View>
+        </View>
+        <View >
+          <MapView style={mapStyle.default} 
+            initialRegion={{ // TLV
+              latitude: 32.046000,
+              longitude: 34.47599,
+              latitudeDelta: 0.1,
+              longitudeDelta: 0.05
+            }}>
+              <Marker
+                coordinate={{ latitude: 32.046000, longitude: 34.47599 }}
+                title='Bird Name'
+                description='BirdWatcher Name'
+                // image={require('../../assets/mapPin.png')}
+                centerOffset={{ x: 0, y: 0}}
+              />
+          </MapView>
+        </View>
+        <View style={[{alignItems: 'center'}]}>
+          <Text style={[textStyle.default, {alignSelf: 'center', marginTop: 10,}]}>Chosen bird from map:</Text>
+          <TouchableOpacity style={touchableOpacityStyle.default}>
+            <Text style={buttons.text}>See more</Text>    
+          </TouchableOpacity>
+        </View>
+    </ScrollView>
     );
 }

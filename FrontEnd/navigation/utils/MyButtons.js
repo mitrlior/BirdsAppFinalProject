@@ -1,19 +1,17 @@
 import * as React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Image} from 'react-native';
+import { touchableOpacityStyle, buttons } from '../../assets/AppStyles';
 
-const Button = ({ title, style, outlined }) => {
+
+const MyButton = ({ title, style, onPress }) => {
   return (
-  <TouchableOpacity 
-  style={[
-    styles.core, 
-    outlined? styles.outlined : styles.filled, 
-    style
-  ]}
-    >
-    {/* <Text>Click Me</Text> */}
-    <Text style={{color: outlined? 'blue': 'black'}}>{title}</Text>
+    <TouchableOpacity
+    style={style}
+    onPress={() => onPress}
+  >
+    <Text style={buttons.text}>{title}</Text>
   </TouchableOpacity>
   );
 }
 
-export default Button;
+export default MyButton;

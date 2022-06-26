@@ -12,6 +12,7 @@ import {
   touchableOpacityStyle,
   imgStyle,
 } from "../../assets/AppStyles";
+import {MyButton} from "../utils/MyButtons";
 
 export default function HomeScreen({ navigation }) {
   return (
@@ -23,6 +24,13 @@ export default function HomeScreen({ navigation }) {
         />
       </View>
       <View style={[buttons.view, { marginTop: 30 }]}>
+        
+        {/* <MyButton 
+        title = 'Sign Up'
+        style={touchableOpacityStyle.default}
+        onPress={() => navigation.navigate("SignUp")}
+        /> */}
+        
         <TouchableOpacity
           style={touchableOpacityStyle.default}
           onPress={() => navigation.navigate("SignUp")}
@@ -40,7 +48,6 @@ export default function HomeScreen({ navigation }) {
           onPress={() => navigation.navigate("Main")}>
           <Text style={buttons.text}>Remind me later</Text>
         </TouchableOpacity>
-
 
         {/* <TouchableOpacity
           style={touchableOpacityStyle.default}
@@ -67,7 +74,7 @@ export default function HomeScreen({ navigation }) {
           <Text style={buttons.text}>Search</Text>
         </TouchableOpacity> */}
         
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={touchableOpacityStyle.default}
           onPress={() => navigation.navigate("Recognize")}
         >
@@ -78,8 +85,31 @@ export default function HomeScreen({ navigation }) {
           onPress={() => navigation.navigate("EditProfile")}
         >
           <Text style={buttons.text}>Edit Profile</Text>
+        </TouchableOpacity> */}
+        {/* <TouchableOpacity
+          style={touchableOpacityStyle.default}
+          onPress={() => navigation.navigate("Search")}
+        > */}
+          {/* <Text style={buttons.text}>Search Bird</Text>
         </TouchableOpacity>
-
+        <TouchableOpacity
+          style={touchableOpacityStyle.default}
+          onPress={() => navigation.navigate("BirdID")}
+        >
+          <Text style={buttons.text}>Bird ID</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={touchableOpacityStyle.default}
+          onPress={() => navigation.navigate("Area")}
+        >
+          <Text style={buttons.text}>Area</Text>
+        </TouchableOpacity> */}
+        {/* <TouchableOpacity
+          style={touchableOpacityStyle.default}
+          onPress={() => navigation.navigate("Approve")}
+        >
+          <Text style={buttons.text}>Approve</Text>
+        </TouchableOpacity> */}
       </View>
     </SafeAreaView>
   );
