@@ -18,7 +18,7 @@ import {
 } from "../../assets/AppStyles";
 import { Picker } from '@react-native-picker/picker'
 import { addNewUser } from "../../assets/requests/UserRequests";
-import {User} from '../utils/MyObjs';
+import { User } from '../utils/MyObjs';
 
 
 const SignUpScreen = ({ navigation }) => {
@@ -27,20 +27,14 @@ const SignUpScreen = ({ navigation }) => {
   const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [selectedValue, setSelectedValue] = useState("hobby");
+  const [selectedValue, setSelectedValue] = useState(1);
 
   const signUp = () => {
-    const user = new User(username, firstName, lastName, email);
-    // const user = {
-    //   username: username,
-    //   first_name: firstName,
-    //   last_name: lastName,
-    //   password: password,
-    //   email: email,
-    //   // selectedValue: selectedValue,
-    // };
-    // const res = addNewUser(user);
+    const user = new User(username, firstName, lastName, password, email, selectedValue);
+    console.log(user);
     const res = addNewUser(user);
+    //TODO: Handle response, 201 for user created move to home screen or something
+    console.log(res);
   };
 
   const msgUserName = "";
@@ -121,9 +115,9 @@ const SignUpScreen = ({ navigation }) => {
                   setSelectedValue(itemValue)
                 }
               >
-                <Picker.Item label="Hobby" value="hobby" />
-                <Picker.Item label="Birdwatcher" value="birdwatcher" />
-                <Picker.Item label="Admin" value="admin" />
+                <Picker.Item label="Hobby" value='0' />
+                <Picker.Item label="Birdwatcher" value='1' />
+                <Picker.Item label="Admin" value='2' />
               </Picker>
             </View>
           </View>
@@ -131,8 +125,9 @@ const SignUpScreen = ({ navigation }) => {
         <View style={buttons.main_buttons}>
           <TouchableOpacity
             style={touchableOpacityStyle.default}
-            onPress={() => navigation.navigate("Main")}
+            onPress={() => signUp()}
           >
+            {/* () => navigation.navigate("Main") */}
             <Text style={buttons.text}>Sign Me Up</Text>
           </TouchableOpacity>
         </View>

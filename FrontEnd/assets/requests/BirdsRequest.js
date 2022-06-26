@@ -1,6 +1,8 @@
-const base_url = BASE_URL + "user/";
+import { BASE_URL } from "@env"
+
+const url = BASE_URL + "user/";
 // import { BASE_URL } from "@env";
-BASE_URL = " https://birds-app-final-project.herokuapp.com/"
+// BASE_URL = " https://birds-app-final-project.herokuapp.com/"
 
 // Not ready yet
 async function AddNewBird(bird) {

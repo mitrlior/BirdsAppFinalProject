@@ -10,9 +10,9 @@ export default function ProfileScreen({ navigation }) {
   const [open, setOpen] = useState(false);
   const [role, setRole] = useState(null);
   const [roles, setRoles] = useState([
-    { label: "Hobby", value: "Hobby" },
-    { label: "BirdWatcher", value: "Bird Watcher" },
-    { label: "Admin", value: "Admin" },
+    { label: "Hobby", value: 0 },
+    { label: "BirdWatcher", value: 1 },
+    { label: "Admin", value: 2 },
   ]);
   const user = {
     username: username,
