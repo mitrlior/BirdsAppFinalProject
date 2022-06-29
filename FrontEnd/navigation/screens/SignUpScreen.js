@@ -6,6 +6,7 @@ import {
   SafeAreaView,
   TextInput,
   ScrollView,
+  Alert,
 } from "react-native";
 import {
   customStyles,
@@ -29,12 +30,30 @@ const SignUpScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [selectedValue, setSelectedValue] = useState(1);
 
-  const signUp = () => {
+  const getAlert = ({title, message, moveTo}) =>
+    Alert.alert(
+      title, 
+      message,
+      [
+        {text: "OK",
+      onPress: () => moveTo,}
+      ],
+    );
+  
+  const signUp = async () => {
     const user = new User(username, firstName, lastName, password, email, selectedValue);
     console.log(user);
-    const res = addNewUser(user);
+    const res = await addNewUser(user);
     //TODO: Handle response, 201 for user created move to home screen or something
-    console.log(res);
+    console.log(`my res ${res}`);
+    console.log(`status: ${res.status}`);
+    if (res.status == 201){
+      console.log('Success');
+      getAlert("Success","User created successfully", navigation.navigate("Main"));
+    }
+    else if(res.status == 400){
+      console.log('User Already Exists');
+    }
   };
 
   const msgUserName = "";

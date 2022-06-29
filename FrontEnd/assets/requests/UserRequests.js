@@ -2,6 +2,8 @@ import { BASE_URL } from '@env';
 // BASE_URL = "http://birds-app-final-project.herokuapp.com/";
 const base_url = BASE_URL + "user/";
 
+
+/* POST */
 const addNewUser = async (user) => {
   console.log("USER: " + JSON.stringify(user));
   const url = base_url + user.username;
@@ -34,4 +36,6 @@ const addNewUser = async (user) => {
   return res;
 };
 
+
+/* GET */
 module.exports = { addNewUser };
