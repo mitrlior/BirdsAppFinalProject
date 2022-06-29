@@ -35,7 +35,33 @@ const addNewUser = async (user) => {
   console.log(res.json());
   return res;
 };
+/* Get */
+async function getUser(username) {
+
+  //TODO : Check what the fuck!
+
+  console.log(username);
+
+  const url = base_url + username;
+  
+  console.log(`url = ${url}`);
+
+  const requestOptions = {
+    headers: { "Content-Type": "application/json" }
+  };
+
+  const res = await fetch(url).then(res => res.json());
+
+  // const body = await res.json;
+  // const status = await res.status;
+  console.log(res);
+  console.log(res.status);
+
+  return {res, res};
+};
+
+
 
 
 /* GET */
-module.exports = { addNewUser };
+module.exports = { addNewUser, getUser };

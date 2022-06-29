@@ -7,8 +7,12 @@ class BirdsToTrainModel(db.Model):
     bird_name = db.Column('bird_name', db.String(30))
     bird_family = db.Column('bird_family', db.String(30))
     image_path = db.Column('image_path', db.String(300))
-    user_id_image = db.Column('user_id', db.Integer)
-    user_id_bw = db.Column('user_id_bw', db.String)
+    user_id_image = db.Column('user_id', db.Integer) # Took the photo
+    isApproved = db.Column('is_approved', db.Boolean)  # If a bird watcher approved the algorithm
+    lat = db.Column('lat', db.Float(precision=10, decimal_return_scale=None))
+    lng = db.Column('lng', db.Float(precision=10, decimal_return_scale=None))
+
+    # TODO: add date the photo taken, after approved, update the birdsLocation
 
     def __init__(self, bird_id, bird_name, bird_family, image_path, user_id, user_id_bw):
         self.bird_id = bird_id
