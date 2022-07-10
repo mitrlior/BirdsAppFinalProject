@@ -3,8 +3,8 @@ from flask_restful import Resource, reqparse
 from Models.UserModel import UserModel
 from Utils.logger import logger
 
-class UserResource(Resource):
 
+class UserResource(Resource):
     parser = reqparse.RequestParser()
     parser.add_argument(
         'first_name',
@@ -35,14 +35,16 @@ class UserResource(Resource):
         help='user_type field cannot be blank'
     )
 
-    def get(self, username):
-        userModel = UserModel.find_by_username(username)
-        if userModel:
-            return userModel.json()
+    @staticmethod
+    def get(username):
+        user_model = UserModel.find_by_username(username)
+        if user_model:
+            return user_model.json()
         else:
             return {'message': 'No such User exists'}
 
-    def post(self, username):
+    @staticmethod
+    def post(username):
         if UserModel.find_by_username(username):
             return {'message': 'User already exists'}, 400
         data = UserResource.parser.parse_args()
@@ -54,7 +56,7 @@ class UserResource(Resource):
         else:
             return {'message': 'email is a required filed'}, 400
 
-        if data['first_name'] == None:
+        if data['first_name'] is None:
             return {'message': 'first_name is a required filed'}, 400
 
         if data['last_name'] is None:
@@ -67,17 +69,18 @@ class UserResource(Resource):
             return {'message': 'user_type is a required filed'}, 400
 
         user_id = UserModel.generate_id()
-        userModel = UserModel(user_id, username, **data)
+        user_model = UserModel(user_id, username, **data)
         try:
-            userModel.save_to_db()
-            logger.debug(f'Added user : {userModel.json}')
+            user_model.save_to_db()
+            logger.debug(f'Added user : {user_model.json}')
         except:
             return {
-                'message': 'An error occurred adding the new user.'
-            }, 500
-        return userModel.json(), 201
+                       'message': 'An error occurred adding the new user.'
+                   }, 500
+        return user_model.json(), 201
 
-    def delete(self, username):
+    @staticmethod
+    def delete(username):
         if username:
             user = UserModel.find_by_username(username)
             if user:
@@ -87,9 +90,10 @@ class UserResource(Resource):
                 'message': 'No such User exists with this username'
             }
 
-    def put(self, username):
-        userModel = UserModel.find_by_username(username)
-        if userModel:
+    @staticmethod
+    def put(username):
+        user_model = UserModel.find_by_username(username)
+        if user_model:
             data = UserResource.parser.parse_args()
             if 'first_name' in data:
                 UserModel.first_name = data['first_name']
@@ -101,11 +105,11 @@ class UserResource(Resource):
                 if UserModel.find_by_email(data['email']):
                     return {'message': 'email allready taken'}
                 else:
-                    userModel = UserModel.find_by_email(data['email'])
-                userModel.email = data['email']
+                    user_model = UserModel.find_by_email(data['email'])
+                user_model.email = data['email']
 
             if 'password' in data:
-                userModel.password = data['password']
+                user_model.password = data['password']
 
-            userModel.save_to_db()
-        return userModel.json()
+            user_model.save_to_db()
+        return user_model.json()
