@@ -1,6 +1,7 @@
 from db import db
-from  Utils.Enums import USER_TYPE
+from Utils.Enums import USER_TYPE
 from Utils.logger import logger
+
 
 class UserModel(db.Model):
     index = None
@@ -22,10 +23,15 @@ class UserModel(db.Model):
         self.password = password
         self.user_type = user_type
 
-
     def json(self):
-        return {'username' : self.username, 'user_id' : self.user_id, 'first_name' : self.first_name,\
-             'last_name' : self.last_name, 'email' : self.email, 'user_type' : USER_TYPE(self.user_type).name}
+        return {
+            'username': self.username,
+            'user_id': self.user_id,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'email': self.email,
+            'user_type': USER_TYPE(self.user_type).name
+        }
 
     @classmethod
     def find_by_username(cls, username):

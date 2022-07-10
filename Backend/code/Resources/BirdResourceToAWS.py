@@ -1,9 +1,9 @@
 from flask import request
 from flask_restful import Resource, reqparse
-from Utils.logger import logger
+# from Utils.logger import logger
 import werkzeug
-from dotenv import load_dotenv
 from Resources.AWS.Bucket import Bucket
+from dotenv import load_dotenv
 from flask import send_file
 import io
 
