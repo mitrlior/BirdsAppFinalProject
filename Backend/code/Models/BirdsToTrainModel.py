@@ -7,7 +7,7 @@ class BirdsToTrainModel(db.Model):
     bird_name = db.Column('bird_name', db.String(30))
     image_path = db.Column('image_path', db.String(300))
     user_id_image = db.Column('user_id', db.Integer) # Took the photo
-    isApproved = db.Column('is_approved', db.Boolean)  # If a bird watcher approved the algorithm
+    isApproved = db.Column('isApproved', db.Boolean)  # If a bird watcher approved the algorithm
     lat = db.Column('lat', db.Float(precision=10, decimal_return_scale=None))
     lng = db.Column('lng', db.Float(precision=10, decimal_return_scale=None))
 
