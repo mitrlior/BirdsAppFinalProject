@@ -95,13 +95,13 @@ class UserResource(Resource):
         user_model = UserModel.find_by_username(username)
         if user_model:
             data = UserResource.parser.parse_args()
-            if 'first_name' in data:
+            if 'first_name' in data and data['first_name'] is not None:
                 UserModel.first_name = data['first_name']
 
-            if 'last_name' in data:
+            if 'last_name' in data and data['last_name'] is not None:
                 UserModel.last_name = data['last_name']
 
-            if 'email' in data:
+            if 'email' in data and data['email'] is not None:
                 if UserModel.find_by_email(data['email']):
                     return {'message': 'email al ready taken'}
                 user_model.email = data['email']
