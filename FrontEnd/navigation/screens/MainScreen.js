@@ -32,12 +32,12 @@ export default function MainScreen({ navigation }) {
           <Text style={buttons.text}>My Profile</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={touchableOpacityStyle.default}
           onPress={() => navigation.navigate("Approve")}
         >
           <Text style={buttons.text}>Approve</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
         <TouchableOpacity style={touchableOpacityStyle.default}
         onPress={() => navigation.navigate("Home")}>
