@@ -1,10 +1,11 @@
 from db import db
 
+
 class BirdsLocationModel(db.Model):
     index = None
     __tablename__ = 'birds_location'
-    bird_id = db.Column('bird_id', db.Integer, primary_key=True) # Id for current bird
-    bird_name = db.Column('bird_name', db.String(30)) 
+    bird_id = db.Column('bird_id', db.Integer, primary_key=True)  # Id for current bird
+    bird_name = db.Column('bird_name', db.String(30))
     bird_family = db.Column('bird_family', db.String(30))
     image_path = db.Column('image_path', db.String(300))
     lat = db.Column('lat', db.Float(precision=10, decimal_return_scale=None))
@@ -22,8 +23,8 @@ class BirdsLocationModel(db.Model):
         self.lng = lng
 
     def json(self):
-        return {'bird_id': self.bird_id, 'bird_name' : self.bird_name, 'bird_family' : self.bird_family,
-            'image_path' : self.image_path, 'lat': self.lat, 'lng' : self.lng}
+        return {'bird_id': self.bird_id, 'bird_name': self.bird_name, 'bird_family': self.bird_family,
+                'image_path': self.image_path, 'lat': self.lat, 'lng': self.lng}
 
     @classmethod
     def find_by_bird_name(cls, bird_name):
@@ -38,8 +39,8 @@ class BirdsLocationModel(db.Model):
         return cls.query.all()
 
     def save_to_db(self):
-      db.session.add(self)
-      db.session.commit()
+        db.session.add(self)
+        db.session.commit()
 
     def delete_from_db(self):
         db.session.delete(self)
@@ -56,5 +57,5 @@ class BirdsLocationModel(db.Model):
 
     # Will return the most closest birds to the location
     @classmethod
-    def find_closest_birds(amount=3):
+    def find_closest_birds(cls, amount=3):
         pass
