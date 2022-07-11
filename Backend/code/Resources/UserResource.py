@@ -103,13 +103,13 @@ class UserResource(Resource):
 
             if 'email' in data:
                 if UserModel.find_by_email(data['email']):
-                    return {'message': 'email allready taken'}
-                else:
-                    user_model = UserModel.find_by_email(data['email'])
+                    return {'message': 'email al ready taken'}
                 user_model.email = data['email']
 
-            if 'password' in data:
+            if 'password' in data and data['password'] is not None:
                 user_model.password = data['password']
 
             user_model.save_to_db()
+        else:
+            return {'message': "No user found."}, 400
         return user_model.json()
