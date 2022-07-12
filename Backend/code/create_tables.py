@@ -7,9 +7,9 @@ create_table = "Create TABLE IF NOT EXISTS\
     users (\
         user_id INTEGER PRIMARY KEY,\
         username text(20) NOT NULL UNIQUE, \
-        password text(16) NOT NULL,\
         first_name text(20) NOT NULL, \
         last_name text(20) NOT NULL, \
+        password text(16) NOT NULL,\
         email text(30) NOT NULL UNIQUE,\
         user_type INTEGER NOT NULL\
         )"

@@ -48,7 +48,7 @@ const EditProfileScreen = ({ navigation }) => {
     //   email: email,
     //   // selectedValue: selectedValue,
     // };
-    const res = addNewUser(user);
+
   };
 
   const msgUserName = "";

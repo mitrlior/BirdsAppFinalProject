@@ -1,19 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
+import { getUser } from "../../assets/requests/UserRequests";
 import {StyleSheet, Text, View, TouchableOpacity, SafeAreaView, TextInput, Image, Picker, ScrollView} from 'react-native';
 import {customStyles, buttons, touchableOpacityStyle, textStyle, textInputStyle,  pickerStyle, imgStyle} from "../../assets/AppStyles";
 import DropDownPicker from 'react-native-dropdown-picker';
 
 
 export default function ProfileScreen({ navigation }) {
-  const [selectedValue, setSelectedValue] = useState("hobby");
-  const [open, setOpen] = useState(false);
+  
+
+  const [email, setEmail] = useState(' ');
   const [role, setRole] = useState(null);
-  const [roles, setRoles] = useState([
-    { label: "Hobby", value: 0 },
-    { label: "BirdWatcher", value: 1 },
-    { label: "Admin", value: 2 },
-  ]);
+  const [firstName, setFirstName] = useState(' ');
+  const [lastName, setLastName] = useState(' ');
+  const [username, setUsername] = useState(' ')
+
+  async function setUserData(){
+      const user = await getUser("mitrlior");
+      setRole(user.user_type);
+      setEmail(user.email);
+      setFirstName(user.first_name);
+      setLastName(user.last_name);
+      setUsername(user.username);
+  }
+
+  useEffect (() => {
+    setUserData();
+  });
+
   const user = {
     username: 'username',
     first_name: 'firstName',
@@ -24,25 +38,34 @@ export default function ProfileScreen({ navigation }) {
   };
 
   return (
-      <ScrollView style={customStyles.container}>
-        <Text style={textStyle.h1}>Profile</Text>
-        <View>
-          <Text style={textStyle.h2}>{user.first_name} {user.last_name}</Text>
-          <Text style={textStyle.h3}>{user.username}</Text>
-          <Text style={textStyle.default}>Email:{'   '} {user.email}</Text>
-          <Text style={textStyle.default}>Role: {'    '} {user.role}</Text>
-        </View>
-        <View style={[buttons.in_view, {marginTop: 30, flexDirection: 'column', justifyContent: 'space-between'}]}>
-          <TouchableOpacity 
+    <ScrollView style={customStyles.container}>
+      <Text style={textStyle.h1}>Profile</Text>
+      <View>
+        <Text style={textStyle.h2}>{`${firstName} ${lastName}`}</Text>
+        <Text style={textStyle.h3}>{username}</Text>
+        <Text style={textStyle.default}>{`Email:\t ${email}`}</Text>
+        <Text style={textStyle.default}>{`Role:\t ${role}`}</Text>
+      </View>
+      <View
+        style={[
+          buttons.in_view,
+          {
+            marginTop: 30,
+            flexDirection: "column",
+            justifyContent: "space-between",
+          },
+        ]}
+      >
+        <TouchableOpacity
           style={touchableOpacityStyle.default}
           onPress={() => navigation.navigate("EditProfile")}
-          >
-            <Text style={buttons.text}>Edit Profile</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={touchableOpacityStyle.default}>
-            <Text style={buttons.text}>My Birds</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
-    );
+        >
+          <Text style={buttons.text}>Edit Profile</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={touchableOpacityStyle.default}>
+          <Text style={buttons.text}>My Birds</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
+  );
 } 

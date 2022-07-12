@@ -18,13 +18,6 @@ class BirdInfoResource(Resource):
         required=False
     )
 
-    # parser.add_argument(
-    #     'file',
-    #     type=werkzeug.datastructures.FileStorage,
-    #     location='files',
-    #     required=False,
-    #     help='provide a file')
-
     @staticmethod
     def get(bird_name):
         bird = BirdInfoModel.find_by_name(bird_name)

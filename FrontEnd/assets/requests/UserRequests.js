@@ -39,25 +39,18 @@ const addNewUser = async (user) => {
 async function getUser(username) {
 
   //TODO : Check what the fuck!
+  console.log(`Got get request username =  ${username}`);
 
-  console.log(username);
+  const url = BASE_URL + 'user/' + username;
 
-  const url = base_url + username;
-  
-  console.log(`url = ${url}`);
-
-  const requestOptions = {
-    headers: { "Content-Type": "application/json" }
-  };
-
-  const res = await fetch(url).then(res => res.json());
-
-  // const body = await res.json;
-  // const status = await res.status;
-  console.log(res);
-  console.log(res.status);
-
-  return {res, res};
+  return fetch(url, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json());
 };
 
 

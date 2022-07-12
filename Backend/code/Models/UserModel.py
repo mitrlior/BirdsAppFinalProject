@@ -10,8 +10,8 @@ class UserModel(db.Model):
     username = db.Column('username', db.String(20), unique=True)
     first_name = db.Column('first_name', db.String(20))
     last_name = db.Column('last_name', db.String(20))
-    email = db.Column('email', db.String(30), unique=True)
     password = db.Column('password', db.String(16))
+    email = db.Column('email', db.String(30), unique=True)
     user_type = db.Column('user_type', db.Integer)
 
     def __init__(self, user_id, username, first_name, last_name, email, password, user_type):

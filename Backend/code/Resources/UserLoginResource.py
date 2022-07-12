@@ -1,7 +1,7 @@
-from cv2 import log
 from flask_restful import Resource, reqparse
 from Models.UserModel import UserModel
 from Utils.logger import logger
+
 
 class UserLoginResource(Resource):
     parser = reqparse.RequestParser()
@@ -12,18 +12,17 @@ class UserLoginResource(Resource):
         help='Password filed cannot be blank'
     )
 
-    def post(self, username):
+    @staticmethod
+    def post(username):
         user = UserModel.find_by_username(username)
         print(user)
         data = UserLoginResource.parser.parse_args()
         if user:
             if user.password == data['password']:
                 logger.info(f'User {username} logged in')
-                return  200
+                return 200
             else:
                 return {'message: wrong password'}
         else:
             logger.info(f'Failed to find {username}')
             return {'message': 'User cannot be found'}, 403
-
-
