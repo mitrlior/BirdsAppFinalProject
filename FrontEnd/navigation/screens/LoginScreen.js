@@ -7,6 +7,7 @@ import {
   TextInput,
   Picker,
   ScrollView,
+  Alert
 } from "react-native";
 import {
   customStyles,
@@ -17,21 +18,24 @@ import {
   textInputStyle,
   pickerStyle,
 } from "../../assets/AppStyles";
+import { login } from '../../assets/requests/UserRequests';
 
 export default function LoginScreen({ navigation }) {
   const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
 
-  const userLogin = () => {
-
-    // fetch("https://birds-app-final-project.herokuapp.com/bird")
-    //   .then((response) => {
-    //     return response.json();
-    //   })
-    //   .then((data) => {
-    //     console.log(data);
-    //   })
-    //   .catch(console.log("Error signing in"));
+  const userLogin = async () => {
+    const res = await login(username, password);
+    console.log(`res = ${res}`);
+    if(res=== 200){
+      console.log(`User ${username} logged in`);
+      navigation.navigate("Main");
+    }
+    else{
+      setPassword('');
+      Alert.alert('Problem!', 
+        'Username or password are inccorect');
+    }
   };
 
   return (
@@ -42,15 +46,17 @@ export default function LoginScreen({ navigation }) {
         </View>
         <View>
           <View style={textInputStyle.view}>
-            <Text style={textStyle.default}> Email: </Text>
+            <Text style={textStyle.default}> Username: </Text>
             <TextInput
               style={textInputStyle.default}
-              onChangeText={(newText) => setEmail(newText)}/>
+              value={username}
+              onChangeText={(newText) => setUsername(newText)}/>
           </View>
           <View style={textInputStyle.view}>
             <Text style={textStyle.default} secureTextEntry={true}> Password: </Text>
             <TextInput
               style={textInputStyle.default}
+              value={password}
               onChangeText={(newText) => setPassword(newText)}
           />
           </View>
@@ -58,7 +64,7 @@ export default function LoginScreen({ navigation }) {
         <View style={[buttons.main_buttons,{marginTop: 30}]}>
           <TouchableOpacity
             style={touchableOpacityStyle.default}
-            onPress={() => navigation.navigate("Main")}
+            onPress={() => userLogin()}
           >
             <Text style={buttons.text}>Log In</Text>
           </TouchableOpacity>

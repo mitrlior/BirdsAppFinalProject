@@ -37,8 +37,6 @@ const addNewUser = async (user) => {
 };
 /* Get */
 async function getUser(username) {
-
-  //TODO : Check what the fuck!
   console.log(`Got get request username =  ${username}`);
 
   const url = BASE_URL + 'user/' + username;
@@ -53,8 +51,20 @@ async function getUser(username) {
     .then((response) => response.json());
 };
 
-
+async function login(username, password){
+  console.log('Log in function')
+  const url = BASE_URL + 'login/' + username;
+  return await fetch(url, {
+    method: 'POST',
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body : JSON.stringify({"password": password}),
+  }).then((response)=> 
+    response.json());
+}
 
 
 /* GET */
-module.exports = { addNewUser, getUser };
+module.exports = { addNewUser, getUser, login };
