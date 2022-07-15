@@ -20,25 +20,24 @@ import {
   pickerStyle,
 } from "../assets/AppStyles";
 import { signIn } from "../redux/action";
+import { login } from "../requests/UserRequests";
 
 const LoginScreen = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const user= useSelector(state => state.username);
   const dispatch = useDispatch();
 
   const handleLogin = async () => {
-    const res = await login(username, password);
+    const get_username = username;
+    const res = await login(get_username, password);
     console.log(`res = ${res}`);
-    if(res=== 200){
+    if (res === 200) {
       console.log(`User ${username} logged in`);
-      dispatch(signIn(username));
+      dispatch(signIn(get_username));
       navigation.navigate("Main");
-    }
-    else{
-      setPassword('');
-      Alert.alert('Problem!', 
-        'Username or password are inccorect');
+    } else {
+      setPassword("");
+      Alert.alert("Problem!", "Username or password are incorrect");
     }
   };
 
@@ -54,21 +53,25 @@ const LoginScreen = ({ navigation }) => {
             <TextInput
               style={textInputStyle.default}
               value={username}
-              onChangeText={(newText) => setUsername(newText)}/>
+              onChangeText={(newText) => setUsername(newText)}
+            />
           </View>
           <View style={textInputStyle.view}>
-            <Text style={textStyle.default} secureTextEntry={true}> Password: </Text>
+            <Text style={textStyle.default} secureTextEntry={true}>
+              {" "}
+              Password:{" "}
+            </Text>
             <TextInput
               style={textInputStyle.default}
               value={password}
               onChangeText={(newText) => setPassword(newText)}
-          />
+            />
           </View>
         </View>
-        <View style={[buttons.main_buttons,{marginTop: 30}]}>
+        <View style={[buttons.main_buttons, { marginTop: 30 }]}>
           <TouchableOpacity
             style={touchableOpacityStyle.default}
-            onPress={() => userLogin()}
+            onPress={() => handleLogin()}
           >
             <Text style={buttons.text}>Log In</Text>
           </TouchableOpacity>
@@ -76,19 +79,6 @@ const LoginScreen = ({ navigation }) => {
       </ScrollView>
     </SafeAreaView>
   );
-}
-
-const mapStateToProps  = state => ({
-  username: state.username
-});
-
-const ActionCreators = Object.assign(
-  {},
-  signIn,
-) 
-
-const mapDispatchToProps = dispatch =>({
-  actions: bindActionCreators(ActionCreators, dispatch),
-});
+};
 
 export default LoginScreen;

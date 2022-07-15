@@ -1,7 +1,5 @@
-import { BASE_URL } from '@env';
-// BASE_URL = "http://birds-app-final-project.herokuapp.com/";
+import { BASE_URL } from "@env";
 const base_url = BASE_URL + "user/";
-
 
 /* POST */
 const addNewUser = async (user) => {
@@ -22,24 +20,13 @@ const addNewUser = async (user) => {
   };
 
   let res = await fetch(url, requestOptions);
-    // .then((response) => response.json())
-    // .then((json) => {
-    //   return json;
-    // })
-    // .catch((error) => {
-    //   console.error(error);
-    // });
-
-  console.log(`res = ${res.status}`);
-  console.log(`body = ${res.body}`);
-  console.log(res.json());
   return res;
 };
 /* Get */
 async function getUser(username) {
   console.log(`Got get request username =  ${username}`);
 
-  const url = BASE_URL + 'user/' + username;
+  const url = BASE_URL + "user/" + username;
 
   return fetch(url, {
     method: "GET",
@@ -47,24 +34,21 @@ async function getUser(username) {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-  })
-    .then((response) => response.json());
-};
+  }).then((response) => response.json());
+}
 
-async function login(username, password){
-  console.log('Log in function')
-  const url = BASE_URL + 'login/' + username;
+
+async function login(username, password) {
+  console.log("Log in function");
+  const url = BASE_URL + "login/" + username;
   return await fetch(url, {
-    method: 'POST',
+    method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body : JSON.stringify({"password": password}),
-  }).then((response)=> 
-    response.json());
+    body: JSON.stringify({ password: password }),
+  }).then((response) => response.json());
 }
 
-
-/* GET */
 module.exports = { addNewUser, getUser, login };

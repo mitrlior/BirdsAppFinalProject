@@ -1,21 +1,20 @@
 import { LOG_OUT, SIGN_IN } from "./action";
 
 const initialState = {
-    username: "Guest"
-}
+  username: null,
+};
 
 const userReducer = (state = initialState, action) => {
-    switch(action.type){
-        case SIGN_IN: 
-            return {...state,
-                username:action.payload}
-
-        case LOG_OUT:
-            return {...state,
-                username:"Guest"}
-
-        default:
-            return state;
+  switch (action.type) {
+    case SIGN_IN: {
+      const { username } = action.payload;
+      return { ...state, username: username };
     }
-}
+    case LOG_OUT: {
+      return { ...state, username: null };
+    }
+    default:
+      return state;
+  }
+};
 export default userReducer;

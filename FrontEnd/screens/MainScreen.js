@@ -1,91 +1,77 @@
-import * as React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Image} from 'react-native';
-import {customStyles, buttons, touchableOpacityStyle, imgStyle, textStyle, textInputStyle} from '../assets/AppStyles';
+import * as React from "react";
+import { useSelector } from "react-redux";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  SafeAreaView,
+  Image,
+} from "react-native";
+import {
+  customStyles,
+  buttons,
+  touchableOpacityStyle,
+  imgStyle,
+  textStyle,
+  textInputStyle,
+} from "../assets/AppStyles";
+
 
 export default function MainScreen({ navigation }) {
-    return (
+const username = useSelector((state) => state.username);
+
+  return (
     <SafeAreaView style={customStyles.middle_container}>
       <View style={imgStyle.view}>
-        <Image style={imgStyle.long_logo}
-          source={require('../assets/logo_white.png')}/>
+        <Image
+          style={imgStyle.long_logo}
+          source={require("../assets/logo_white.png")}
+        />
       </View>
       <View style={buttons.view}>
-      <TouchableOpacity
+        <TouchableOpacity
           style={touchableOpacityStyle.default}
-          onPress={() => navigation.navigate("Recognize")}>
+          onPress={() => navigation.navigate("Recognize")}
+        >
           <Text style={buttons.text}>Recognize</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={touchableOpacityStyle.default}
-          onPress={() => navigation.navigate("Area")}>
-        <Text style={buttons.text}>Birds in my Area</Text>
+          onPress={() => navigation.navigate("Area")}
+        >
+          <Text style={buttons.text}>Birds in my Area</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={touchableOpacityStyle.default}
-        onPress={() => navigation.navigate("Search")}>
-        <Text style={buttons.text}>Search Bird</Text>
+        <TouchableOpacity
+          style={touchableOpacityStyle.default}
+          onPress={() => navigation.navigate("Search")}
+        >
+          <Text style={buttons.text}>Search Bird</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={touchableOpacityStyle.default}
-        onPress={() => navigation.navigate("Profile")}>
+        {username && <TouchableOpacity
+          style={touchableOpacityStyle.default}
+          onPress={() => navigation.navigate("Profile")}
+        >
           <Text style={buttons.text}>My Profile</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> }
 
-        {/* <TouchableOpacity
+        <TouchableOpacity
           style={touchableOpacityStyle.default}
           onPress={() => navigation.navigate("Approve")}
         >
           <Text style={buttons.text}>Approve</Text>
-        </TouchableOpacity> */}
-
-        <TouchableOpacity style={touchableOpacityStyle.default}
-        onPress={() => navigation.navigate("Home")}>
-          <Text style={buttons.text}>Log Out</Text>
         </TouchableOpacity>
 
+        <TouchableOpacity
+          style={touchableOpacityStyle.default}
+          onPress={() => navigation.navigate("Home")}
+        >
+          <Text style={buttons.text}>{username ? 'Log Out' : 'Exit'}</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
-    );
+  );
 }
-
-
-// const styles = StyleSheet.create({
-//     container: {
-//       flex: 1,
-//       backgroundColor: '#00236a', // Dark background
-//       // backgroundColor: '#D3DEFF',  // Light backgrond
-//       alignItems: 'center',
-//       justifyContent: 'center',
-//     },
-//     main_image: {
-//       // flex: 0.4,
-      
-//     },
-//     main_buttons:{
-//       // flex: 0.6,
-//       marginTop: 44,
-//       width: '85%',
-//     },
-//     img:{
-//       width: '50%',
-//       height: undefined,
-//       aspectRatio: 1,
-//       alignSelf: 'center',
-//     },
-//     core: {
-//       width:'100%', 
-//       height:'12%', 
-//       borderWidth: 1,
-//       borderRadius: 10,
-//       borderColor:'#386AFF',
-//       backgroundColor: '#0833B5',
-//       justifyContent: 'center',
-//       alignItems: 'center', 
-//       marginBottom: 15,
-//     },
-//     text: {
-//       color: '#D3DEFF',
-//       fontSize: 22,
-//     },
-//   });  

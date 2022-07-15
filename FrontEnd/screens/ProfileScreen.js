@@ -1,50 +1,51 @@
 import React, { useState, useEffect, Component } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
-import {StyleSheet, Text, View, TouchableOpacity, SafeAreaView, TextInput, Image, Picker, ScrollView} from 'react-native';
-import {customStyles, buttons, touchableOpacityStyle, textStyle, textInputStyle,  pickerStyle, imgStyle} from "../assets/AppStyles";
-import DropDownPicker from 'react-native-dropdown-picker';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  SafeAreaView,
+  TextInput,
+  Image,
+  Picker,
+  ScrollView,
+} from "react-native";
+import {
+  customStyles,
+  buttons,
+  touchableOpacityStyle,
+  textStyle,
+  textInputStyle,
+  pickerStyle,
+  imgStyle,
+} from "../assets/AppStyles";
 import { getUser } from "../requests/UserRequests";
-import { connect } from 'react-redux';
 
-
-export default function ProfileScreen ({ navigation }) {
-
-
-
-  const [email, setEmail] = useState(' ');
+export default ProfileScreen = ({ navigation }) => {
+  const [email, setEmail] = useState(" ");
   const [role, setRole] = useState(null);
-  const [firstName, setFirstName] = useState(' ');
-  const [lastName, setLastName] = useState(' ');
-  const [username, setUsername] = useState(' ')
-
-  const mapStateToProps = state => ({
-    username: state.username,
-  });
+  const [firstName, setFirstName] = useState(" ");
+  const [lastName, setLastName] = useState(" ");
+  const [username, setUsername] = useState(" ");
+  const currentUser = useSelector((state) => state.username);
   
-  async function setUserData(){
-    let { username } = this.props; 
-    console.log(`Redux => ${this.props.username}`);
-      const user = await getUser("mitrlior");
-      setRole(user.user_type);
-      setEmail(user.email);
-      setFirstName(user.first_name);
-      setLastName(user.last_name);
-      setUsername(user.username);
-  }
-  mapStateToProps();
-  useEffect (() => {
 
+  async function setUserData() {
+    console.log(`current_user = ${currentUser}`);
+    const user = await getUser(currentUser);
+    console.log(`User = ${user}`);
+    setRole(user.user_type);
+    setEmail(user.email);
+    setFirstName(user.first_name);
+    setLastName(user.last_name);
+    setUsername(user.username);
+  }
+
+  useEffect(() => {
     setUserData();
   });
-
-  const user = {
-    username: 'username',
-    first_name: 'firstName',
-    last_name: 'lastName',
-    password: 'password',
-    email: 'email',
-    role : 'role',
-  };
 
   return (
     <ScrollView style={customStyles.container}>
@@ -77,4 +78,4 @@ export default function ProfileScreen ({ navigation }) {
       </View>
     </ScrollView>
   );
-} 
+}
