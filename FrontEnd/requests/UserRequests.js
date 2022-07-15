@@ -1,7 +1,6 @@
 import { BASE_URL } from "@env";
 const base_url = BASE_URL + "user/";
 
-/* POST */
 const addNewUser = async (user) => {
   console.log("USER: " + JSON.stringify(user));
   const url = base_url + user.username;
@@ -22,7 +21,7 @@ const addNewUser = async (user) => {
   let res = await fetch(url, requestOptions);
   return res;
 };
-/* Get */
+
 async function getUser(username) {
   console.log(`Got get request username =  ${username}`);
 

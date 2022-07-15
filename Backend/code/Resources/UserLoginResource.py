@@ -20,7 +20,7 @@ class UserLoginResource(Resource):
         if user:
             if user.password == data['password']:
                 logger.info(f'User {username} logged in')
-                return 200
+                return 200, user.json()
             else:
                 return {'message: wrong password'}
         else:
