@@ -1,23 +1,28 @@
-import * as React from "react";
+import React, { Component } from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import ApproveScreen from "./navigation/screens/ApproveScreen";
-import AreaScreen from "./navigation/screens/AreaScreen";
-import BirdIDScreen from "./navigation/screens/BirdIDScreen";
-import EditProfileScreen from "./navigation/screens/EditProfileScreen";
-import HomeScreen from "./navigation/screens/HomeScreen";
-import LoginScreen from "./navigation/screens/LoginScreen";
-import MainScreen from "./navigation/screens/MainScreen";
-import ProfileScreen from "./navigation/screens/ProfileScreen";
-import RecognizeScreen from "./navigation/screens/RecognizeScreen";
-import SearchBirdScreen from "./navigation/screens/SearchBirdScreen";
-import SignUpScreen from "./navigation/screens/SignUpScreen";
+
+import ApproveScreen from "./screens/ApproveScreen";
+import AreaScreen from "./screens/AreaScreen";
+import BirdIDScreen from "./screens/BirdIDScreen";
+import EditProfileScreen from "./screens/EditProfileScreen";
+import HomeScreen from "./screens/HomeScreen";
+import LoginScreen from "./screens/LoginScreen";
+import MainScreen from "./screens/MainScreen";
+import ProfileScreen from "./screens/ProfileScreen";
+import RecognizeScreen from "./screens/RecognizeScreen";
+import SearchBirdScreen from "./screens/SearchBirdScreen";
+import SignUpScreen from "./screens/SignUpScreen";
+
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 const Stack = createNativeStackNavigator();
-
-const App = () => {
-  return (
+class App extends Component{
+  render () {
+    return(
+      <Provider store={store}>
     <NavigationContainer>
       <Stack.Navigator>
       <Stack.Screen
@@ -79,7 +84,9 @@ const App = () => {
 
       </Stack.Navigator>
     </NavigationContainer>
+    </Provider>
   );
-};
+}
+}
 
 export default App;

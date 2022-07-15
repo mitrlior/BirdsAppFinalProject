@@ -6,8 +6,8 @@ import * as MediaLibrary from 'expo-media-library';
 import * as ImagePicker from 'expo-image-picker';
 
 import { MaterialIcons } from '@expo/vector-icons';
-import Button from '../utils/CameraButtons';
-import {customStyles, buttons, touchableOpacityStyle, imgStyle, cameraStyle, } from "../../assets/AppStyles";
+import  { Button } from '../assets/utils/CameraButtons';
+import {customStyles, buttons, touchableOpacityStyle, imgStyle, cameraStyle, } from "../assets/AppStyles";
 
 
 export default function RecognizeScreen({ navigation }) {

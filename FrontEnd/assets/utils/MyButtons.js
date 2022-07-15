@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Image} from 'react-native';
-import { touchableOpacityStyle, buttons } from '../../assets/AppStyles';
+import { touchableOpacityStyle, buttons } from '../AppStyles';
 
 
 const MyButton = ({ title, style, onPress }) => {

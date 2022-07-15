@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Image} from 'react-native';
-import {customStyles, buttons, touchableOpacityStyle, imgStyle, textStyle, textInputStyle} from '../../assets/AppStyles';
+import {customStyles, buttons, touchableOpacityStyle, imgStyle, textStyle, textInputStyle} from '../assets/AppStyles';
 
 export default function MainScreen({ navigation }) {
     return (
     <SafeAreaView style={customStyles.middle_container}>
       <View style={imgStyle.view}>
         <Image style={imgStyle.long_logo}
-          source={require('../../assets/logo_white.png')}/>
+          source={require('../assets/logo_white.png')}/>
       </View>
       <View style={buttons.view}>
       <TouchableOpacity

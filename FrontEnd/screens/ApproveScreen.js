@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import {StyleSheet, Text, View, TouchableOpacity, SafeAreaView, TextInput, Image, Picker, ScrollView} from 'react-native';
-import {customStyles, buttons, touchableOpacityStyle, textStyle, textInputStyle,  pickerStyle, imgStyle} from "../../assets/AppStyles";
+import {customStyles, buttons, touchableOpacityStyle, textStyle, textInputStyle,  pickerStyle, imgStyle} from "../assets/AppStyles";
 
 
 export default function ApproveScreen({ navigation }) {
@@ -13,7 +13,7 @@ export default function ApproveScreen({ navigation }) {
         {/* The item*/}
         <View>
           <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' , alignItems: 'center',}}>
-            <Image style={imgStyle.mini} source={require('../../assets/sqlogo_white.png')}/>
+            <Image style={imgStyle.mini} source={require('../assets/sqlogo_white.png')}/>
             <View>
               <TextInput
                 style={textInputStyle.mini}

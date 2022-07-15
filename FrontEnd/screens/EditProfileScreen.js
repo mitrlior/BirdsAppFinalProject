@@ -15,8 +15,8 @@ import {
   textStyle,
   textInputStyle,
   pickerStyle,
-} from "../../assets/AppStyles";
-import { User } from '../utils/MyObjs';
+} from "../assets/AppStyles";
+// import { User } from '../assets/utils/MyObjs';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 

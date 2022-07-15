@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   Text,
   View,
@@ -7,7 +8,7 @@ import {
   TextInput,
   Picker,
   ScrollView,
-  Alert
+  Alert,
 } from "react-native";
 import {
   customStyles,
@@ -17,18 +18,21 @@ import {
   textStyle,
   textInputStyle,
   pickerStyle,
-} from "../../assets/AppStyles";
-import { login } from '../../assets/requests/UserRequests';
+} from "../assets/AppStyles";
+import { signIn } from "../redux/action";
 
-export default function LoginScreen({ navigation }) {
+const LoginScreen = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const user= useSelector(state => state.username);
+  const dispatch = useDispatch();
 
-  const userLogin = async () => {
+  const handleLogin = async () => {
     const res = await login(username, password);
     console.log(`res = ${res}`);
     if(res=== 200){
       console.log(`User ${username} logged in`);
+      dispatch(signIn(username));
       navigation.navigate("Main");
     }
     else{
@@ -73,3 +77,18 @@ export default function LoginScreen({ navigation }) {
     </SafeAreaView>
   );
 }
+
+const mapStateToProps  = state => ({
+  username: state.username
+});
+
+const ActionCreators = Object.assign(
+  {},
+  signIn,
+) 
+
+const mapDispatchToProps = dispatch =>({
+  actions: bindActionCreators(ActionCreators, dispatch),
+});
+
+export default LoginScreen;

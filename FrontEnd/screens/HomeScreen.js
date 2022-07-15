@@ -11,8 +11,8 @@ import {
   buttons,
   touchableOpacityStyle,
   imgStyle,
-} from "../../assets/AppStyles";
-import {MyButton} from "../utils/MyButtons";
+} from "../assets/AppStyles";
+import {MyButton} from "../";
 
 export default function HomeScreen({ navigation }) {
   return (
@@ -20,7 +20,7 @@ export default function HomeScreen({ navigation }) {
       <View style={imgStyle.view}>
         <Image
           style={imgStyle.default}
-          source={require("../../assets/sqlogo_white.png")}
+          source={require("../assets/sqlogo_white.png")}
         />
       </View>
       <View style={[buttons.view, { marginTop: 30 }]}>

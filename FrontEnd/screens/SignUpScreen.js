@@ -16,10 +16,10 @@ import {
   textStyle,
   textInputStyle,
   pickerStyle,
-} from "../../assets/AppStyles";
+} from "../assets/AppStyles";
 import { Picker } from '@react-native-picker/picker'
-import { addNewUser } from "../../assets/requests/UserRequests";
-import { User } from '../utils/MyObjs';
+import { addNewUser } from "../requests/UserRequests";
+import { User } from '../assets/utils/MyObjs';
 
 
 const SignUpScreen = ({ navigation }) => {

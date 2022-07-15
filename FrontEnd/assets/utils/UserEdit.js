@@ -15,9 +15,9 @@ import {
   textStyle,
   textInputStyle,
   pickerStyle,
-} from "../../assets/AppStyles";
+} from "../AppStyles";
 import { Picker } from '@react-native-picker/picker'
-import { addNewUser } from "../../assets/requests/UserRequests";
+import { addNewUser } from "../../requests/UserRequests";
 
 const [username, setUsername] = useState("");
 const [firstName, setFirstName] = useState("");

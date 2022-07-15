@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import {StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Image, FlatList} from 'react-native';
-import {customStyles, buttons, pickerStyle, textStyle, touchableOpacityStyle, imgStyle} from '../../assets/AppStyles';
+import {customStyles, buttons, pickerStyle, textStyle, touchableOpacityStyle, imgStyle} from '../AppStyles';
 import DropDownPicker from 'react-native-dropdown-picker';
-import { BirdInfo } from "../utils/MyObjs";
+import { BirdInfo } from "./MyObjs";
 
 // BirdInfo
 const BirdCard = (props) => {

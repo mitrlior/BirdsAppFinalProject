@@ -20,7 +20,7 @@ import {
   imgStyle,
   textInputStyle,
   Style,
-} from "../../assets/AppStyles";
+} from "../assets/AppStyles";
 
 import DropDownPicker from "react-native-dropdown-picker";
 

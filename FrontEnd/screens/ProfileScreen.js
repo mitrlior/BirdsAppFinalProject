@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component } from "react";
 
-import { getUser } from "../../assets/requests/UserRequests";
 import {StyleSheet, Text, View, TouchableOpacity, SafeAreaView, TextInput, Image, Picker, ScrollView} from 'react-native';
-import {customStyles, buttons, touchableOpacityStyle, textStyle, textInputStyle,  pickerStyle, imgStyle} from "../../assets/AppStyles";
+import {customStyles, buttons, touchableOpacityStyle, textStyle, textInputStyle,  pickerStyle, imgStyle} from "../assets/AppStyles";
 import DropDownPicker from 'react-native-dropdown-picker';
+import { getUser } from "../requests/UserRequests";
+import { connect } from 'react-redux';
 
 
-export default function ProfileScreen({ navigation }) {
-  
+export default function ProfileScreen ({ navigation }) {
+
+
 
   const [email, setEmail] = useState(' ');
   const [role, setRole] = useState(null);
@@ -15,7 +17,13 @@ export default function ProfileScreen({ navigation }) {
   const [lastName, setLastName] = useState(' ');
   const [username, setUsername] = useState(' ')
 
+  const mapStateToProps = state => ({
+    username: state.username,
+  });
+  
   async function setUserData(){
+    let { username } = this.props; 
+    console.log(`Redux => ${this.props.username}`);
       const user = await getUser("mitrlior");
       setRole(user.user_type);
       setEmail(user.email);
@@ -23,8 +31,9 @@ export default function ProfileScreen({ navigation }) {
       setLastName(user.last_name);
       setUsername(user.username);
   }
-
+  mapStateToProps();
   useEffect (() => {
+
     setUserData();
   });
 
