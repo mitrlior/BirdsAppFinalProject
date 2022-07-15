@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../requests/UserRequests";
 
 import {
   Text,
@@ -24,6 +25,7 @@ const EditProfileScreen = ({ navigation }) => {
   const [lastName, setLastName] = useState(" ");
   const [username, setUsername] = useState(" ");
   const [open, setOpen] = useState(false);
+  const [password, setPassword] = useState("");
 
   const currentUser = useSelector((state) => state.username);
 
@@ -36,6 +38,7 @@ const EditProfileScreen = ({ navigation }) => {
     setFirstName(user.first_name);
     setLastName(user.last_name);
     setUsername(user.username);
+    setPassword(user.password);
   }
 
   useEffect(() => {

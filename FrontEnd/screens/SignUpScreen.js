@@ -17,10 +17,9 @@ import {
   textInputStyle,
   pickerStyle,
 } from "../assets/AppStyles";
-import { Picker } from '@react-native-picker/picker'
+import { Picker } from "@react-native-picker/picker";
 import { addNewUser } from "../requests/UserRequests";
-import { User } from '../assets/utils/MyObjs';
-
+import { User } from "../assets/utils/MyObjs";
 
 const SignUpScreen = ({ navigation }) => {
   const [username, setUsername] = useState("");
@@ -30,29 +29,32 @@ const SignUpScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [selectedValue, setSelectedValue] = useState(1);
 
-  const getAlert = ({title, message, moveTo}) =>
-    Alert.alert(
-      title, 
-      message,
-      [
-        {text: "OK",
-      onPress: () => moveTo,}
-      ],
-    );
-  
+  const getAlert = ({ title, message, moveTo }) =>
+    Alert.alert(title, message, [{ text: "OK", onPress: () => moveTo }]);
+
   const signUp = async () => {
-    const user = new User(username, firstName, lastName, password, email, selectedValue);
+    const user = new User(
+      username,
+      firstName,
+      lastName,
+      password,
+      email,
+      selectedValue
+    );
     console.log(user);
     const res = await addNewUser(user);
     //TODO: Handle response, 201 for user created move to home screen or something
     console.log(`my res ${res}`);
     console.log(`status: ${res.status}`);
-    if (res.status == 201){
-      console.log('Success');
-      getAlert("Success","User created successfully", navigation.navigate("Main"));
-    }
-    else if(res.status == 400){
-      console.log('User Already Exists');
+    if (res.status == 201) {
+      console.log("Success");
+      Alert.alert(
+        "Success",
+        "User created successfully",
+        navigation.navigate("Main")
+      );
+    } else if (res.status == 400) {
+      console.log("User Already Exists");
     }
   };
 
@@ -122,7 +124,10 @@ const SignUpScreen = ({ navigation }) => {
             />
           </View>
           <View style={textInputStyle.view}>
-            <View flexDirection="row" style={"alignItems: center, alignSelf: center,"}>
+            <View
+              flexDirection="row"
+              style={"alignItems: center, alignSelf: center,"}
+            >
               <Text style={textStyle.default}>Role: </Text>
               <Text style={textStyle.error}>{msgRole}</Text>
 
@@ -134,9 +139,9 @@ const SignUpScreen = ({ navigation }) => {
                   setSelectedValue(itemValue)
                 }
               >
-                <Picker.Item label="Hobby" value='0' />
-                <Picker.Item label="Birdwatcher" value='1' />
-                <Picker.Item label="Admin" value='2' />
+                <Picker.Item label="Hobby" value="0" />
+                <Picker.Item label="Birdwatcher" value="1" />
+                <Picker.Item label="Admin" value="2" />
               </Picker>
             </View>
           </View>
