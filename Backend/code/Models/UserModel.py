@@ -30,7 +30,8 @@ class UserModel(db.Model):
             'first_name': self.first_name,
             'last_name': self.last_name,
             'email': self.email,
-            'user_type': USER_TYPE(self.user_type).name
+            'user_type': USER_TYPE(self.user_type).name,
+            'password': self.password
         }
 
     @classmethod
