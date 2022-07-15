@@ -21,7 +21,7 @@ class UserLoginResource(Resource):
             if user.password == data['password']:
                 print(user.password)
                 logger.info(f'User {username} logged in')
-                return {'username': user.username, 'role': UserModel.get_user_type(user.user_type)}, 200
+                return {'username': user.username, 'user_type': UserModel.get_user_type(user.user_type)}, 200
             else:
                 return {'message: wrong password'}
         else:
