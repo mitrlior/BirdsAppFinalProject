@@ -34,6 +34,10 @@ class UserModel(db.Model):
         }
 
     @classmethod
+    def get_user_type(cls, user_type):
+        return USER_TYPE(user_type).name
+
+    @classmethod
     def find_by_username(cls, username):
         return cls.query.filter_by(username=username).first()
 

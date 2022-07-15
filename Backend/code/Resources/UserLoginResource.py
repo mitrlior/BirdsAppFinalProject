@@ -19,8 +19,9 @@ class UserLoginResource(Resource):
         data = UserLoginResource.parser.parse_args()
         if user:
             if user.password == data['password']:
+                print(user.password)
                 logger.info(f'User {username} logged in')
-                return 200, user.json()
+                return {'username': user.username, 'role': UserModel.get_user_type(user.user_type)}, 200
             else:
                 return {'message: wrong password'}
         else:
