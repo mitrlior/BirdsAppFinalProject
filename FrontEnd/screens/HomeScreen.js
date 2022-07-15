@@ -1,4 +1,5 @@
-import * as React from "react";
+import React from "react";
+
 import {
   Text,
   View,
@@ -12,9 +13,9 @@ import {
   touchableOpacityStyle,
   imgStyle,
 } from "../assets/AppStyles";
-import {MyButton} from "../";
 
-export default function HomeScreen({ navigation }) {
+export default HomeScreen = ({ navigation }) => {
+
   return (
     <SafeAreaView style={customStyles.middle_container}>
       <View style={imgStyle.view}>
@@ -24,13 +25,6 @@ export default function HomeScreen({ navigation }) {
         />
       </View>
       <View style={[buttons.view, { marginTop: 30 }]}>
-        
-        {/* <MyButton 
-        title = 'Sign Up'
-        style={touchableOpacityStyle.default}
-        onPress={() => navigation.navigate("SignUp")}
-        /> */}
-        
         <TouchableOpacity
           style={touchableOpacityStyle.default}
           onPress={() => navigation.navigate("SignUp")}
@@ -43,74 +37,13 @@ export default function HomeScreen({ navigation }) {
         >
           <Text style={buttons.text}>Log In</Text>
         </TouchableOpacity>
-        <TouchableOpacity 
-          style={touchableOpacityStyle.default}
-          onPress={() => navigation.navigate("Main")}>
-          <Text style={buttons.text}>Remind me later</Text>
-        </TouchableOpacity>
-
-        {/* <TouchableOpacity
-          style={touchableOpacityStyle.default}
-          onPress={() => navigation.navigate("Profile")}
-        >
-          <Text style={buttons.text}>Profile</Text>
-        </TouchableOpacity>
         <TouchableOpacity
           style={touchableOpacityStyle.default}
           onPress={() => navigation.navigate("Main")}
         >
-          <Text style={buttons.text}>Main</Text>
-        </TouchableOpacity> */}
-        {/* <TouchableOpacity
-          style={touchableOpacityStyle.default}
-          onPress={() => navigation.navigate("Area")}
-        >
-          <Text style={buttons.text}>Area</Text>
-        </TouchableOpacity> */}
-        {/* <TouchableOpacity
-          style={touchableOpacityStyle.default}
-          onPress={() => navigation.navigate("Search")}
-        >
-          <Text style={buttons.text}>Search</Text>
-        </TouchableOpacity> */}
-        
-        {/* <TouchableOpacity
-          style={touchableOpacityStyle.default}
-          onPress={() => navigation.navigate("Recognize")}
-        >
-          <Text style={buttons.text}>Recognize</Text>
+          <Text style={buttons.text}>Remind me later</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={touchableOpacityStyle.default}
-          onPress={() => navigation.navigate("EditProfile")}
-        >
-          <Text style={buttons.text}>Edit Profile</Text>
-        </TouchableOpacity> */}
-        {/* <TouchableOpacity
-          style={touchableOpacityStyle.default}
-          onPress={() => navigation.navigate("Search")}
-        > */}
-          {/* <Text style={buttons.text}>Search Bird</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={touchableOpacityStyle.default}
-          onPress={() => navigation.navigate("BirdID")}
-        >
-          <Text style={buttons.text}>Bird ID</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={touchableOpacityStyle.default}
-          onPress={() => navigation.navigate("Area")}
-        >
-          <Text style={buttons.text}>Area</Text>
-        </TouchableOpacity> */}
-        {/* <TouchableOpacity
-          style={touchableOpacityStyle.default}
-          onPress={() => navigation.navigate("Approve")}
-        >
-          <Text style={buttons.text}>Approve</Text>
-        </TouchableOpacity> */}
       </View>
     </SafeAreaView>
   );
-}
+};

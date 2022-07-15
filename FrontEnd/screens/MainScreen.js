@@ -1,7 +1,9 @@
-import * as React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState, useReducer } from "react";
+import { useIsFocused } from "@react-navigation/native";
+import { useDispatch, useSelector } from "react-redux";
+import { logOut } from "../redux/action";
+
 import {
-  StyleSheet,
   Text,
   View,
   TouchableOpacity,
@@ -13,13 +15,18 @@ import {
   buttons,
   touchableOpacityStyle,
   imgStyle,
-  textStyle,
-  textInputStyle,
 } from "../assets/AppStyles";
 
+export default MainScreen = ({ navigation }) => {
+  let username = useSelector((state) => state.username);
+  let user_type = useSelector((state) => state.user_type);
+  const dispatch = useDispatch();
 
-export default function MainScreen({ navigation }) {
-const username = useSelector((state) => state.username);
+  console.log(`MainScreen:\nusername = ${username}\nuser_type = ${user_type}`);
+  function out() {
+    dispatch(logOut());
+    navigation.navigate("Home");
+  }
 
   return (
     <SafeAreaView style={customStyles.middle_container}>
@@ -51,27 +58,31 @@ const username = useSelector((state) => state.username);
           <Text style={buttons.text}>Search Bird</Text>
         </TouchableOpacity>
 
-        {username && <TouchableOpacity
-          style={touchableOpacityStyle.default}
-          onPress={() => navigation.navigate("Profile")}
-        >
-          <Text style={buttons.text}>My Profile</Text>
-        </TouchableOpacity> }
+        {username ? (
+          <TouchableOpacity
+            style={touchableOpacityStyle.default}
+            onPress={() => navigation.navigate("Profile")}
+          >
+            <Text style={buttons.text}>My Profile</Text>
+          </TouchableOpacity>
+        ) : null}
+        {user_type &&
+        (user_type === "BIRD_WATCHER" || user_type === "ADMIN") ? (
+          <TouchableOpacity
+            style={touchableOpacityStyle.default}
+            onPress={() => navigation.navigate("Approve")}
+          >
+            <Text style={buttons.text}>Approve</Text>
+          </TouchableOpacity>
+        ) : null}
 
         <TouchableOpacity
           style={touchableOpacityStyle.default}
-          onPress={() => navigation.navigate("Approve")}
+          onPress={() => out()}
         >
-          <Text style={buttons.text}>Approve</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={touchableOpacityStyle.default}
-          onPress={() => navigation.navigate("Home")}
-        >
-          <Text style={buttons.text}>{username ? 'Log Out' : 'Exit'}</Text>
+          <Text style={buttons.text}>{username ? "Log Out" : "Exit"}</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
-}
+};

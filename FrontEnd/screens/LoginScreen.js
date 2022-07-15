@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   Text,
   View,
@@ -17,7 +17,6 @@ import {
   imgStyle,
   textStyle,
   textInputStyle,
-  pickerStyle,
 } from "../assets/AppStyles";
 import { signIn } from "../redux/action";
 import { login } from "../requests/UserRequests";
@@ -28,16 +27,17 @@ const LoginScreen = ({ navigation }) => {
   const dispatch = useDispatch();
 
   const handleLogin = async () => {
-    const get_username = username;
-    const res = await login(get_username, password);
-    console.log(`res = ${res}`);
-    if (res === 200) {
-      console.log(`User ${username} logged in`);
-      dispatch(signIn(get_username));
+    const res = await login(username, password);
+    console.log(`login status= ${res.status}`);
+    const body = await JSON.parse(await JSON.stringify(await res.json()));
+    if (res.status === 200) {
+      console.log(`User ${body.username} logged in`);
+      dispatch(signIn(body.username, body.user_type));
+
       navigation.navigate("Main");
     } else {
-      setPassword("");
       Alert.alert("Problem!", "Username or password are incorrect");
+      setPassword("");
     }
   };
 

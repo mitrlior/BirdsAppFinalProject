@@ -1,15 +1,10 @@
-import React, { useState, useEffect, Component } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 import {
-  StyleSheet,
   Text,
   View,
   TouchableOpacity,
-  SafeAreaView,
-  TextInput,
-  Image,
-  Picker,
   ScrollView,
 } from "react-native";
 import {
@@ -17,9 +12,6 @@ import {
   buttons,
   touchableOpacityStyle,
   textStyle,
-  textInputStyle,
-  pickerStyle,
-  imgStyle,
 } from "../assets/AppStyles";
 import { getUser } from "../requests/UserRequests";
 
