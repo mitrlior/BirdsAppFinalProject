@@ -1,40 +1,27 @@
 import { BASE_URL, TEST_MODE, TEST_URL } from "@env";
-const url = TEST_MODE === 1 ? TEST_URL : BASE_URL;
+const url = TEST_MODE == 1 ? TEST_URL : BASE_URL;
 const base_url = url + "bird/myTest.jpg";
+import * as FileSystem from "expo-file-system";
 
 const post_file = async (uri) => {
-  //   console.log(url);
   console.log(base_url);
-  //   const body = createFormData(uri);
-  const response = await fetch(uri);
-  const imgBlob = await response.blob().then(function (content) {
-    let reader = new FileReader();
-
-    reader.addEventListener("loadend", async function () {
-      const formData = new createFormData(uri);
-      formData.append("content", reader.result);
-      await fetch(base_url, {
-        method: "POST",
-        body: formData,
-      }).then(res => console.log(res.json()));
-    });
-    reader.readAsDataURL(content);
-    console.log(reader.result);
+  console.log(uri);
+  const base64 = await FileSystem.readAsStringAsync(uri, {
+    encoding: "base64",
   });
-};
+  const img = await fetch(uri);
+  let data = new FormData();
+  data.append("file", img, 'test');
+  console.log(img)
+  console.log(await img);
 
-const createFormData = (uri) => {
-  let fileName = uri.split("/").pop();
-  const fileType = fileName.split(".").pop();
-  fileName = "mtTest.jpg";
-  const formData = new FormData();
-  formData.append("file", {
-    uri,
-    name: fileName,
-    type: `image/${fileType}`,
-  });
-  console.log(formData);
-  return formData;
+  fetch(base_url, {
+    method: "POST",
+    headers: { "Content-Type": "image/jpeg" },
+    body: data,
+  })
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
 };
 
 module.exports = { post_file };

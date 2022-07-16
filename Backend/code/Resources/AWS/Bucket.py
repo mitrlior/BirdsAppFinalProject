@@ -45,5 +45,5 @@ class Bucket:
             os.remove(filename)
         except Exception as e:
             print(e)
-            return  {'message': 'Failed to up;oad image'}
+            return {'message': 'Failed to up;oad image'}
         return url

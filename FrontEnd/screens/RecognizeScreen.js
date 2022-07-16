@@ -39,8 +39,8 @@ export default function RecognizeScreen({ navigation }) {
   const savePicture = async () => {
     if (image) {
       try {
-        const asset = await MediaLibrary.createAssetAsync(image);
-        alert("Picture saved! 🎉");
+        // const asset = await MediaLibrary.createAssetAsync(image);
+        // alert("Picture saved! 🎉");
         console.log("saved successfully");
         console.log(`image = ${image}`);
         await post_file(image);
