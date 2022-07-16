@@ -48,4 +48,7 @@ def get_img_predict(img_path):
   #prediction
   res = decode_predictions(prediction,top=1)[0]
   print(res)
-  return(res)
+  if res[1]< 0.6: 
+    return ("OTHER")
+  return(res[0])
+
