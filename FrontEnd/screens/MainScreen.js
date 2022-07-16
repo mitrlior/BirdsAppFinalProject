@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useReducer } from "react";
-import { useIsFocused } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../redux/action";
 

@@ -122,7 +122,7 @@ class UserResource(Resource):
 
                 if data['email'] == '':
                     return {'message': 'Email cannot be empty'}, 400
-                user_model.email = data['email']
+            user_model.email = data['email']
 
             if 'password' in data and data['password'] is not None:
                 user_model.password = data['password']
