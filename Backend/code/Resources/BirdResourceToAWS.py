@@ -1,6 +1,6 @@
 from flask import request
 from flask_restful import Resource, reqparse
-# from Utils.logger import logger
+from Utils.logger import logger
 import werkzeug
 from Resources.AWS.Bucket import Bucket
 from dotenv import load_dotenv
@@ -33,6 +33,7 @@ class BirdResourceToAWS(Resource):
     @staticmethod
     def post(file_name):
         raw_data = request.get_data()
+        print(raw_data)
         response = Bucket.put_to_s3(file_name, raw_data)
         print(response)
         return response

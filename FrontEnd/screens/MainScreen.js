@@ -19,9 +19,11 @@ let username;
 let user_type;
 const MainScreen = ({ navigation }) => {
   const dispatch = useDispatch();
- username = useSelector((state) => state.username);
- user_type = useSelector((state) => state.user_type);
- 
+
+  const updateStream = async () => {
+    console.log("updateStream");
+   
+  };
 
   function out() {
     dispatch(logOut());

@@ -5,7 +5,7 @@ import * as MediaLibrary from "expo-media-library";
 import * as ImagePicker from "expo-image-picker";
 import CamButton from "../assets/utils/CameraButtons";
 import { cameraStyle } from "../assets/AppStyles";
-import { post_file } from "../requests/filesRequests";
+import { post_file, _send } from "../requests/filesRequests";
 import * as FileSystem from "expo-file-system";
 
 export default function RecognizeScreen({ navigation }) {
@@ -43,7 +43,7 @@ export default function RecognizeScreen({ navigation }) {
         // alert("Picture saved! 🎉");
         console.log("saved successfully");
         console.log(`image = ${image}`);
-        await post_file(image);
+        await _send(image);
       } catch (error) {
         console.log(error);
       }

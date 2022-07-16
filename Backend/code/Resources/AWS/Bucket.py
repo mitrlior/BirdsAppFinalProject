@@ -6,6 +6,7 @@ import boto3
 import cv2
 import requests
 from PIL import Image
+from Utils.logger import logger
 from dotenv import load_dotenv
 
 # from dotenv import load_dotenv
@@ -38,8 +39,10 @@ class Bucket:
             content_type = 'image/jpeg'
             headers = {'content-type': content_type}
             file = cv2.imread(filename)
+
             # Encode image
             _, img_encoded = cv2.imencode('.jpeg', file)
+            logger.log(bucket_url, filename)
             url = bucket_url + filename
             requests.put(url, data=img_encoded.tostring(), headers=headers)
             os.remove(filename)
