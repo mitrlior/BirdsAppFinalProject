@@ -45,7 +45,7 @@ const SignUpScreen = ({ navigation }) => {
     const res = await addNewUser(user);
     console.log(`status: ${res.status}`);
 
-    if (res.status == 201) {
+    if (res.status === 201) {
       console.log("Success");
       const body = await JSON.parse(await JSON.stringify(await res.json()));
       console.log(
@@ -64,13 +64,6 @@ const SignUpScreen = ({ navigation }) => {
     }
   };
 
-  const msgUserName = "";
-  const msgFirstName = "";
-  const msgLastName = "";
-  const msgPassword = "";
-  const msgEmail = "";
-  const msgRole = "";
-
   return (
     <SafeAreaView style={customStyles.container}>
       <ScrollView>
@@ -81,7 +74,6 @@ const SignUpScreen = ({ navigation }) => {
           <View style={textInputStyle.view}>
             <View flexDirection="row">
               <Text style={textStyle.default}>Username: </Text>
-              <Text style={textStyle.error}>{msgUserName}</Text>
             </View>
             <TextInput
               style={textInputStyle.default}
@@ -92,7 +84,6 @@ const SignUpScreen = ({ navigation }) => {
           <View style={textInputStyle.view}>
             <View flexDirection="row">
               <Text style={textStyle.default}>First Name: </Text>
-              <Text style={textStyle.error}>{msgFirstName}</Text>
             </View>
             <TextInput
               style={textInputStyle.default}
@@ -102,7 +93,6 @@ const SignUpScreen = ({ navigation }) => {
           <View style={textInputStyle.view}>
             <View flexDirection="row">
               <Text style={textStyle.default}>Last Name: </Text>
-              <Text style={textStyle.error}>{msgLastName}</Text>
             </View>
             <TextInput
               style={textInputStyle.default}
@@ -112,7 +102,6 @@ const SignUpScreen = ({ navigation }) => {
           <View style={textInputStyle.view}>
             <View flexDirection="row">
               <Text style={textStyle.default}>Email: </Text>
-              <Text style={textStyle.error}>{msgEmail}</Text>
             </View>
             <TextInput
               style={textInputStyle.default}
@@ -122,7 +111,6 @@ const SignUpScreen = ({ navigation }) => {
           <View style={textInputStyle.view}>
             <View flexDirection="row">
               <Text style={textStyle.default}>Password: </Text>
-              <Text style={textStyle.error}>{msgPassword}</Text>
             </View>
             <TextInput
               style={textInputStyle.default}
@@ -135,7 +123,6 @@ const SignUpScreen = ({ navigation }) => {
               style={"alignItems: center, alignSelf: center,"}
             >
               <Text style={textStyle.default}>Role: </Text>
-              <Text style={textStyle.error}>{msgRole}</Text>
 
               <Picker
                 selectedValue={selectedValue}

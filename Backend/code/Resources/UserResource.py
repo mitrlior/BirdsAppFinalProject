@@ -115,14 +115,17 @@ class UserResource(Resource):
             if 'last_name' in data and data['last_name'] is not None:
                 UserModel.last_name = data['last_name']
 
-            if 'email' in data and data['email'] is not None:
-                if UserModel.find_by_email(data['email']):
-                    return {'message': 'email al ready taken'}
+            if 'email' in data:
+                other = UserModel.find_by_email(email=data['email'])
+                if other and other.user_id != user_model.user_id:
+                    return {'message': 'Email is already taken'}, 400
+
+                if data['email'] == '':
+                    return {'message': 'Email cannot be empty'}, 400
                 user_model.email = data['email']
 
             if 'password' in data and data['password'] is not None:
                 user_model.password = data['password']
-
             user_model.save_to_db()
         else:
             return {'message': "No user found."}, 400
