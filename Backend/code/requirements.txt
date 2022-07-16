@@ -33,3 +33,14 @@ urllib3==1.26.9
 Werkzeug==2.1.2
 zipp==3.8.0
 uwsgi
+os
+numpy
+pandas
+matplotlib
+tensorflow
+pathlib
+shutil
+cv2
+PIL
+scipy
+keras
