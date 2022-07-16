@@ -38,7 +38,7 @@ pandas
 matplotlib
 tensorflow
 pathlib
-cv2
+opencv-python
 PIL
 scipy
 keras
