@@ -34,4 +34,5 @@ class BirdResourceToAWS(Resource):
     def post(file_name):
         raw_data = request.get_data()
         response = Bucket.put_to_s3(file_name, raw_data)
+        print(response)
         return response

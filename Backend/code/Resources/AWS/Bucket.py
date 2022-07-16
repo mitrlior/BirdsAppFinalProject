@@ -31,15 +31,18 @@ class Bucket:
 
     @staticmethod
     def put_to_s3(filename, img):
-        image = Image.open(io.BytesIO(img))
-        image.save(filename)
-        print(type(image))
-        content_type = 'image/jpeg'
-        headers = {'content-type': content_type}
-        file = cv2.imread(filename)
-        # Encode image
-        _, img_encoded = cv2.imencode('.jpeg', file)
-        url = bucket_url + filename
-        requests.put(url, data=img_encoded.tostring(), headers=headers)
-        os.remove(filename)
+        try:
+            image = Image.open(io.BytesIO(img))
+            image.save(filename)
+            print(type(image))
+            content_type = 'image/jpeg'
+            headers = {'content-type': content_type}
+            file = cv2.imread(filename)
+            # Encode image
+            _, img_encoded = cv2.imencode('.jpeg', file)
+            url = bucket_url + filename
+            requests.put(url, data=img_encoded.tostring(), headers=headers)
+            os.remove(filename)
+        except Exception as e:
+            print(e)
         return url
