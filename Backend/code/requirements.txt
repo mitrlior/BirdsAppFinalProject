@@ -38,7 +38,6 @@ pandas
 matplotlib
 tensorflow
 pathlib
-shutil
 cv2
 PIL
 scipy
