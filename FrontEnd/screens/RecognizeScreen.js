@@ -5,6 +5,7 @@ import * as MediaLibrary from "expo-media-library";
 import * as ImagePicker from "expo-image-picker";
 import CamButton from "../assets/utils/CameraButtons";
 import { cameraStyle } from "../assets/AppStyles";
+import * as ImageManipulator from "expo-image-manipulator";
 import { post_file, _send } from "../requests/filesRequests";
 import * as FileSystem from "expo-file-system";
 
@@ -27,9 +28,15 @@ export default function RecognizeScreen({ navigation }) {
   const takePicture = async () => {
     if (cameraRef) {
       try {
-        const data = await cameraRef.current.takePictureAsync();
+        cameraRef.current.ImageQ;
+        const data = await cameraRef.current.takePictureAsync({ quality: 0.3 });
         console.log(data);
         setImage(data.uri);
+        await ImageManipulator.manipulateAsync(
+          data.uri,
+          [{ resize: { width: 224, height: 224 } }],
+          { compress: 0.5, format: ImageManipulator.SaveFormat.JPEG }
+        );
       } catch (error) {
         console.log(error);
       }

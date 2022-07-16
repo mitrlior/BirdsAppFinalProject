@@ -1,5 +1,5 @@
 import { BASE_URL, TEST_MODE, TEST_URL } from "@env";
-const url = TEST_URL;
+const url = BASE_URL;
 const base_url = url + "bird/myTest.jpg";
 import * as FileSystem from "expo-file-system";
 
@@ -23,14 +23,13 @@ const post_file = async (uri) => {
 
 async function _send(uri) {
   //   const formData = new FormData(base_url);
-  const url = BASE_URL + uri;
+
   const base_url = url + "bird/myTest.jpg";
   console.log(base_url);
   const res = await FileSystem.uploadAsync(base_url, uri, {
     method: "POST",
-    base64: true,
+    //   base64: true,
     headers: { "Content-Type": "image/jpeg" },
-    Connection: "keep-alive",
   });
   console.log(await res.body);
 }
