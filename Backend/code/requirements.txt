@@ -39,6 +39,6 @@ matplotlib
 tensorflow
 pathlib
 opencv-python
-PIL
+Pillow
 scipy
 keras
