@@ -22,6 +22,27 @@ const addNewUser = async (user) => {
   return res;
 };
 
+async function updateUser(user) {
+  console.log("Update USER: " + JSON.stringify(user));
+  const url = base_url + user.username;
+  console.log(`url = ${url}`);
+
+  const requestOptions = {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      first_name: user.first_name,
+      last_name: user.last_name,
+      password: user.password,
+      email: user.email,
+      user_type: user.user_type,
+    }),
+  };
+
+  let res = await fetch(url, requestOptions);
+  return res;
+}
+
 async function getUser(username) {
   console.log(`Got get request username =  ${username}`);
 
@@ -35,7 +56,6 @@ async function getUser(username) {
     },
   }).then((response) => response.json());
 }
-
 
 async function login(username, password) {
   console.log(`Log in request, username = ${username}`);
@@ -52,4 +72,4 @@ async function login(username, password) {
   return response;
 }
 
-module.exports = { addNewUser, getUser, login };
+module.exports = { addNewUser, getUser, updateUser, login };

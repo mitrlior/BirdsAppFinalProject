@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "../requests/UserRequests";
-
+import { getUser, updateUser } from "../requests/UserRequests";
+import { Picker } from "@react-native-picker/picker";
+import { signIn } from "../redux/action";
 import {
   Text,
   View,
   TouchableOpacity,
   TextInput,
   ScrollView,
+  Alert,
 } from "react-native";
 import {
   customStyles,
@@ -15,47 +17,75 @@ import {
   touchableOpacityStyle,
   textStyle,
   textInputStyle,
+  pickerStyle,
 } from "../assets/AppStyles";
-import DropDownPicker from "react-native-dropdown-picker";
+import { User } from "../assets/utils/MyObjs";
+let user;
 
 const EditProfileScreen = ({ navigation }) => {
-  const [email, setEmail] = useState(" ");
-  const [role, setRole] = useState(null);
-  const [firstName, setFirstName] = useState(" ");
+  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState(" ");
   const [username, setUsername] = useState(" ");
-  const [open, setOpen] = useState(false);
   const [password, setPassword] = useState("");
+  const [selectedValue, setSelectedValue] = useState(1);
+  const dispatch = useDispatch();
 
   const currentUser = useSelector((state) => state.username);
 
-  async function setUserData() {
-    console.log(`current_user = ${currentUser}`);
-    const user = await getUser(currentUser);
-    console.log(`User = ${user}`);
-    setRole(user.user_type);
+  const setUserData = async () => {
+    user = await getUser(currentUser);
+    console.log(`current_user = ${await JSON.stringify(user)}`);
+    const value = user.user_type;
+    console.log(`value = ${value} value = ${user.user_type}`);
+    setSelectedValue(value);
     setEmail(user.email);
     setFirstName(user.first_name);
     setLastName(user.last_name);
     setUsername(user.username);
     setPassword(user.password);
-  }
+  };
+
+  const user_type_dict = { USER: 0, BIRD_WATCHER: 1, ADMIN: 2 };
+
+  const profileUpdate = async () => {
+    const updated_user = new User(
+      username,
+      firstName,
+      lastName,
+      password,
+      email,
+      selectedValue
+    );
+    console.log(updated_user);
+    const res = await updateUser(updated_user);
+    console.log(`status: ${res.status}`);
+
+    if (res.status === 200) {
+      console.log("Success");
+      let body = await JSON.parse(await JSON.stringify(await res.json()));
+      console.log(body);
+      console.log(
+        `username = ${body.username}\t user_type = ${body.user_type}`
+      );
+      dispatch(signIn(body.username, body.user_type));
+      await setUserData();
+      Alert.alert("Success", "User updated successfully");
+      navigation.navigate("Main");
+    } else {
+      const body = await res.json();
+      console.log(body.message);
+      await setUserData();
+      Alert.alert("Problem!", body.message);
+    }
+  };
 
   useEffect(() => {
-    setUserData();
-  });
-
-  const [roles, setRoles] = useState([
-    { label: "Hobby", value: "Hobby" },
-    { label: "BirdWatcher", value: "Bird Watcher" },
-    { label: "Admin", value: "Admin" },
-  ]);
-
-  const [selectedValue, setSelectedValue] = useState("hobby");
-
-  const profileUpdate = () => {
-    const user = new User(username, firstName, lastName, email);
-  };
+    const unsubscribe = navigation.addListener("focus", () => {
+      setUserData();
+    });
+    return unsubscribe;
+  }, [navigation]);
 
   return (
     <ScrollView style={customStyles.container}>
@@ -67,37 +97,48 @@ const EditProfileScreen = ({ navigation }) => {
         </View>
         <View style={textInputStyle.view}>
           <Text style={textStyle.default}> First Name: </Text>
-          <TextInput style={textInputStyle.default} placeholder={firstName} />
+          <TextInput
+            style={textInputStyle.default}
+            value={firstName}
+            onChangeText={(newText) => setFirstName(newText)}
+          />
         </View>
         <View style={textInputStyle.view}>
           <Text style={textStyle.default}> Last Name: </Text>
-          <TextInput style={textInputStyle.default} placeholder={lastName} />
+          <TextInput
+            style={textInputStyle.default}
+            value={lastName}
+            onChangeText={(newText) => setLastName(newText)}
+          />
         </View>
         <View style={textInputStyle.view}>
           <Text style={textStyle.default}> Email: </Text>
-          <TextInput style={textInputStyle.default} placeholder={email} />
+          <TextInput
+            style={textInputStyle.default}
+            value={email}
+            onChangeText={(newText) => setEmail(newText)}
+          />
         </View>
         <View style={textInputStyle.view}>
           <Text style={textStyle.default}> Password: </Text>
           <TextInput
             style={textInputStyle.default}
             secureTextEntry={true}
-            placeholder={password}
+            value={password}
+            onChangeText={(newText) => setPassword(newText)}
           />
         </View>
-        <View style={textInputStyle.view}>
-          <Text style={textStyle.default}> Role: </Text>
-          <DropDownPicker
-            open={open}
-            value={role}
-            items={roles}
-            setOpen={setOpen}
-            setValue={setRole}
-            setItems={setRoles}
-            searchable={true}
-            placeholder="Select your bird"
-          />
-        </View>
+        <Text style={textStyle.default}>Role: </Text>
+        <Picker
+          style={pickerStyle.item}
+          itemStyle={pickerStyle.default}
+          onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+          selectedValue={String(selectedValue)}
+        >
+          <Picker.Item label="Hobby" value="0" />
+          <Picker.Item label="Birdwatcher" value="1" />
+          <Picker.Item label="Admin" value="2" />
+        </Picker>
       </View>
       <View
         style={[
@@ -109,11 +150,11 @@ const EditProfileScreen = ({ navigation }) => {
           },
         ]}
       >
-        <TouchableOpacity style={touchableOpacityStyle.default}>
-          <Text style={buttons.text}>Edit Profile</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={touchableOpacityStyle.default}>
-          <Text style={buttons.text}>My Birds</Text>
+        <TouchableOpacity
+          style={touchableOpacityStyle.default}
+          onPress={() => profileUpdate()}
+        >
+          <Text style={buttons.text}>Save</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>

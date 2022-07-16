@@ -144,7 +144,6 @@ const SignUpScreen = ({ navigation }) => {
             style={touchableOpacityStyle.default}
             onPress={() => signUp()}
           >
-            {/* () => navigation.navigate("Main") */}
             <Text style={buttons.text}>Sign Me Up</Text>
           </TouchableOpacity>
         </View>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useReducer } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../redux/action";
 
@@ -15,17 +15,31 @@ import {
   touchableOpacityStyle,
   imgStyle,
 } from "../assets/AppStyles";
-
-export default MainScreen = ({ navigation }) => {
-  let username = useSelector((state) => state.username);
-  let user_type = useSelector((state) => state.user_type);
+let username;
+let user_type;
+const MainScreen = ({ navigation }) => {
   const dispatch = useDispatch();
 
-  console.log(`MainScreen:\nusername = ${username}\nuser_type = ${user_type}`);
+  const updateStream = async () => {
+    console.log("updateStream");
+    username = useSelector((state) => state.username);
+    user_type = useSelector((state) => state.user_type);
+  };
+
   function out() {
     dispatch(logOut());
     navigation.navigate("Home");
   }
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener("focus", () => {
+      updateStream();
+      console.log(
+        `MainScreen:\nusername = ${username}\nuser_type = ${user_type}`
+      );
+    });
+    return unsubscribe;
+  }, [navigation]);
 
   return (
     <SafeAreaView style={customStyles.middle_container}>
@@ -85,3 +99,4 @@ export default MainScreen = ({ navigation }) => {
     </SafeAreaView>
   );
 };
+export default MainScreen;

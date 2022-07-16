@@ -2,6 +2,7 @@ from flask_restful import Resource, reqparse
 
 from Models.UserModel import UserModel
 from Utils.logger import logger
+from Utils.Enums import USER_TYPE
 
 
 class UserResource(Resource):
@@ -126,6 +127,7 @@ class UserResource(Resource):
 
             if 'password' in data and data['password'] is not None:
                 user_model.password = data['password']
+            user_model.user_type = data['user_type']
             user_model.save_to_db()
         else:
             return {'message': "No user found."}, 400
