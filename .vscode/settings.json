@@ -1,9 +1,5 @@
 {
   "cSpell.words": [
-    "albumentations",
-    "dtype",
-    "efficientnet",
-    "keras",
-    "softmax"
+    "datagen"
   ]
 }
