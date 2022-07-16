@@ -46,7 +46,7 @@ class UserResource(Resource):
     @staticmethod
     def post(username):
         if UserModel.find_by_username(username):
-            return {'message': 'User already exists'}, 400
+            return {'message': 'Username already exists'}, 400
         data = UserResource.parser.parse_args()
         print(data)
         # Check if email is given and not taken
@@ -126,4 +126,4 @@ class UserResource(Resource):
             user_model.save_to_db()
         else:
             return {'message': "No user found."}, 400
-        return user_model.json()
+        return user_model.json(), 200
