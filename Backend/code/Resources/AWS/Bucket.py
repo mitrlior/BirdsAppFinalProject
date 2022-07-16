@@ -3,7 +3,6 @@ import os
 import pathlib
 
 import boto3
-import cv2
 import requests
 from PIL import Image
 from Utils.logger import logger
