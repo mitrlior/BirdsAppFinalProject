@@ -50,23 +50,37 @@ class UserResource(Resource):
         data = UserResource.parser.parse_args()
         print(data)
         # Check if email is given and not taken
-        if 'email' in data and data['email'] is not None:
+        if 'email' in data:
             if UserModel.find_by_email(email=data['email']):
                 return {'message': 'Email is already taken'}, 400
+            if data['email'] == '':
+                return {'message': 'Email cannot be empty'}, 400
         else:
             return {'message': 'email is a required filed'}, 400
 
-        if 'first_name' in data and data['first_name'] is None:
+        if 'first_name' not in data:
             return {'message': 'first_name is a required filed'}, 400
 
-        if 'last_name' in  data['last_name'] is None:
+        if data['first_name'] == '':
+            return {'message': 'First name cannot be empty'}, 400
+
+        if 'last_name' not in data:
             return {'message': 'last_name is a required filed'}, 400
 
-        if 'password' in data and  data['password'] is None:
-            return {'message': 'password is a required filed'}, 400
+        if data['last_name'] == '':
+            return {'message': 'Last name cannot be empty'}, 400
 
-        if 'user_type' in data['user_type'] is None:
+        if 'password' not in data:
+            return {'message': 'Password is a required filed'}, 400
+
+        if data['password'] == '':
+            return {'message': 'Password cannot be empty'}, 400
+
+        if 'user_type' not in data:
             return {'message': 'user_type is a required filed'}, 400
+
+        if data['user_type'] == '':
+            return {'message': 'role cannot be empty'}, 400
 
         user_id = UserModel.generate_id()
         user_model = UserModel(user_id, username, **data)
