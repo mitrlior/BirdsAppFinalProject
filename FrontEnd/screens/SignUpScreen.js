@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { signIn } from "../redux/action";
 import {
   Text,
   View,
@@ -28,6 +30,7 @@ const SignUpScreen = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [selectedValue, setSelectedValue] = useState(1);
+  const dispatch = useDispatch();
 
   const signUp = async () => {
     const user = new User(
@@ -40,11 +43,15 @@ const SignUpScreen = ({ navigation }) => {
     );
     console.log(user);
     const res = await addNewUser(user);
-    //TODO: Handle response, 201 for user created move to home screen or something
-    console.log(`my res ${res}`);
     console.log(`status: ${res.status}`);
+
     if (res.status == 201) {
       console.log("Success");
+      const body = await JSON.parse(await JSON.stringify(await res.json()));
+      console.log(
+        `username = ${body.username}\t user_type = ${body.user_type}`
+      );
+      dispatch(signIn(body.username, body.user_type));
       Alert.alert(
         "Success",
         "User created successfully",
@@ -134,7 +141,7 @@ const SignUpScreen = ({ navigation }) => {
                 selectedValue={selectedValue}
                 style={pickerStyle.item}
                 itemStyle={pickerStyle.default}
-                onChangeText={(itemValue, itemIndex) =>
+                onValueChange={(itemValue, itemIndex) =>
                   setSelectedValue(itemValue)
                 }
               >

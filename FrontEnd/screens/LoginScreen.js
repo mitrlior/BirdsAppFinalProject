@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   SafeAreaView,
   TextInput,
-  Picker,
   ScrollView,
   Alert,
 } from "react-native";
