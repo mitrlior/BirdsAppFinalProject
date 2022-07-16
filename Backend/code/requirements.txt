@@ -36,7 +36,7 @@ uwsgi
 numpy
 pandas
 matplotlib
-tensorflow
+tensorflow-cpu
 pathlib
 opencv-python
 Pillow
