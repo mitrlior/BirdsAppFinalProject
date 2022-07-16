@@ -4,7 +4,7 @@ import { Entypo } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { cameraStyle } from '../AppStyles';
 
-export default function Button({ title, onPress, icon, color }) {
+export default function CamButton({ title, onPress, icon, color }) {
   return (
     <TouchableOpacity onPress={onPress} style={cameraStyle.in_buttons}>
       <Entypo name={icon} size={28} color={color ? color : '#f1f1f1'} />

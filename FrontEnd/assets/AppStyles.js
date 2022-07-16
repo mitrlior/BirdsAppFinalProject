@@ -318,6 +318,11 @@ const cameraStyle = StyleSheet.create({
     color: '#f1f1f1',
     marginLeft: 10,
   },
+  in_camera:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 30,
+  },
 })
 
 const mapStyle = StyleSheet.create({
