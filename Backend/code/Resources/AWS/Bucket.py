@@ -26,6 +26,7 @@ class Bucket:
     @staticmethod
     def get_bird_from_s3(filename):
         print(filename)
+        bucket_url = "https://mbmvxghuo0.execute-api.eu-central-1.amazonaws.com/dev/final-project-birds/"
         path = bucket_url + filename
         img = requests.get(path, allow_redirects=True).content
         print(type(img))
@@ -45,7 +46,7 @@ class Bucket:
             _, img_encoded = cv2.imencode('.jpeg', file)
             bucket_url = "https://mbmvxghuo0.execute-api.eu-central-1.amazonaws.com/dev/final-project-birds/"
             # logger.log(bucket_url, filename)
-            url = str(bucket_url) + str(filename)
+            url = bucket_url + filename
             requests.put(url, data=img_encoded.tostring(), headers=headers)
             os.remove(filename)
         except Exception as e:
