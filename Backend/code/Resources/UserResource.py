@@ -126,4 +126,4 @@ class UserResource(Resource):
             user_model.save_to_db()
         else:
             return {'message': "No user found."}, 400
-        return user_model.json()
+        return user_model.json(), 200
