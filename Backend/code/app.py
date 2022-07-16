@@ -8,7 +8,6 @@ from flask_jwt import JWT
 import psycopg2
 from dotenv import load_dotenv
 from Utils.logger import logger
-from flask_cors import CORS
 
 from Resources.UserResource import UserResource
 from Resources.BirdResourceToAWS import BirdResourceToAWS
@@ -20,7 +19,7 @@ load_dotenv()
 
 logger.info(os.environ.get('name'))
 app = Flask(__name__)
-CORS(app)
+app
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('_DATABASE_URL', 'sqlite:///data.db')
 
