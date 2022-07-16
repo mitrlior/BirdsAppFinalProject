@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 
 # from dotenv import load_dotenv
 
-bucket_url = os.getenv('BUCKET_URL')
+# bucket_url = os.getenv('BUCKET_URL')
 
 
 class Bucket:
@@ -43,6 +43,7 @@ class Bucket:
 
             # Encode image
             _, img_encoded = cv2.imencode('.jpeg', file)
+            bucket_url = "https://mbmvxghuo0.execute-api.eu-central-1.amazonaws.com/dev/final-project-birds/"
             # logger.log(bucket_url, filename)
             url = str(bucket_url) + str(filename)
             requests.put(url, data=img_encoded.tostring(), headers=headers)
