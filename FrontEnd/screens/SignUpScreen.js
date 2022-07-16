@@ -29,9 +29,6 @@ const SignUpScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [selectedValue, setSelectedValue] = useState(1);
 
-  const getAlert = ({ title, message, moveTo }) =>
-    Alert.alert(title, message, [{ text: "OK", onPress: () => moveTo }]);
-
   const signUp = async () => {
     const user = new User(
       username,
@@ -53,8 +50,10 @@ const SignUpScreen = ({ navigation }) => {
         "User created successfully",
         navigation.navigate("Main")
       );
-    } else if (res.status == 400) {
-      console.log("User Already Exists");
+    } else {
+      const body = await res.json();
+      console.log(body.message);
+      Alert.alert("Problem!", body.message);
     }
   };
 
