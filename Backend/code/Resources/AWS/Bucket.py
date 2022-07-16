@@ -7,6 +7,7 @@ import cv2
 import requests
 from PIL import Image
 from Utils.logger import logger
+
 from dotenv import load_dotenv
 
 # from dotenv import load_dotenv
@@ -42,11 +43,11 @@ class Bucket:
 
             # Encode image
             _, img_encoded = cv2.imencode('.jpeg', file)
-            logger.log(bucket_url, filename)
-            url = bucket_url + filename
+            # logger.log(bucket_url, filename)
+            url = str(bucket_url) + str(filename)
             requests.put(url, data=img_encoded.tostring(), headers=headers)
             os.remove(filename)
         except Exception as e:
-            print(e)
-            return {'message': 'Failed to up;oad image'}
+            e.print_exc()
+            return {'message': 'Failed to upload image'}
         return url
