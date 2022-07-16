@@ -50,22 +50,22 @@ class UserResource(Resource):
         data = UserResource.parser.parse_args()
         print(data)
         # Check if email is given and not taken
-        if data['email'] is not None:
+        if 'email' in data and data['email'] is not None:
             if UserModel.find_by_email(email=data['email']):
                 return {'message': 'Email is already taken'}, 400
         else:
             return {'message': 'email is a required filed'}, 400
 
-        if data['first_name'] is None:
+        if 'first_name' in data and data['first_name'] is None:
             return {'message': 'first_name is a required filed'}, 400
 
-        if data['last_name'] is None:
+        if 'last_name' in  data['last_name'] is None:
             return {'message': 'last_name is a required filed'}, 400
 
-        if data['password'] is None:
+        if 'password' in data and  data['password'] is None:
             return {'message': 'password is a required filed'}, 400
 
-        if data['user_type'] is None:
+        if 'user_type' in data['user_type'] is None:
             return {'message': 'user_type is a required filed'}, 400
 
         user_id = UserModel.generate_id()
