@@ -16,7 +16,7 @@ const post_file = async (uri) => {
       await fetch(base_url, {
         method: "POST",
         body: formData,
-      });
+      }).then(res => console.log(res.json()));
     });
     reader.readAsDataURL(content);
     console.log(reader.result);

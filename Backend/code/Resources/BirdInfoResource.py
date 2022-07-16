@@ -27,7 +27,7 @@ class BirdInfoResource(Resource):
             return {'message': f'Bird named {bird_name} does not exists'}
 
     @staticmethod
-    def post(self, bird_name):
+    def post(bird_name):
         if BirdInfoModel.find_by_bird_name(bird_name):
             return {'message': 'Bird with this name already exists'}
 
