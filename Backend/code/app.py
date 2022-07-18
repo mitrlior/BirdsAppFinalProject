@@ -14,7 +14,7 @@ from Resources.BirdResourceToAWS import BirdResourceToAWS
 from Resources.BirdInfoResource import BirdInfoResource
 from Resources.UserLoginResource import UserLoginResource
 from Resources.BirdToTrainResource import BirdToTrainResource
-
+from Resources.PredictBirdResource import PredictBirdResource
 load_dotenv()
 
 logger.info(os.environ.get('name'))
@@ -26,6 +26,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('_DATABASE_URL', 'sqlite:
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'jose'
 
+os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 # app.config['S3_KEY'] =  os.environ.get('S3_KEY')
 # app.config['S3_SECRET'] = os.environ.get('S3_SECRET')
 # app.config['S3_LOCATION'] = os.environ.get('S3_LOCATION')
@@ -47,6 +48,7 @@ api.add_resource(UserResource, '/user/<string:username>')  # user post, register
 api.add_resource(UserLoginResource, '/login/<string:username>')  # login(post)
 api.add_resource(BirdInfoResource, '/birdinfo/<string:bird_name>')  # Only birds info (get)
 api.add_resource(BirdToTrainResource, '/newbird')  # Post and get new Birds
+api.add_resource(PredictBirdResource, '/predict/<string:img_name>')  # Post and get new Birds
 
 if __name__ == '__main__':
     from db import db
