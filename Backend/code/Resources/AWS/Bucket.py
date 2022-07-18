@@ -12,20 +12,21 @@ from dotenv import load_dotenv
 
 load_dotenv()  # load env
 
+bucket_url = os.getenv('BUCKET_URL')  # Import vir
+
 
 class Bucket:
     BASE_DIR = pathlib.Path(__file__).parent.resolve()
     AWS_REGION = os.environ.get('AWS_REGION')
     BUCKET_NAME = os.environ.get('BUCKET_NAME')
     KEY = os.environ.get('S3_KEY')
-    bucket_url = os.getenv('BUCKET_URL')  # Import vir
-
     # s3 = boto3.resource("s3", verify=False)
 
-    def get_bird_from_s3(self, filename):
+    @staticmethod
+    def get_bird_from_s3(filename):
         print(filename)
         # bucket_url = "https://mbmvxghuo0.execute-api.eu-central-1.amazonaws.com/dev/final-project-birds/"
-        path = str(self.bucket_url) + str(filename)
+        path = str(bucket_url) + str(filename)
         img = requests.get(path, allow_redirects=True).content
         print(type(img))
         return img
