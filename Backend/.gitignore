@@ -1,8 +1,9 @@
 runVirtualEnv.txt
-
+weights/
+.idea/
 __pycache__/
 env
-
+code/.BirdsAlgorithm.py
 *.db
 *.bat
 
