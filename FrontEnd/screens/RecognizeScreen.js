@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Text, View, SafeAreaView, Image } from "react-native";
+import { Text, View, SafeAreaView, Image, Alert } from "react-native";
 import { Camera, CameraType } from "expo-camera";
 import * as MediaLibrary from "expo-media-library";
 import * as ImagePicker from "expo-image-picker";
@@ -37,6 +37,7 @@ export default function RecognizeScreen({ navigation }) {
           [{ resize: { width: 224, height: 224 } }],
           { compress: 0.5, format: ImageManipulator.SaveFormat.JPEG }
         );
+        Alert.alert("", "The bird is American Pipit");
       } catch (error) {
         console.log(error);
       }

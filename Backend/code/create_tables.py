@@ -17,13 +17,11 @@ create_table = "Create TABLE IF NOT EXISTS\
 cursor.execute(create_table)
 
 create_table = "Create TABLE IF NOT EXISTS\
-    bird_model_info (\
-        bird_id INTEGER PRIMARY KEY,\
+    bird_info (\
         bird_name text(30) NOT NULL UNIQUE, \
-        bird_family text(30) NOT NULL,\
-        image_path text(300) NOT NULL, \
         bird_info text(300) NOT NULL \
         )"
+
 cursor.execute(create_table)
 
 create_table = "Create TABLE IF NOT EXISTS\

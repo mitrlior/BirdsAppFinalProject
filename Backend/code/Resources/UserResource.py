@@ -46,7 +46,7 @@ class UserResource(Resource):
 
     @staticmethod
     def post(username):
-        if UserModel.find_by_username(username):
+        if UserModel.find_by_bird_username(username):
             return {'message': 'Username already exists'}, 400
         data = UserResource.parser.parse_args()
         print(data)
