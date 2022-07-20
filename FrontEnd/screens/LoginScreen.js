@@ -26,18 +26,26 @@ const LoginScreen = ({ navigation }) => {
   const dispatch = useDispatch();
 
   const handleLogin = async () => {
-    const res = await login(username, password);
-    console.log(`login status= ${res.status}`);
-    const body = await JSON.parse(await JSON.stringify(await res.json()));
-    if (res.status === 200) {
-      console.log(`User ${body.username} logged in`);
-      dispatch(signIn(body.username, body.user_type));
-
-      navigation.navigate("Main");
-    } else {
-      Alert.alert("Problem!", "Username or password are incorrect");
+    if (username === null || username === "") {
+      Alert.alert("Username required. \nPlease enter username");
       setPassword("");
+
     }
+    else {
+      const res = await login(username, password);
+      console.log(`login status= ${res.status}`);
+      const body = await JSON.parse(await JSON.stringify(await res.json()));
+      if (res.status === 200) {
+        console.log(`User ${body.username} logged in`);
+        dispatch(signIn(body.username, body.user_type));
+  
+        navigation.navigate("Main");
+      } else {
+        Alert.alert("Problem!", "Username or password are incorrect");
+        setPassword("");
+      }
+    }
+
   };
 
   return (
