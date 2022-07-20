@@ -62,8 +62,40 @@ const SignUpScreen = ({ navigation }) => {
       msgUsername = "Username must have 4 to 16 chars";
       filledOk = false;
     }
+    if (user.firstName === null || user.firstName === ""){
+      msgFirstName = "First name can't be null";
+      filledOk = false;
+    }
+    else if (user.firstName.length < 2 || user.firstName.length > 16 ){
+      msgFirstName = "First name must have 2 to 16 chars";
+      filledOk = false;
+    }
+    if (user.lastName === null || user.lastName === ""){
+      msgLastName = "Last name can't be null";
+      filledOk = false;
+    }
+    else if (user.lastName.length < 2 || user.lastName.length > 16 ){
+      msgLastName = "Last name must have 2 to 16 chars";
+      filledOk = false;
+    }
+    if (user.password === null || user.password === ""){
+      msgPassword = "Password can't be null";
+      filledOk = false;
+    }
+    else if (user.password.length < 4 || user.password.length > 16 ){
+      msgPassword = "Password must have 4 to 16 chars";
+      filledOk = false;
+    }
+    if (user.email === null || user.email === ""){
+      msgEmail = "Email can't be null";
+      filledOk = false;
+    }
+    else if (!emailIsValid(user.email) ){
+      msgEmail = "Invalid Email";
+      filledOk = false;
+    }
 
-
+    return filledOk;
   }
 
   const signUp = async () => {
@@ -75,27 +107,28 @@ const SignUpScreen = ({ navigation }) => {
       email,
       selectedValue
     );
-    console.log(user);
-    // TODO : Check if everything filled in
-    const res = await addNewUser(user);
-    console.log(`status: ${res.status}`);
-
-    if (res.status === 201) {
-      console.log("Success");
-      const body = await JSON.parse(await JSON.stringify(await res.json()));
-      console.log(
-        `username = ${body.username}\t user_type = ${body.user_type}`
-      );
-      dispatch(signIn(body.username, body.user_type));
-      Alert.alert(
-        "Success",
-        "User created successfully",
-        navigation.navigate("Main")
-      );
-    } else {
-      const body = await res.json();
-      console.log(body.message);
-      Alert.alert("Problem!", body.message);
+    if (checkSigned(user)){
+      console.log(user);
+      const res = await addNewUser(user);
+      console.log(`status: ${res.status}`);
+  
+      if (res.status === 201) {
+        console.log("Success");
+        const body = await JSON.parse(await JSON.stringify(await res.json()));
+        console.log(
+          `username = ${body.username}\t user_type = ${body.user_type}`
+        );
+        dispatch(signIn(body.username, body.user_type));
+        Alert.alert(
+          "Success",
+          "User created successfully",
+          navigation.navigate("Main")
+        );
+      } else {
+        const body = await res.json();
+        console.log(body.message);
+        Alert.alert("Problem!", body.message);
+      }
     }
   };
 
@@ -110,7 +143,6 @@ const SignUpScreen = ({ navigation }) => {
             <View flexDirection="row">
               <Text style={textStyle.default}>Username: </Text>
               <Text style={textStyle.error}>{msgUsername} </Text>
-
             </View>
             <TextInput
               style={textInputStyle.default}
@@ -121,6 +153,7 @@ const SignUpScreen = ({ navigation }) => {
           <View style={textInputStyle.view}>
             <View flexDirection="row">
               <Text style={textStyle.default}>First Name: </Text>
+              <Text style={textStyle.error}>{msgFirstName} </Text>
             </View>
             <TextInput
               style={textInputStyle.default}
@@ -130,6 +163,7 @@ const SignUpScreen = ({ navigation }) => {
           <View style={textInputStyle.view}>
             <View flexDirection="row">
               <Text style={textStyle.default}>Last Name: </Text>
+              <Text style={textStyle.error}>{msgLastName} </Text>
             </View>
             <TextInput
               style={textInputStyle.default}
@@ -139,6 +173,7 @@ const SignUpScreen = ({ navigation }) => {
           <View style={textInputStyle.view}>
             <View flexDirection="row">
               <Text style={textStyle.default}>Email: </Text>
+              <Text style={textStyle.error}>{msgEmail} </Text>
             </View>
             <TextInput
               style={textInputStyle.default}
@@ -148,6 +183,7 @@ const SignUpScreen = ({ navigation }) => {
           <View style={textInputStyle.view}>
             <View flexDirection="row">
               <Text style={textStyle.default}>Password: </Text>
+              <Text style={textStyle.error}>{msgPassword} </Text>
             </View>
             <TextInput
               style={textInputStyle.default}
