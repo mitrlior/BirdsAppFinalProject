@@ -31,6 +31,40 @@ const SignUpScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [selectedValue, setSelectedValue] = useState(1);
   const dispatch = useDispatch();
+  const msgUsername = "\t\ttest";
+  const msgFirstName = "\t\ttest";
+  const msgLastName = "\t\ttest";
+  const msgPassword = "\t\ttest";
+  const msgEmail = "\t\ttest";
+
+
+
+  function emailIsValid (email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+  }
+
+  const cleanFilled = () => {
+    msgUsername = "";
+    msgFirstName = "";
+    msgLastName = "";
+    msgPassword = "";
+    msgEmail = "";
+  }
+
+  const checkSigned = (user) => {
+    cleanFilled();
+    const filledOk = true;
+    if (user.username === null || user.username === ""){
+      msgUsername = "Username can't be null";
+      filledOk = false;
+    }
+    else if (user.username.length < 4 || user.username.length > 16 ){
+      msgUsername = "Username must have 4 to 16 chars";
+      filledOk = false;
+    }
+
+
+  }
 
   const signUp = async () => {
     const user = new User(
@@ -42,6 +76,7 @@ const SignUpScreen = ({ navigation }) => {
       selectedValue
     );
     console.log(user);
+    // TODO : Check if everything filled in
     const res = await addNewUser(user);
     console.log(`status: ${res.status}`);
 
@@ -74,6 +109,8 @@ const SignUpScreen = ({ navigation }) => {
           <View style={textInputStyle.view}>
             <View flexDirection="row">
               <Text style={textStyle.default}>Username: </Text>
+              <Text style={textStyle.error}>{msgUsername} </Text>
+
             </View>
             <TextInput
               style={textInputStyle.default}
