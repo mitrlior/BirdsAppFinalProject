@@ -1,13 +1,11 @@
 // import * as React from 'react';
 import React, { useState, useEffect } from "react";
 import {
-  StyleSheet,
   Text,
   View,
   TouchableOpacity,
   SafeAreaView,
   Image,
-  FlatList,
 } from "react-native";
 import {
   customStyles,
@@ -43,12 +41,25 @@ export default function BirdInfoScreen({ navigation }) {
 
   useEffect(() => {
     const fetchDate = async () => {
-      const types = await get_all_birds_types();
-      const json = await JSON.parse(types);
-      return json;
+      const res = await get_all_birds_types();
+      console.log(`Status = ${res.status}`);
+
+      if (res.status === 200) {
+        const body = await res.json();
+        console.log(await body);
+
+        for (const type in await body.birds_types.values()) {
+          console.log(`type = ${await type}`);
+        }
+        return await body;
+      } else {
+        return [];
+      }
+      return null;
     };
     const res = fetchDate();
-    console.log(res);
+    // console.log(res);
+    
   });
 
   return (
