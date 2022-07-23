@@ -6,7 +6,7 @@ import * as ImagePicker from "expo-image-picker";
 import CamButton from "../assets/utils/CameraButtons";
 import { cameraStyle } from "../assets/AppStyles";
 import * as ImageManipulator from "expo-image-manipulator";
-import { post_file, _send } from "../requests/filesRequests";
+import { post_file } from "../requests/filesRequests";
 import * as FileSystem from "expo-file-system";
 
 export default function RecognizeScreen({ navigation }) {
@@ -37,7 +37,6 @@ export default function RecognizeScreen({ navigation }) {
           [{ resize: { width: 224, height: 224 } }],
           { compress: 0.5, format: ImageManipulator.SaveFormat.JPEG }
         );
-        Alert.alert("", "The bird is American Pipit");
       } catch (error) {
         console.log(error);
       }
@@ -47,39 +46,51 @@ export default function RecognizeScreen({ navigation }) {
   const savePicture = async () => {
     if (image) {
       try {
-        // const asset = await MediaLibrary.createAssetAsync(image);
-        // alert("Picture saved! 🎉");
         console.log("saved successfully");
         console.log(`image = ${image}`);
-        await _send(image);
+        const imageUri = image.split("Camera/")[1];
+        console.log(`uri = ${imageUri}`);
+        try {
+          await post_file(image, imageUri);
+        } catch {
+          Alert.alert("Failed to send the picture to the server");
+        }
       } catch (error) {
         console.log(error);
       }
-    }
-  };
-
-  const send = async () => {
-    if (image) {
-      try {
-        console.log(image);
-      } catch (error) {
-        console.log(error);
-      }
+      // Alert.alert("", "The bird is American Pipit");
     }
   };
 
   const pickGalleryImage = async () => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       aspect: [4, 3],
-      quality: 1,
+      quality: 0.3,
     });
-
-    console.log(result);
+    // console.log(result);
     if (!result.cancelled) {
-      setGalleryImage(result.uri);
+      post_image(result);
+    }
+  };
+
+  const post_image = async (image) => {
+    try {
+      // console.log(result);
+      const imageUri = image.uri.split("ImagePicker/")[1];
+      console.log(imageUri);
+      const file = await ImageManipulator.manipulateAsync(
+        image.uri,
+        [{ resize: { width: 224, height: 224 } }],
+        { compress: 0.5, format: ImageManipulator.SaveFormat.JPEG }
+      );
+      console.log(file);
+      await post_file(file.uri, imageUri);
+    } catch {
+      Alert.alert("Failed to send the picture to the server");
+      // console.log(image);
     }
   };
 

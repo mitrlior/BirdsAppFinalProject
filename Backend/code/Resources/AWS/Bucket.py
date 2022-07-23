@@ -43,8 +43,7 @@ class Bucket:
 
             # Encode image
             _, img_encoded = cv2.imencode('.jpeg', file)
-            bucket_url = "https://mbmvxghuo0.execute-api.eu-central-1.amazonaws.com/dev/final-project-birds/"
-            # logger.log(bucket_url, filename)
+            logger.log(bucket_url, filename)
             url = bucket_url + filename
             requests.put(url, data=img_encoded.tostring(), headers=headers)
             os.remove(filename)
