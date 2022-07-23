@@ -22,7 +22,6 @@ const MainScreen = ({ navigation }) => {
 
   const updateStream = async () => {
     console.log("updateStream");
-   
   };
 
   function out() {
@@ -68,6 +67,13 @@ const MainScreen = ({ navigation }) => {
           onPress={() => navigation.navigate("Search")}
         >
           <Text style={buttons.text}>Search Bird</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={touchableOpacityStyle.default}
+          onPress={() => navigation.navigate("Info")}
+        >
+          <Text style={buttons.text}>Birds Info</Text>
         </TouchableOpacity>
 
         {username ? (

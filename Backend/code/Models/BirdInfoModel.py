@@ -1,5 +1,6 @@
 from db import db
-
+import sqlalchemy
+from Utils.logger import logger
 
 class BirdInfoModel(db.Model):
     index = None
@@ -25,3 +26,12 @@ class BirdInfoModel(db.Model):
 
     def json(self):
         return {'bird_name': self.bird_name, 'self.bird_info': self.bird_info}
+
+    @classmethod
+    def get_all_birds_types(cls):
+        query = db.session.query(sqlalchemy.func.distinct(cls.bird_name))
+        birds_types = [bird_name[0] for bird_name in query.all()]
+        logger.info(f'Get request for bird types = {birds_types}')
+        return birds_types
+
+

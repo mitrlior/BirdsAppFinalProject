@@ -15,6 +15,9 @@ from Resources.BirdInfoResource import BirdInfoResource
 from Resources.UserLoginResource import UserLoginResource
 from Resources.BirdToTrainResource import BirdToTrainResource
 from Resources.PredictBirdResource import PredictBirdResource
+from Resources.BirdsTypesResource import BirdsTypesResource
+
+
 load_dotenv()
 
 logger.info(os.environ.get('name'))
@@ -49,6 +52,7 @@ api.add_resource(UserLoginResource, '/login/<string:username>')  # login(post)
 api.add_resource(BirdInfoResource, '/birdinfo/<string:bird_name>')  # Only birds info (get)
 api.add_resource(BirdToTrainResource, '/newbird')  # Post and get new Birds
 api.add_resource(PredictBirdResource, '/predict/<string:img_name>')  # Post and get new Birds
+api.add_resource(BirdsTypesResource, '/types')
 
 if __name__ == '__main__':
     from db import db
