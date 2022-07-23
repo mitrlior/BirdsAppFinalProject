@@ -3,7 +3,6 @@ from flask_restful import Resource, reqparse
 from Resources.AWS.Bucket import Bucket
 import numpy as np
 from tensorflow import keras
-from PIL import Image
 import cv2
 
 
@@ -20,7 +19,7 @@ class PredictBirdResource(Resource):
         required=False
     )
 
-    def post(self, img_name):  # Recognize the Bird!
+    def get(self, img_name):  # Recognize the Bird!
         img_str = Bucket.get_bird_from_s3(img_name)
         img = cv2.imdecode(np.fromstring(img_str, np.uint8), cv2.IMREAD_COLOR)
         # Model choose and upload

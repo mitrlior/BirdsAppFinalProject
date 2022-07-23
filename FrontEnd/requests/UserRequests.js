@@ -49,7 +49,7 @@ async function getUser(username) {
   const url = BASE_URL + "user/" + username;
 
   return fetch(url, {
-    method: "GET",
+    method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",

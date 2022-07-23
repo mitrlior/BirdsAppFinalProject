@@ -7,7 +7,7 @@ import CamButton from "../assets/utils/CameraButtons";
 import { cameraStyle } from "../assets/AppStyles";
 import * as ImageManipulator from "expo-image-manipulator";
 import { post_file } from "../requests/filesRequests";
-import * as FileSystem from "expo-file-system";
+import { predict_bird } from "../requests/BirdsRequest";
 
 export default function RecognizeScreen({ navigation }) {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
@@ -50,15 +50,11 @@ export default function RecognizeScreen({ navigation }) {
         console.log(`image = ${image}`);
         const imageUri = image.split("Camera/")[1];
         console.log(`uri = ${imageUri}`);
-        try {
-          await post_file(image, imageUri);
-        } catch {
-          Alert.alert("Failed to send the picture to the server");
-        }
       } catch (error) {
+        Alert.alert("Failed to save the image.");
         console.log(error);
       }
-      // Alert.alert("", "The bird is American Pipit");
+      post_image(image);
     }
   };
 
@@ -77,20 +73,33 @@ export default function RecognizeScreen({ navigation }) {
   };
 
   const post_image = async (image) => {
+    let imageUri = "";
+    let res;
     try {
-      // console.log(result);
-      const imageUri = image.uri.split("ImagePicker/")[1];
+      if (image.uri) imageUri = image.uri.split("ImagePicker/")[1];
+      else imageUri = image.split("Camera/")[1];
       console.log(imageUri);
       const file = await ImageManipulator.manipulateAsync(
-        image.uri,
+        image.uri ? image.uri : image,
         [{ resize: { width: 224, height: 224 } }],
         { compress: 0.5, format: ImageManipulator.SaveFormat.JPEG }
       );
       console.log(file);
-      await post_file(file.uri, imageUri);
+      res = await post_file(file.uri, imageUri);
     } catch {
       Alert.alert("Failed to send the picture to the server");
+      return;
       // console.log(image);
+    }
+    try {
+      if (res === 200) {
+        console.log(`Predicting bird ${imageUri}`);
+        res = await predict_bird(imageUri);
+        res = await res.json();
+        Alert.alert("Success", `The bird is ${res.message}.`);
+      }
+    } catch {
+      Alert.alert("Failed to predict the bird");
     }
   };
 
