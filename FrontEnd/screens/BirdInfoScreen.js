@@ -18,7 +18,7 @@ import {
   imgStyle,
 } from "../assets/AppStyles";
 import DropDownPicker from "react-native-dropdown-picker";
-import { get_all_birds_types} from '../requests/BirdsRequest'
+import { get_all_birds_types } from "../requests/BirdsRequest";
 import { BirdInfo } from "../assets/utils/MyObjs";
 import { BirdCard } from "../assets/utils/BirdCard";
 
@@ -28,7 +28,7 @@ export default function BirdInfoScreen({ navigation }) {
 
   const name = "The Bird Name";
   const img_path = "../../assets/sqlogo_white";
-  const info ="";
+  const info = "";
 
   const [open, setOpen] = useState(false);
   const [bird, setBird] = useState(null);
@@ -42,8 +42,14 @@ export default function BirdInfoScreen({ navigation }) {
   ]);
 
   useEffect(() => {
-    console.log(get_all_birds_types());
-  })
+    const fetchDate = async () => {
+      const types = await get_all_birds_types();
+      const json = await JSON.parse(types);
+      return json;
+    };
+    const res = fetchDate();
+    console.log(res);
+  });
 
   return (
     <SafeAreaView style={customStyles.container}>

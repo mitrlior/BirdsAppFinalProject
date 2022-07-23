@@ -17,8 +17,8 @@ async function predict_bird(image_name) {
 async function get_all_birds_types() {
   console.log('Get all birds types request')
   const url = BASE_URL + "types"
-  res = await fetch(url)
-  return res
+  const res = await fetch(url);
+  return res;
 }
 
-module.exports = { predict_bird };
+module.exports = { predict_bird, get_all_birds_types };

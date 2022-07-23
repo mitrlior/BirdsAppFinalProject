@@ -32,6 +32,6 @@ class BirdInfoModel(db.Model):
         query = db.session.query(sqlalchemy.func.distinct(cls.bird_name))
         birds_types = [bird_name[0] for bird_name in query.all()]
         logger.info(f'Get request for bird types = {birds_types}')
-        return birds_types
+        return {'birds_types': birds_types}
 
 
