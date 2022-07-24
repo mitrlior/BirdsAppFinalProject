@@ -16,6 +16,7 @@ from Resources.UserLoginResource import UserLoginResource
 from Resources.BirdToTrainResource import BirdToTrainResource
 from Resources.PredictBirdResource import PredictBirdResource
 from Resources.BirdsTypesResource import BirdsTypesResource
+from Resources.AWS.Bucket import Bucket
 
 
 load_dotenv()

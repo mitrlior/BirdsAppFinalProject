@@ -21,4 +21,26 @@ async function get_all_birds_types() {
   return await res;
 }
 
-module.exports = { predict_bird, get_all_birds_types };
+async function get_bird_info(bird_name) {
+  console.log(`Get bird info for bird ${bird_name}`);
+  const url = BASE_URL + "birdinfo/" + bird_name;
+  const res = await fetch(url);
+  return await res;
+}
+
+async function get_bird_image(bird_name){
+  console.log(`Get bird image request for bird ${bird_name}`);
+  const url = BASE_URL + "bird/" + bird_name + '.jpg';
+  // console.log(`url = ${url}`);
+  // const res = await fetch(url);
+  // const imageBlob = await res.blob();
+  // return imageObjectURL = URL.createObjectURL(imageBlob);
+  return url;
+}
+
+module.exports = {
+  predict_bird,
+  get_all_birds_types,
+  get_bird_info,
+  get_bird_image,
+};
