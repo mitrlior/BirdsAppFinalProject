@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -22,19 +22,28 @@ import {
   Style,
 } from "../assets/AppStyles";
 
+import * as Location from 'expo-location';
 import DropDownPicker from "react-native-dropdown-picker";
 
 export default function AreaScreen({ navigation }) {
   const [selectedTime, setSelectedTime] = useState(null);
-  const [openDistance, setOpenDistance] = useState(false);
+  // const [openDistance, setOpenDistance] = useState(false);
   const [openPeriod, setOpenPeriod] = useState(false);
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
+  const [lat, setLat] = useState(null);
+  const [lng, setLng] = useState(null);
 
-  const [distances, setDistances] = useState([
-    { label: "1 km", value: "1km" },
-    { label: "5 km", value: "5km" },
-    { label: "10 km", value: "10km" },
-    { label: "15 km", value: "15km" },
-  ]);
+  var markers = [
+    {
+      latitude: 32.046, 
+      longitude: 34.47599,
+      title: "Bird Name",
+      subtitle: "BirdWatcher Name",
+      animateDrop: true,
+    }
+  ];
+  
   const [periods, setPeriods] = useState([
     { label: "1 Day", value: "1Day" },
     { label: "1 Week", value: "1Week" },
@@ -42,11 +51,32 @@ export default function AreaScreen({ navigation }) {
     { label: "1 Year", value: "1Year" },
   ]);
 
-  const onDistanceOpen = useCallback(() => {
-    setOpenPeriod(false);
-  }, []);
   const onPeriodOpen = useCallback(() => {
     setOpenDistance(false);
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        setErrorMsg('Permission to access location was denied');
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      let region = { 
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude, 
+        // longitude: location.longitude,
+        // latitudeDelta: 0.045,
+        // longitudeDelta: 0.045, 
+      }
+      // console.log(region);
+      setLat(location.coords.latitude);
+      setLng(location.coords.longitude);
+      // setLocation(location);
+      setLocation(region);
+    })();
   }, []);
 
   return (
@@ -70,21 +100,21 @@ export default function AreaScreen({ navigation }) {
         </View>
         <MapView
           style={mapStyle.map}
-          initialRegion={{
-            // TLV
-            latitude: 32.046,
-            longitude: 34.47599,
+          region={
+            {
+            latitude: lat, //location.latitude,
+            longitude: lng, // location.longitude,
             latitudeDelta: 0.1,
-            longitudeDelta: 0.05,
+            longitudeDelta: 0.1,
           }}
+          annotations={markers}
         >
-          <Marker
+          {/* <Marker
             coordinate={{ latitude: 32.046, longitude: 34.47599 }}
             title="Bird Name"
             description="BirdWatcher Name"
-            // image={require('../../assets/mapPin.png')}
             centerOffset={{ x: 0, y: 0 }}
-          />
+          /> */}
         </MapView>
       </View>
   );

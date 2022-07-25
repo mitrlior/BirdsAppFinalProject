@@ -31,11 +31,12 @@ const SignUpScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [selectedValue, setSelectedValue] = useState(1);
   const dispatch = useDispatch();
-  const msgUsername = "\t\ttest";
-  const msgFirstName = "\t\ttest";
-  const msgLastName = "\t\ttest";
-  const msgPassword = "\t\ttest";
-  const msgEmail = "\t\ttest";
+  // TODO : As useState
+  const msgUsername = "";
+  const msgFirstName = "";
+  const msgLastName = "";
+  const msgPassword = "";
+  const msgEmail = "";
 
 
 
@@ -51,7 +52,7 @@ const SignUpScreen = ({ navigation }) => {
     msgEmail = "";
   }
 
-  const checkSigned = (user) => {
+  const checkSigned = async(user) => {
     cleanFilled();
     const filledOk = true;
     if (user.username === null || user.username === ""){
