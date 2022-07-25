@@ -16,24 +16,25 @@ export default function BirdIDScreen({ navigation }) {
   
   return (
     <SafeAreaView style={styles.container}>
-
-      <View style={customStyles.container}>
-        <View style={customStyles.bird_container}>
-          <View>
-            <Text style={textStyle.id_header1}>{name}</Text>
-            <Text style={textStyle.id_header2}>{family}</Text>
-          </View>
-          <View>
-            <Image style={[imgStyle.small, {}]} source={require('../assets/sqlogo_white.png')}/>
-          </View>
-        </View>        
-        <Text style={textStyle.id_text}>{info}</Text>
-        <TouchableOpacity
-        style={touchableOpacityStyle.default}
-        >
-          <Text style={buttons.text}>Find bird on map</Text>
-        </TouchableOpacity>
+      <ScrollView>
+        <View style={customStyles.container}>
+          <View style={customStyles.bird_container}>
+            <View>
+              <Text style={textStyle.id_header1}>{name}</Text>
+              <Text style={textStyle.id_header2}>{family}</Text>
+            </View>
+            <View>
+              <Image style={[imgStyle.small, {}]} source={require('../assets/sqlogo_white.png')}/>
+            </View>
+          </View>        
+          <Text style={textStyle.id_text}>{info}</Text>
+          {/* <TouchableOpacity
+            style={touchableOpacityStyle.default}>
+            <Text style={buttons.text}>Find bird on map</Text>
+          </TouchableOpacity> */}
       </View>
+      </ScrollView>
+
     </SafeAreaView>
     );
 }

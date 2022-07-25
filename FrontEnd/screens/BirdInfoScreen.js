@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   Image,
   Alert,
+  ScrollView,
 } from "react-native";
 import {
   customStyles,
@@ -14,8 +15,6 @@ import {
   textStyle,
   touchableOpacityStyle,
   imgStyle,
-  ScrollView,
-  FlatList,
 } from "../assets/AppStyles";
 import DropDownPicker from "react-native-dropdown-picker";
 import {
@@ -90,7 +89,8 @@ export default function BirdInfoScreen({ navigation }) {
             placeholder="Select your bird"
           />
         </View>
-        <View style={customStyles.container}>
+
+        <ScrollView style={customStyles.container}>
           <View style={customStyles.bird_container}>
             <View>
               <Text style={textStyle.id_header1}>{name}</Text>
@@ -102,7 +102,6 @@ export default function BirdInfoScreen({ navigation }) {
               />
             </View>
           </View>
-
           <Text style={textStyle.id_text}>{info}</Text>
           {image ? (
             <Image
@@ -113,7 +112,7 @@ export default function BirdInfoScreen({ navigation }) {
           <TouchableOpacity style={touchableOpacityStyle.default}>
             <Text style={buttons.text}>Find bird on map</Text>
           </TouchableOpacity>
-        </View>
+        </ScrollView>
     </SafeAreaView>
   );
 }
