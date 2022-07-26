@@ -38,13 +38,15 @@ create_table = "Create TABLE IF NOT EXISTS\
 cursor.execute(create_table)
 
 create_table = "Create TABLE IF NOT EXISTS\
-    bird_to_train (\
+    birds_to_train (\
         bird_id INTEGER PRIMARY KEY,\
-        bird_name text(20) NOT NULL UNIQUE, \
-        user_id INTEGER NOT NULL, \
+        bird_name text(20) NOT NULL UNIQUE,\
+        image_id text(60) NOT NULL,\
+        user_id INTEGER, \
         isApproved INTEGER NOT NULL,\
         lat FLOAT(5,5) NOT NULL,\
-        lng FLOAT(5,5) NOT NULL\
+        lng FLOAT(5,5) NOT NULL,\
+        type text(20)\
         )"
 
 cursor.execute(create_table)

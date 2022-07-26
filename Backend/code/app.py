@@ -51,7 +51,7 @@ api.add_resource(BirdResourceToAWS, '/bird/<string:file_name>')  # API to AWS to
 api.add_resource(UserResource, '/user/<string:username>')  # user post, register, update
 api.add_resource(UserLoginResource, '/login/<string:username>')  # login(post)
 api.add_resource(BirdInfoResource, '/birdinfo/<string:bird_name>')  # Only birds info (get)
-api.add_resource(BirdToTrainResource, '/newbird')  # Post and get new Birds
+api.add_resource(BirdToTrainResource, '/newbird/<string:bird_name>')  # Post and get new Birds
 api.add_resource(PredictBirdResource, '/predict/<string:img_name>')  # Post and get new Birds
 api.add_resource(BirdsTypesResource, '/types')
 
