@@ -43,7 +43,7 @@ class Bucket:
 
             # Encode image
             _, img_encoded = cv2.imencode('.jpeg', file)
-            logger.log(bucket_url, filename)
+            # logger.log(bucket_url, filename)
             url = bucket_url + filename
             requests.put(url, data=img_encoded.tostring(), headers=headers)
             os.remove(filename)
