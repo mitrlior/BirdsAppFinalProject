@@ -24,6 +24,9 @@ const MainScreen = ({ navigation }) => {
     console.log("updateStream");
   };
 
+  username = useSelector((state) => state.username);
+  user_type = useSelector((state) => state.user_type);
+
   function out() {
     dispatch(logOut());
     navigation.navigate("Home");

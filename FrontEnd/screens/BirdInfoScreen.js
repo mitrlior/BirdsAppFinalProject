@@ -45,8 +45,6 @@ export default function BirdInfoScreen({ navigation }) {
     }
     try {
       const res = await get_bird_image(bird_name);
-      // const url = await res.blob();
-      // const imageObjectURL = URL.createObjectURL(imageBlob);
       setImage(res);
     } catch {
       Alert.alert("failed", `Failed to load image from server`);

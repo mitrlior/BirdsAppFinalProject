@@ -65,6 +65,10 @@ class BirdsToTrainModel(db.Model):
         except:
             return {'message': 'Failed to get birds to define'}, 500
 
+    @classmethod
+    def get_all_birds(cls):
+        return cls.query.filter_by(isApproved=True).all()
+
     def json(self):
         return {
             'bird_id': self.bird_id,

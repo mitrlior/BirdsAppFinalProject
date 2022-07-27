@@ -16,6 +16,7 @@ from Resources.UserLoginResource import UserLoginResource
 from Resources.BirdToTrainResource import BirdToTrainResource
 from Resources.PredictBirdResource import PredictBirdResource
 from Resources.BirdsTypesResource import BirdsTypesResource
+from Resources.BirdsResource import BirdsResource
 from Resources.AWS.Bucket import Bucket
 
 
@@ -54,6 +55,8 @@ api.add_resource(BirdInfoResource, '/birdinfo/<string:bird_name>')  # Only birds
 api.add_resource(BirdToTrainResource, '/newbird/<string:bird_name>')  # Post and get new Birds
 api.add_resource(PredictBirdResource, '/predict/<string:img_name>')  # Post and get new Birds
 api.add_resource(BirdsTypesResource, '/types')
+api.add_resource(BirdsResource, '/birds')
+
 
 if __name__ == '__main__':
     from db import db

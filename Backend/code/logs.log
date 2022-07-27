@@ -12951,3 +12951,204 @@ WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 115-232-742
 INFO:werkzeug:127.0.0.1 - - [26/Jul/2022 23:34:26] "PUT /newbird/lior HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [26/Jul/2022 23:34:38] "GET /newbird/lior HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'D:\\BirdsAppFinalProject\\Backend\\code\\Resources\\UserResource.py', reloading
+INFO:werkzeug: * Restarting with stat
+DEBUG:tensorflow:Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+INFO:Utils.logger:None
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 115-232-742
+DEBUG:tensorflow:Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+INFO:Utils.logger:None
+INFO:werkzeug: * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+DEBUG:tensorflow:Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+INFO:Utils.logger:None
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 115-232-742
+DEBUG:tensorflow:Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:tensorflow:Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+INFO:Utils.logger:None
+INFO:werkzeug: * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+DEBUG:tensorflow:Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+INFO:Utils.logger:None
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 115-232-742
+INFO:werkzeug:127.0.0.1 - - [27/Jul/2022 10:28:01] "[31m[1mPOST /birds?X-Amz-Date=20220727T072801Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAU5M42XZYH7D6RDTF%2F20220727%2Fus-east-1%2Fexecute-api%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=a630ab463d004679fadfffa9aa1723b2be3d3a79e53a26594dcc838ecb49c110 HTTP/1.1[0m" 405 -
+INFO:werkzeug:127.0.0.1 - - [27/Jul/2022 10:28:09] "[35m[1mGET /birds?X-Amz-Date=20220727T072809Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAU5M42XZYH7D6RDTF%2F20220727%2Fus-east-1%2Fexecute-api%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=d6099137ce2a2e1e395b7485edbc5e62893fa8cdc10092d07a4e9fdb6b799e5b HTTP/1.1[0m" 500 -
+DEBUG:tensorflow:Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+INFO:Utils.logger:None
+INFO:werkzeug: * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+DEBUG:tensorflow:Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+INFO:Utils.logger:None
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 115-232-742
+DEBUG:tensorflow:Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+INFO:Utils.logger:None
+INFO:werkzeug: * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+DEBUG:tensorflow:Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+INFO:Utils.logger:None
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 115-232-742
+INFO:werkzeug:127.0.0.1 - - [27/Jul/2022 10:32:23] "[35m[1mGET /birds?X-Amz-Date=20220727T073218Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAU5M42XZYH7D6RDTF%2F20220727%2Fus-east-1%2Fexecute-api%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=3a087ce513f21e1e93cdd71b2adaa83dfe0bf4d5bcc1ba4e4237a2a5bc34426f HTTP/1.1[0m" 500 -
+DEBUG:tensorflow:Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+INFO:Utils.logger:None
+INFO:werkzeug: * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+DEBUG:tensorflow:Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+INFO:Utils.logger:None
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 115-232-742
+INFO:werkzeug:127.0.0.1 - - [27/Jul/2022 10:33:01] "[35m[1mGET /birds?X-Amz-Date=20220727T073255Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAU5M42XZYH7D6RDTF%2F20220727%2Fus-east-1%2Fexecute-api%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=9a98fa9d442902506600386e42a2511c58f1074618d6dbd2df83538e44ae5921 HTTP/1.1[0m" 500 -
+DEBUG:tensorflow:Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+INFO:Utils.logger:None
+INFO:werkzeug: * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+DEBUG:tensorflow:Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+INFO:Utils.logger:None
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 115-232-742
+INFO:werkzeug:127.0.0.1 - - [27/Jul/2022 10:33:38] "[35m[1mGET /birds?X-Amz-Date=20220727T073333Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAU5M42XZYH7D6RDTF%2F20220727%2Fus-east-1%2Fexecute-api%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=32cb2688337787b7222069c8297bc09aa1b43a0940cdc8eb7a27c04cf7a03130 HTTP/1.1[0m" 500 -
+DEBUG:tensorflow:Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+INFO:Utils.logger:None
+INFO:werkzeug: * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+DEBUG:tensorflow:Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+INFO:Utils.logger:None
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 115-232-742
+INFO:werkzeug:127.0.0.1 - - [27/Jul/2022 10:34:38] "[35m[1mGET /birds?X-Amz-Date=20220727T073433Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAU5M42XZYH7D6RDTF%2F20220727%2Fus-east-1%2Fexecute-api%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=47b4efe8534bec605a38ea21cc323adfe3c9da99478c1bbaab476f29875c2b3c HTTP/1.1[0m" 500 -
+DEBUG:tensorflow:Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+INFO:Utils.logger:None
+INFO:werkzeug: * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+DEBUG:tensorflow:Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+INFO:Utils.logger:None
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 115-232-742
+INFO:werkzeug:127.0.0.1 - - [27/Jul/2022 10:35:39] "[35m[1mGET /birds?X-Amz-Date=20220727T073535Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAU5M42XZYH7D6RDTF%2F20220727%2Fus-east-1%2Fexecute-api%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=e389bc0e0b90f1fd8237cb901bc0a04c652fcea81d48e5339b0e5b09a737217f HTTP/1.1[0m" 500 -
+DEBUG:tensorflow:Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+INFO:Utils.logger:None
+INFO:werkzeug: * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+DEBUG:tensorflow:Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+INFO:Utils.logger:None
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 115-232-742
+INFO:werkzeug:127.0.0.1 - - [27/Jul/2022 13:43:42] "[35m[1mGET /birds?X-Amz-Date=20220727T104338Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAU5M42XZYH7D6RDTF%2F20220727%2Fus-east-1%2Fexecute-api%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=9985dcfde125322e15f718293fdf3647fed4febc870e4aa494c0445bf1483808 HTTP/1.1[0m" 500 -
+DEBUG:tensorflow:Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+INFO:Utils.logger:None
+INFO:werkzeug: * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+DEBUG:tensorflow:Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+INFO:Utils.logger:None
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 115-232-742
+INFO:werkzeug:127.0.0.1 - - [27/Jul/2022 13:44:13] "[35m[1mGET /birds?X-Amz-Date=20220727T104408Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAU5M42XZYH7D6RDTF%2F20220727%2Fus-east-1%2Fexecute-api%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=f642b4501c0b822d5ec9b0da431857e10e33a424d7512bc9fca9b4d88cf89d3e HTTP/1.1[0m" 500 -
+DEBUG:tensorflow:Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+INFO:Utils.logger:None
+INFO:werkzeug: * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+DEBUG:tensorflow:Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+INFO:Utils.logger:None
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 115-232-742
+INFO:werkzeug:127.0.0.1 - - [27/Jul/2022 13:46:22] "GET /birds?X-Amz-Date=20220727T104619Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAU5M42XZYH7D6RDTF%2F20220727%2Fus-east-1%2Fexecute-api%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=5eed9c474bc2c69605d63cb8325298ad4cf37db555f169706036c7a8e51ed2f8 HTTP/1.1" 200 -
