@@ -48,13 +48,14 @@ async function getUser(username) {
 
   const url = BASE_URL + "user/" + username;
 
-  return fetch(url, {
-    method: "POST",
+  const user = await fetch(url, {
+    method: "GET",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-  }).then((response) => response.json());
+  });
+  return user;
 }
 
 async function login(username, password) {

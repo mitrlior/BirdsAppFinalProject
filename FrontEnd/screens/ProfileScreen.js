@@ -26,7 +26,8 @@ export default ProfileScreen = ({ navigation }) => {
 
   async function setUserData() {
     console.log(`current_user = ${currentUser}`);
-    const user = await getUser(currentUser);
+    let user = await getUser(currentUser);
+    user = await JSON.parse(await JSON.stringify(await user.json()));
     console.log(`User = ${user}`);
     setRole(user.user_type);
     setEmail(user.email);

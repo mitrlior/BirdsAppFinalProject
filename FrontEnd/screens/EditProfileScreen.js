@@ -35,6 +35,8 @@ const EditProfileScreen = ({ navigation }) => {
 
   const setUserData = async () => {
     user = await getUser(currentUser);
+    let user = await getUser(currentUser);
+    user = await JSON.parse(await JSON.stringify(await user.json()));
     console.log(`current_user = ${await JSON.stringify(user)}`);
     const value = user.user_type;
     console.log(`value = ${value} value = ${user.user_type}`);
