@@ -70,6 +70,7 @@ const LoginScreen = ({ navigation }) => {
             </Text>
             <TextInput
               style={textInputStyle.default}
+              secureTextEntry={true}
               value={password}
               onChangeText={(newText) => setPassword(newText)}
             />
