@@ -116,7 +116,7 @@ export default function AreaScreen({ navigation }) {
 
   return (
       <View style={ customStyles.container}>
-        <View style={dropDownStyle.view}>
+        {/* <View style={dropDownStyle.view}>
           <Text style={textStyle.default}>Time Period: </Text>
           <DropDownPicker
             open={openPeriod}
@@ -131,8 +131,8 @@ export default function AreaScreen({ navigation }) {
             dropDownContainerStyle={dropDownStyle.item}
             // zIndex={3000}
             zIndexInverse={1000}
-          />
-        </View>
+          /> 
+        </View>*/}
         <MapView
           style={mapStyle.map}
           initialRegion={
@@ -151,7 +151,7 @@ export default function AreaScreen({ navigation }) {
             centerOffset={{ x: 0, y: 0 }}
           /> */}
           <Marker
-          coordinate={{ latitude: 32.046, longitude: 34.47599 }}
+          coordinate={{ latitude: 32.11246, longitude: 34.87899 }}
           title="Eurasian Collared-Dove"
           description = "Jhonny"
           centerOffset={{ x:0 , y:0 }}
