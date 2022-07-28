@@ -38,10 +38,44 @@ export default function AreaScreen({ navigation }) {
     {
       latitude: 32.046, 
       longitude: 34.47599,
-      title: "Bird Name",
-      subtitle: "BirdWatcher Name",
+      title: "Eurasian Collared-Dove",
+      subtitle: "Jhonny",
       animateDrop: true,
-    }
+    },
+    /*32.112898, 34.816901*/
+    {
+      latitude: 32.112898,
+      longitude: 34.816901,
+      title: "Eurasian Collared-Dove",
+      subtitle: "Stav",
+      setOffset: {x: 0, y: 0},
+      animateDrop: true,
+
+    },   
+    {
+      latitude: 32.114536, 
+      longitude: 34.818038,
+      title: "Gadwall" ,
+      subtitle: "Lior",
+    },    
+    {
+      latitude: 32.113709, 
+      longitude: 34.821111,
+      title: "Rock Pigeon",
+      subtitle: "Stav",
+    },    
+    {
+      latitude: 32.109331,
+      longitude: 34.819521,
+      title: "Rock Pigeon",
+      subtitle: "Lior",
+    },   
+    {
+      latitude: 32.106953, 
+      longitude: 34.813711,
+      title: "European Starling",
+      subtitle: "Jhonny",
+    },
   ];
   
   const [periods, setPeriods] = useState([
@@ -72,7 +106,8 @@ export default function AreaScreen({ navigation }) {
         // longitudeDelta: 0.045, 
       }
       // console.log(region);
-      setLat(location.coords.latitude);
+      // setLat(location.coords.latitude);
+      setLat(region.latitude);
       setLng(location.coords.longitude);
       // setLocation(location);
       setLocation(region);
@@ -100,14 +135,14 @@ export default function AreaScreen({ navigation }) {
         </View>
         <MapView
           style={mapStyle.map}
-          region={
+          initialRegion={
             {
             latitude: lat, //location.latitude,
             longitude: lng, // location.longitude,
             latitudeDelta: 0.1,
             longitudeDelta: 0.1,
           }}
-          annotations={markers}
+          // annotations={markers}
         >
           {/* <Marker
             coordinate={{ latitude: 32.046, longitude: 34.47599 }}
@@ -115,6 +150,42 @@ export default function AreaScreen({ navigation }) {
             description="BirdWatcher Name"
             centerOffset={{ x: 0, y: 0 }}
           /> */}
+          <Marker
+          coordinate={{ latitude: 32.046, longitude: 34.47599 }}
+          title="Eurasian Collared-Dove"
+          description = "Jhonny"
+          centerOffset={{ x:0 , y:0 }}
+          />
+          <Marker
+          coordinate={{ latitude: 32.112898, longitude: 34.816901 }}
+          title = "Eurasian Collared-Dove"
+          description = "Stav"
+          centerOffset={{x:0, y:0}}
+          />
+          <Marker
+          coordinate={{ latitude: 32.114536, longitude: 34.818038 }}
+          title = "Gadwall"
+          description = "Lior"
+          centerOffset={{x:0, y:0}}
+          />
+          <Marker
+          coordinate={{ latitude: 32.113709, longitude: 34.821111 }}
+          title = "Rock Pigeon"
+          description = "Stav"
+          centerOffset={{x:0, y:0}}
+          />
+          <Marker
+          coordinate={{ latitude: 32.109331, longitude: 34.819521 }}
+          title = "Rock Pigeon"
+          description = "Lior"
+          centerOffset={{x:0, y:0}}
+          />
+          <Marker
+          coordinate={{ latitude: 32.106953, longitude: 34.813711}}
+          title="European Starling"
+          description="Jhonny"
+          centerOffset={{x:0, y:0}}
+          />
         </MapView>
       </View>
   );
