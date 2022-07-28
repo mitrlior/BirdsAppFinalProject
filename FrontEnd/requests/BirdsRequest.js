@@ -5,7 +5,7 @@ async function predict_bird(image_name) {
   const url = BASE_URL + "predict/" + image_name;
   console.log(`url = ${url}`);
   res = await fetch(url, {
-    method: "POST",
+    method: "GET",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -31,10 +31,6 @@ async function get_bird_info(bird_name) {
 async function get_bird_image(bird_name){
   console.log(`Get bird image request for bird ${bird_name}`);
   const url = BASE_URL + "bird/" + bird_name + '.jpg';
-  // console.log(`url = ${url}`);
-  // const res = await fetch(url);
-  // const imageBlob = await res.blob();
-  // return imageObjectURL = URL.createObjectURL(imageBlob);
   return url;
 }
 

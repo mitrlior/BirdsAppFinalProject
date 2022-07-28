@@ -20,7 +20,6 @@ import {
   pickerStyle,
 } from "../assets/AppStyles";
 import { User } from "../assets/utils/MyObjs";
-let user;
 
 const EditProfileScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -34,7 +33,8 @@ const EditProfileScreen = ({ navigation }) => {
   const currentUser = useSelector((state) => state.username);
 
   const setUserData = async () => {
-    user = await getUser(currentUser);
+    let user = await getUser(currentUser);
+    user = await JSON.parse(await JSON.stringify(await user.json()));
     console.log(`current_user = ${await JSON.stringify(user)}`);
     const value = user.user_type;
     console.log(`value = ${value} value = ${user.user_type}`);
@@ -45,8 +45,6 @@ const EditProfileScreen = ({ navigation }) => {
     setUsername(user.username);
     setPassword(user.password);
   };
-
-  const user_type_dict = { USER: 0, BIRD_WATCHER: 1, ADMIN: 2 };
 
   const profileUpdate = async () => {
     const updated_user = new User(

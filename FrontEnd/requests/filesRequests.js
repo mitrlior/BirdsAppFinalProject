@@ -1,4 +1,4 @@
-import { BASE_URL, TEST_MODE, TEST_URL } from "@env";
+import { BASE_URL } from "@env";
 import * as FileSystem from "expo-file-system";
 
 async function post_file(uri, file_name) {
